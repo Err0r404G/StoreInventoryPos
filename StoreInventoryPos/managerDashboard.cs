@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace StoreInventoryPos
+{
+    public partial class managerDashboard : Form
+    {
+        public managerDashboard()
+        {
+            InitializeComponent();
+        }
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginPage back = new LoginPage(); // Back
+            back.Show();
+
+        }
+
+        private void editInventory_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            inventoryManagement Open = new inventoryManagement(); // Back
+            Open.Show();
+
+        }
+
+
+        private void promoCode_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            PromoCode Open = new PromoCode();
+            Open.Show();
+        }
+    }
+
+
+}
