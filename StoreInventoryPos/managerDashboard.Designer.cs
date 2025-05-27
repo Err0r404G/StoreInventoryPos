@@ -28,28 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            refundProduct = new Button();
+            refundReport = new Button();
             promoCode = new Button();
             viewStaff = new Button();
             editInventory = new Button();
             logoutButton = new Button();
             saleReport = new Button();
             managerProfile = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
-            // refundProduct
+            // refundReport
             // 
-            refundProduct.BackColor = Color.LightSteelBlue;
-            refundProduct.Cursor = Cursors.Hand;
-            refundProduct.FlatStyle = FlatStyle.Popup;
-            refundProduct.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            refundProduct.ForeColor = Color.Black;
-            refundProduct.Location = new Point(37, 343);
-            refundProduct.Name = "refundProduct";
-            refundProduct.Size = new Size(270, 51);
-            refundProduct.TabIndex = 14;
-            refundProduct.Text = "Refund";
-            refundProduct.UseVisualStyleBackColor = false;
+            refundReport.BackColor = Color.LightSteelBlue;
+            refundReport.Cursor = Cursors.Hand;
+            refundReport.FlatStyle = FlatStyle.Popup;
+            refundReport.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            refundReport.ForeColor = Color.Black;
+            refundReport.Location = new Point(328, 229);
+            refundReport.Name = "refundReport";
+            refundReport.Size = new Size(270, 147);
+            refundReport.TabIndex = 14;
+            refundReport.Text = "Refund Report";
+            refundReport.UseVisualStyleBackColor = false;
+            refundReport.Click += refundReport_Click;
             // 
             // promoCode
             // 
@@ -58,7 +60,7 @@
             promoCode.FlatStyle = FlatStyle.Popup;
             promoCode.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             promoCode.ForeColor = Color.Black;
-            promoCode.Location = new Point(37, 237);
+            promoCode.Location = new Point(37, 229);
             promoCode.Name = "promoCode";
             promoCode.Size = new Size(270, 51);
             promoCode.TabIndex = 13;
@@ -117,9 +119,9 @@
             saleReport.FlatStyle = FlatStyle.Popup;
             saleReport.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             saleReport.ForeColor = Color.Black;
-            saleReport.Location = new Point(331, 38);
+            saleReport.Location = new Point(328, 38);
             saleReport.Name = "saleReport";
-            saleReport.Size = new Size(189, 51);
+            saleReport.Size = new Size(270, 144);
             saleReport.TabIndex = 15;
             saleReport.Text = "Sale Report";
             saleReport.UseVisualStyleBackColor = false;
@@ -138,14 +140,30 @@
             managerProfile.Text = "My Profile";
             managerProfile.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.LightSteelBlue;
+            button1.Cursor = Cursors.Hand;
+            button1.FlatStyle = FlatStyle.Popup;
+            button1.Font = new Font("Impact", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Black;
+            button1.Location = new Point(37, 325);
+            button1.Name = "button1";
+            button1.Size = new Size(270, 51);
+            button1.TabIndex = 17;
+            button1.Text = "Refund Management";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // managerDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(managerProfile);
             Controls.Add(saleReport);
-            Controls.Add(refundProduct);
+            Controls.Add(refundReport);
             Controls.Add(promoCode);
             Controls.Add(viewStaff);
             Controls.Add(editInventory);
@@ -158,12 +176,13 @@
 
         #endregion
 
-        private Button refundProduct;
+        private Button refundReport;
         private Button promoCode;
         private Button viewStaff;
         private Button editInventory;
         private Button logoutButton;
         private Button saleReport;
         private Button managerProfile;
+        private Button button1;
     }
 }

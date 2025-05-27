@@ -23,6 +23,20 @@ namespace StoreInventoryPos
         {
             LoadPromoIntoGrid();
         }
+
+        private void ClearField()
+        {
+            promoBox.Clear();
+            discountBox.Clear();
+            UpromoField.Clear();
+            UdiscountField.Clear();
+            promoField.Clear();
+            discountField.Clear();
+            searchField.Clear();
+            searchGrid.ClearSelection();
+        }
+
+
         private void LoadPromoIntoGrid()
         {
             try
@@ -48,6 +62,7 @@ namespace StoreInventoryPos
         {
             createPanel.Visible = true;
             deletePanel.Visible = true;
+            updatePanel.Visible = true;
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -58,12 +73,7 @@ namespace StoreInventoryPos
         }
 
         private DataAccess dataAccess = new DataAccess();
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            string code = searchField.Text.Trim();
-            DataTable result = dataAccess.SearchByPromoCode(code);
-            searchGrid.DataSource = result;
-        }
+
 
 
 
@@ -83,6 +93,7 @@ namespace StoreInventoryPos
             if (result > 0)
             {
                 MessageBox.Show("Promo code added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearField();
                 LoadPromoIntoGrid();
             }
             else
@@ -106,6 +117,7 @@ namespace StoreInventoryPos
                 DataGridViewRow row = searchGrid.Rows[e.RowIndex];
                 promoField.Text = row.Cells["Code"].Value.ToString();
                 discountField.Text = row.Cells["DiscountPercent"].Value.ToString();
+                UpromoField.Text = row.Cells["Code"].Value.ToString();
             }
         }
 
@@ -125,13 +137,58 @@ namespace StoreInventoryPos
             if (row > 0)
             {
                 MessageBox.Show("Product deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearField();
                 LoadPromoIntoGrid();
             }
             else
             {
                 MessageBox.Show("Select Valid Promo Code.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void searchField_TextChanged(object sender, EventArgs e)
+        {
+            string code = searchField.Text.Trim();
+            DataTable result = dataAccess.SearchByPromoCode(code);
+            searchGrid.DataSource = result;
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            ClearField();
+        }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            string code = UpromoField.Text.Trim();
+            string discountpercent = UdiscountField.Text.Trim();
+
+            if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(discountpercent))
+            {
+                MessageBox.Show("Please enter both promo code and discount percent.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                int result = dataAccess.UpdateCode(code, discountpercent);
+
+                if (result > 0)
+                {
+                    MessageBox.Show("Promo code updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ClearField();
+                    LoadPromoIntoGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update promo code. Make sure the code exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while updating: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
+}
 

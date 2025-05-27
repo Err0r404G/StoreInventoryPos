@@ -40,9 +40,9 @@
             updateButton = new Button();
             roleBox = new ComboBox();
             roleLabel = new Label();
-            searchButton = new Button();
             searchGrid = new DataGridView();
             backButton = new Button();
+            clearButton = new Button();
             ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
             SuspendLayout();
             // 
@@ -51,11 +51,12 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(180, 31);
+            searchField.Location = new Point(186, 30);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(382, 42);
+            searchField.Size = new Size(451, 42);
             searchField.TabIndex = 17;
+            searchField.TextChanged += searchField_TextChanged;
             // 
             // SearchLabel
             // 
@@ -174,7 +175,6 @@
             roleBox.Name = "roleBox";
             roleBox.Size = new Size(163, 28);
             roleBox.TabIndex = 27;
-            roleBox.SelectedIndexChanged += roleBox_SelectedIndexChanged;
             // 
             // roleLabel
             // 
@@ -186,31 +186,25 @@
             roleLabel.TabIndex = 26;
             roleLabel.Text = "Assign Role";
             // 
-            // searchButton
-            // 
-            searchButton.BackColor = Color.Red;
-            searchButton.Cursor = Cursors.Hand;
-            searchButton.FlatStyle = FlatStyle.Popup;
-            searchButton.Font = new Font("Impact", 19.8F);
-            searchButton.ForeColor = Color.LavenderBlush;
-            searchButton.Location = new Point(568, 31);
-            searchButton.Name = "searchButton";
-            searchButton.Size = new Size(69, 42);
-            searchButton.TabIndex = 28;
-            searchButton.Text = "GO";
-            searchButton.UseVisualStyleBackColor = false;
-            searchButton.Click += searchButton_Click;
-            // 
             // searchGrid
             // 
+            searchGrid.AllowUserToAddRows = false;
+            searchGrid.AllowUserToDeleteRows = false;
+            searchGrid.AllowUserToOrderColumns = true;
+            searchGrid.AllowUserToResizeRows = false;
+            searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.Location = new Point(53, 90);
+            searchGrid.Location = new Point(39, 90);
+            searchGrid.MultiSelect = false;
             searchGrid.Name = "searchGrid";
+            searchGrid.ReadOnly = true;
             searchGrid.RowHeadersWidth = 51;
-            searchGrid.Size = new Size(491, 318);
+            searchGrid.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            searchGrid.ScrollBars = ScrollBars.Vertical;
+            searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            searchGrid.Size = new Size(584, 318);
             searchGrid.TabIndex = 29;
             searchGrid.CellClick += searchGrid_CellClick;
-            searchGrid.CellContentClick += searchGrid_CellContentClick;
             // 
             // backButton
             // 
@@ -227,14 +221,29 @@
             backButton.UseVisualStyleBackColor = false;
             backButton.Click += backButton_Click_1;
             // 
+            // clearButton
+            // 
+            clearButton.BackColor = SystemColors.WindowText;
+            clearButton.Cursor = Cursors.Hand;
+            clearButton.FlatStyle = FlatStyle.Popup;
+            clearButton.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clearButton.ForeColor = Color.LavenderBlush;
+            clearButton.Location = new Point(821, 449);
+            clearButton.Name = "clearButton";
+            clearButton.Size = new Size(158, 48);
+            clearButton.TabIndex = 36;
+            clearButton.Text = "Clear";
+            clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += clearButton_Click;
+            // 
             // modifyUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1273, 537);
+            Controls.Add(clearButton);
             Controls.Add(backButton);
             Controls.Add(searchGrid);
-            Controls.Add(searchButton);
             Controls.Add(roleBox);
             Controls.Add(roleLabel);
             Controls.Add(updateButton);
@@ -268,8 +277,8 @@
         private Button updateButton;
         private ComboBox roleBox;
         private Label roleLabel;
-        private Button searchButton;
         private DataGridView searchGrid;
         private Button backButton;
+        private Button clearButton;
     }
 }

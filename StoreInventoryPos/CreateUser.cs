@@ -17,8 +17,16 @@ namespace StoreInventoryPos
         {
             InitializeComponent();
         }
+        private void ClearField()
+        {
+            fNameField.Clear();
+            userNameField.Clear();
+            passWordField.Clear();
+            CpassWordField.Clear();
+            roleBox.SelectedIndex = -1;
+        }
 
-private void createButton_Click(object sender, EventArgs e)
+        private void createButton_Click(object sender, EventArgs e)
 {
             string username = userNameField.Text.Trim();
             string password = passWordField.Text.Trim();
@@ -46,7 +54,10 @@ private void createButton_Click(object sender, EventArgs e)
                 int rows = db.InsertUser(username, password, fullname, role);
 
                 if (rows > 0)
+                {
                     MessageBox.Show("User inserted successfully!");
+                    ClearField();
+                }
                 else
                     MessageBox.Show("Insertion failed.");
             }

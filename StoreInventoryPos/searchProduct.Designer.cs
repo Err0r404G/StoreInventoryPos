@@ -30,7 +30,6 @@
         {
             backButton = new Button();
             searchGrid = new DataGridView();
-            searchButton = new Button();
             searchField = new TextBox();
             SearchLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
@@ -53,27 +52,17 @@
             // 
             // searchGrid
             // 
+            searchGrid.AllowUserToAddRows = false;
+            searchGrid.AllowUserToDeleteRows = false;
+            searchGrid.AllowUserToResizeRows = false;
+            searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             searchGrid.Location = new Point(28, 98);
             searchGrid.Name = "searchGrid";
             searchGrid.RowHeadersWidth = 51;
+            searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             searchGrid.Size = new Size(879, 415);
             searchGrid.TabIndex = 38;
-            // 
-            // searchButton
-            // 
-            searchButton.BackColor = Color.Red;
-            searchButton.Cursor = Cursors.Hand;
-            searchButton.FlatStyle = FlatStyle.Popup;
-            searchButton.Font = new Font("Impact", 19.8F);
-            searchButton.ForeColor = Color.LavenderBlush;
-            searchButton.Location = new Point(493, 38);
-            searchButton.Name = "searchButton";
-            searchButton.Size = new Size(69, 46);
-            searchButton.TabIndex = 37;
-            searchButton.Text = "GO";
-            searchButton.UseVisualStyleBackColor = false;
-            searchButton.Click += searchButton_Click_1;
             // 
             // searchField
             // 
@@ -83,8 +72,9 @@
             searchField.Location = new Point(161, 42);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(326, 42);
+            searchField.Size = new Size(746, 42);
             searchField.TabIndex = 36;
+            searchField.TextChanged += searchField_TextChanged;
             // 
             // SearchLabel
             // 
@@ -104,7 +94,6 @@
             ClientSize = new Size(1068, 605);
             Controls.Add(backButton);
             Controls.Add(searchGrid);
-            Controls.Add(searchButton);
             Controls.Add(searchField);
             Controls.Add(SearchLabel);
             Name = "searchProduct";
@@ -120,7 +109,6 @@
 
         private Button backButton;
         private DataGridView searchGrid;
-        private Button searchButton;
         private TextBox searchField;
         private Label SearchLabel;
     }

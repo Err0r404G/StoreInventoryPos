@@ -39,6 +39,21 @@ namespace StoreInventoryPos
             PromoCode Open = new PromoCode();
             Open.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            refundManagement Open = new refundManagement();
+            Open.Show();
+        }
+
+        private void refundReport_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            refundReport Open = new refundReport();
+            Open.Show();
+        }
     }
 
 

@@ -213,7 +213,20 @@ namespace WFAManagementPro
 
             return cmd.ExecuteNonQuery();
         }
-        
+
+        //Upadte Promo
+        public int UpdateCode(string code, string discountpercent)
+        {
+            string sql = "UPDATE PromoCode SET DiscountPercent = @discountpercent WHERE Code = @code";
+            SqlCommand cmd = new SqlCommand(sql, this.Sqlcon);
+
+            cmd.Parameters.AddWithValue("@code", code);
+            cmd.Parameters.AddWithValue("@discountpercent", discountpercent);
+
+            return cmd.ExecuteNonQuery();
+        }
+
+
         //Delete Promo
 
         public int DeletePromoCode(string code)

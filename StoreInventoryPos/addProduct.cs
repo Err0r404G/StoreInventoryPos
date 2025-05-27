@@ -24,7 +24,14 @@ namespace StoreInventoryPos
             inventoryManagement Back = new inventoryManagement();
             Back.Show();
         }
-
+        private void ClearField()
+        {
+            pNameField.Clear();
+            costField.Clear();
+            priceField.Clear();
+            quantityField.Clear();
+            sizeBox.SelectedIndex = -1;
+        }
         private void addButton_Click(object sender, EventArgs e)
         {
 
@@ -57,7 +64,10 @@ namespace StoreInventoryPos
                 int rows = db.InsertProduct(productname, cost, price, quantity, size);
 
                 if (rows > 0)
+                { 
                     MessageBox.Show("Product inserted successfully!");
+                ClearField();
+            }
                 else
                     MessageBox.Show("Insertion failed.");
             }

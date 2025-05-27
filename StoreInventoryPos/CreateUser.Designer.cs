@@ -115,7 +115,7 @@ namespace StoreInventoryPos
             createButton.FlatStyle = FlatStyle.Popup;
             createButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             createButton.ForeColor = Color.Crimson;
-            createButton.Location = new Point(274, 331);
+            createButton.Location = new Point(276, 312);
             createButton.Name = "createButton";
             createButton.Size = new Size(290, 51);
             createButton.TabIndex = 13;
@@ -148,7 +148,7 @@ namespace StoreInventoryPos
             backButton.FlatStyle = FlatStyle.Popup;
             backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(693, 6);
+            backButton.Location = new Point(693, 13);
             backButton.Name = "backButton";
             backButton.Size = new Size(112, 51);
             backButton.TabIndex = 21;

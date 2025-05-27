@@ -13,8 +13,24 @@ namespace StoreInventoryPos
             ApplicationConfiguration.Initialize();
             //Application.Run(new LoginPage());
             //Application.Run(new CreateUser());
-            //Application.Run(new modifyUser());
-            Application.Run(new PromoCode());
+           // Application.Run(new modifyUser());
+            //Application.Run(new PromoCode());
+
+
+
+            /////  Dashboard
+            //Application.Run(new adminDashboard());
+
+            Application.Run(new managerDashboard());
+
+            //Application.Run(new staffDashboard());
+
+
+
+
+
+
+
         }
     }
 }

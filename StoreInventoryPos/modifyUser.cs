@@ -48,6 +48,15 @@ namespace StoreInventoryPos
                 MessageBox.Show("Error loading users: " + ex.Message);
             }
         }
+        private void ClearField()
+        {
+            userNameField.Clear();
+            passwordField.Clear();
+            fullNameField.Clear();
+            roleBox.SelectedIndex = -1;
+            searchField.Clear();
+            searchGrid.ClearSelection();
+        }
 
         private void backButton_Click(object sender, EventArgs e)
         {
@@ -56,23 +65,8 @@ namespace StoreInventoryPos
             back.Show();
         }
 
-        private DataAccess dataAccess = new DataAccess();
-
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            string username = searchField.Text.Trim();
-            DataTable result = dataAccess.SearchUsersByUsername(username);
-            searchGrid.DataSource = result;
-        }
 
 
-
-
-
-        private void roleBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void deleteButton_Click(object sender, EventArgs e)
@@ -91,6 +85,7 @@ namespace StoreInventoryPos
             if (row > 0)
             {
                 MessageBox.Show("User deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearField();
                 LoadUsersIntoGrid();
             }
             else
@@ -135,6 +130,7 @@ namespace StoreInventoryPos
             if (rowsAffected > 0)
             {
                 MessageBox.Show("User updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearField();
                 LoadUsersIntoGrid();
             }
             else
@@ -150,9 +146,18 @@ namespace StoreInventoryPos
             Back.Show();
         }
 
-        private void searchGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private DataAccess dataAccess = new DataAccess();
+        private void searchField_TextChanged(object sender, EventArgs e)
         {
 
+            string username = searchField.Text.Trim();
+            DataTable result = dataAccess.SearchUsersByUsername(username);
+            searchGrid.DataSource = result;
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            ClearField();
         }
     }
 }

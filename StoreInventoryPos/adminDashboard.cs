@@ -16,6 +16,7 @@ namespace StoreInventoryPos
         {
             InitializeComponent();
         }
+       
 
         private void logOut_Click(object sender, EventArgs e)
         {

@@ -49,7 +49,7 @@
             nameLabel.BackColor = Color.Transparent;
             nameLabel.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             nameLabel.ForeColor = Color.IndianRed;
-            nameLabel.Location = new Point(248, 19);
+            nameLabel.Location = new Point(284, 20);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(249, 42);
             nameLabel.TabIndex = 8;
@@ -107,7 +107,7 @@
             addButton.FlatStyle = FlatStyle.Popup;
             addButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             addButton.ForeColor = Color.Crimson;
-            addButton.Location = new Point(248, 362);
+            addButton.Location = new Point(264, 361);
             addButton.Name = "addButton";
             addButton.Size = new Size(290, 51);
             addButton.TabIndex = 30;

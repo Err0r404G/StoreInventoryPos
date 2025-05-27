@@ -50,6 +50,19 @@ namespace StoreInventoryPos
                 MessageBox.Show("Error loading Products: " + ex.Message);
             }
         }
+
+        private void ClearField()
+        {
+            productIDField.Clear();
+            ProductNameField.Clear();
+            costField.Clear();
+            priceField.Clear();
+            QuantityField.Clear();
+            sizeBox.SelectedIndex = -1;
+            searchField.Clear();
+            searchGrid.ClearSelection();
+        }
+
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -57,12 +70,7 @@ namespace StoreInventoryPos
             Back.Show();
         }
         private DataAccess dataAccess = new DataAccess();
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            string productname = searchField.Text.Trim();
-            DataTable result = dataAccess.SearchByProductname(productname);
-            searchGrid.DataSource = result;
-        }
+
 
         private void searchGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -106,6 +114,7 @@ namespace StoreInventoryPos
             if (rowsAffected > 0)
             {
                 MessageBox.Show("Product updated successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearField();
                 LoadProductIntoGrid();
             }
             else
@@ -130,12 +139,25 @@ namespace StoreInventoryPos
             if (row > 0)
             {
                 MessageBox.Show("Product deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearField();
                 LoadProductIntoGrid();
             }
             else
             {
                 MessageBox.Show("Select Valid Product.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void searchField_TextChanged(object sender, EventArgs e)
+        {
+            string productname = searchField.Text.Trim();
+            DataTable result = dataAccess.SearchByProductname(productname);
+            searchGrid.DataSource = result;
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            ClearField();
         }
     }
 }

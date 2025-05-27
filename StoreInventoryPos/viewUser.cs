@@ -56,7 +56,9 @@ namespace StoreInventoryPos
             Back.Show();
         }
 
-        private void searchButton_Click_1(object sender, EventArgs e)
+
+
+        private void searchField_TextChanged(object sender, EventArgs e)
         {
             string username = searchField.Text.Trim();
             DataTable result = dataAccess.SearchUsersByUsername(username);

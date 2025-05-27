@@ -32,7 +32,7 @@ namespace StoreInventoryPos
 
                 searchGrid.DataSource = product;
 
-                
+
                 if (searchGrid.Columns.Contains("ProductID"))
                     searchGrid.Columns["ProductID"].HeaderText = "Product ID";
                 if (searchGrid.Columns.Contains("ProductName"))
@@ -70,9 +70,10 @@ namespace StoreInventoryPos
             Back.Show();
         }
         private DataAccess dataAccess = new DataAccess();
-        private void searchButton_Click_1(object sender, EventArgs e)
-        {
 
+
+        private void searchField_TextChanged(object sender, EventArgs e)
+        {
             string productname = searchField.Text.Trim();
             DataTable result = dataAccess.SearchByProductname(productname);
             searchGrid.DataSource = result;
