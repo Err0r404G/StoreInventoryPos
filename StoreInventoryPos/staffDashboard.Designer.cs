@@ -48,6 +48,7 @@
             staffProfileButton.TabIndex = 23;
             staffProfileButton.Text = "My Profile";
             staffProfileButton.UseVisualStyleBackColor = false;
+            staffProfileButton.Click += staffProfileButton_Click;
             // 
             // salesButton
             // 
@@ -76,6 +77,7 @@
             posButton.TabIndex = 19;
             posButton.Text = "POS";
             posButton.UseVisualStyleBackColor = false;
+            posButton.Click += posButton_Click;
             // 
             // inventoryButton
             // 
@@ -90,6 +92,7 @@
             inventoryButton.TabIndex = 18;
             inventoryButton.Text = "Inventory";
             inventoryButton.UseVisualStyleBackColor = false;
+            inventoryButton.Click += inventoryButton_Click;
             // 
             // button1
             // 
@@ -117,6 +120,7 @@
             Controls.Add(inventoryButton);
             Controls.Add(button1);
             Name = "staffDashboard";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "staffDashboard";
             ResumeLayout(false);
         }

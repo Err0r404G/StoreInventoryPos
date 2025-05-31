@@ -41,35 +41,44 @@ namespace StoreInventoryPos
                 return;
             }
 
-            // Create instance of DataAccess
-            DataAccess dataAccess = new DataAccess();
-
-            bool isValid = dataAccess.ValidateUser(username, password, out role);
-
-            if (isValid)
-            { 
-                // role base
-                this.Hide();
-                if (role == "ADMIN")
-                {
-                    adminDashboard Dashboard = new adminDashboard();
-                    Dashboard.Show();
-                }
-                else if (role == "MANAGER")
-                {
-                    managerDashboard Dashboard = new managerDashboard();
-                    Dashboard.Show();
-                }
-                else if (role == "STAFF")
-                {
-                    staffDashboard Dashboard = new staffDashboard();
-                    Dashboard.Show();
-                }
-
-            }
-            else
+            try
             {
-                MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Create instance of DataAccess
+                DataAccess dataAccess = new DataAccess();
+
+                bool isValid = dataAccess.ValidateUser(username, password, out role);
+
+                if (isValid)
+                {
+                    Users.Username = username;
+                    Users.Role = role;
+
+                    this.Hide();
+
+                    if (role == "ADMIN")
+                    {
+                        adminDashboard Dashboard = new adminDashboard();
+                        Dashboard.Show();
+                    }
+                    else if (role == "MANAGER")
+                    {
+                        managerDashboard Dashboard = new managerDashboard();
+                        Dashboard.Show();
+                    }
+                    else if (role == "STAFF")
+                    {
+                        staffDashboard Dashboard = new staffDashboard();
+                        Dashboard.Show();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred during login:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

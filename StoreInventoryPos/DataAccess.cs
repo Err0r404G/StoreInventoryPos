@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using Microsoft.VisualBasic.ApplicationServices;
+using StoreInventoryPos;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WFAManagementPro
@@ -104,6 +105,7 @@ namespace WFAManagementPro
 
 
 
+
         ///////////////////////////////////////User CRUD Query//////////////////////////////
         //Create User
         public int InsertUser(string username, string password, string fullname, string role)
@@ -202,6 +204,8 @@ namespace WFAManagementPro
             }
         }
 
+        ///////////////////////////////////////PromoCode CRUD Query /////////////////////////////
+
         //Create Promo
         public int InsertCode(string code, string discountpercent)
         {
@@ -250,7 +254,7 @@ namespace WFAManagementPro
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             {
-                cmd.Parameters.AddWithValue("@username", "%" + username + "%");
+                cmd.Parameters.AddWithValue("@username",  username + "%");
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
@@ -262,6 +266,26 @@ namespace WFAManagementPro
         }
         ///////////////////////////////////////Manager Search Query//////////////////////////////
 
+        //SearchByUsernameManager
+
+        public DataTable SearchUsersByUsernameManager(string username)
+        {
+            DataTable dataTable = new DataTable();
+            string query = "SELECT Username,Password, Fullname, Role FROM Users WHERE (Role = 'MANAGER' OR Role = 'STAFF') AND Username LIKE @username";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@username", username + "%");
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
+
         //SearchByProductname
 
         public DataTable SearchByProductname(string productname)
@@ -271,7 +295,26 @@ namespace WFAManagementPro
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             {
-                cmd.Parameters.AddWithValue("@Productname", "%" + productname + "%");
+                cmd.Parameters.AddWithValue("@Productname", productname + "%");
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
+        //SearchByProductnameStaff
+
+        public DataTable SearchByProductnameStaff(string productname)
+        {
+            DataTable dataTable = new DataTable();
+            string query = "SELECT ProductID,ProductName, Price,Quantity, Size FROM Product  WHERE ProductName LIKE @Productname";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@Productname", productname + "%");
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
@@ -290,7 +333,7 @@ namespace WFAManagementPro
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             {
-                cmd.Parameters.AddWithValue("@Code", "%" + code + "%");
+                cmd.Parameters.AddWithValue("@Code", code + "%");
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
@@ -317,6 +360,23 @@ namespace WFAManagementPro
 
             return dataTable;
         }
+
+        // Get all users (MANAGER)
+        public DataTable getUserManager()
+        {
+            DataTable dataTable = new DataTable();
+            string query = "SELECT Username, Fullname, Role FROM users WHERE Role = 'MANAGER' OR Role = 'STAFF'";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
+
+        // Get all PromoCode
         public DataTable getPromo()
         {
             DataTable dataTable = new DataTable();
@@ -362,6 +422,20 @@ namespace WFAManagementPro
             return dataTable;
         }
 
+        //Product FOR POS
+        public DataTable getProductPOS()
+        {
+            DataTable dataTable = new DataTable();
+            string query = "SELECT ProductID,ProductName, Price, Quantity, Size FROM Product";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
+        }
 
 
 

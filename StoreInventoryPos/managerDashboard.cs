@@ -49,9 +49,30 @@ namespace StoreInventoryPos
 
         private void refundReport_Click(object sender, EventArgs e)
         {
-            
+
             this.Hide();
             refundReport Open = new refundReport();
+            Open.Show();
+        }
+
+        private void saleReport_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            saleReport Open = new saleReport();
+            Open.Show();
+        }
+
+        private void managerProfile_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            profile Open = new profile();
+            Open.Show();
+        }
+
+        private void viewStaff_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            mViewUser Open = new mViewUser();
             Open.Show();
         }
     }

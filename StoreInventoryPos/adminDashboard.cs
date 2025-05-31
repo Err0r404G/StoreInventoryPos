@@ -16,10 +16,11 @@ namespace StoreInventoryPos
         {
             InitializeComponent();
         }
-       
+
 
         private void logOut_Click(object sender, EventArgs e)
         {
+            Users.ClearSession();
             this.Hide();
             LoginPage Back = new LoginPage();
             Back.Show();
@@ -46,8 +47,20 @@ namespace StoreInventoryPos
             Open.Show();
         }
 
-        private void adminDashboard_Load(object sender, EventArgs e)
+
+
+        private void salesButton_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            saleReport Open = new saleReport();
+            Open.Show();
+        }
+
+        private void managerProfile_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            profile Open = new profile();
+            Open.Show();
 
         }
     }

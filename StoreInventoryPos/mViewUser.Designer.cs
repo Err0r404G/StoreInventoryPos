@@ -1,6 +1,6 @@
 ﻿namespace StoreInventoryPos
 {
-    partial class viewUser
+    partial class mViewUser
     {
         /// <summary>
         /// Required designer variable.
@@ -28,50 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            backButton = new Button();
             searchGrid = new DataGridView();
             searchField = new TextBox();
             SearchLabel = new Label();
-            backButton = new Button();
             ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
             SuspendLayout();
-            // 
-            // searchGrid
-            // 
-            searchGrid.AllowUserToAddRows = false;
-            searchGrid.AllowUserToDeleteRows = false;
-            searchGrid.AllowUserToResizeRows = false;
-            searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.Location = new Point(32, 88);
-            searchGrid.Name = "searchGrid";
-            searchGrid.ReadOnly = true;
-            searchGrid.RowHeadersWidth = 51;
-            searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(560, 318);
-            searchGrid.TabIndex = 33;
-            // 
-            // searchField
-            // 
-            searchField.BackColor = SystemColors.ControlLightLight;
-            searchField.BorderStyle = BorderStyle.FixedSingle;
-            searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(159, 29);
-            searchField.Multiline = true;
-            searchField.Name = "searchField";
-            searchField.Size = new Size(433, 41);
-            searchField.TabIndex = 31;
-            searchField.TextChanged += searchField_TextChanged;
-            // 
-            // SearchLabel
-            // 
-            SearchLabel.AutoSize = true;
-            SearchLabel.BackColor = SystemColors.ActiveCaption;
-            SearchLabel.Font = new Font("Impact", 19.8F);
-            SearchLabel.Location = new Point(32, 29);
-            SearchLabel.Name = "SearchLabel";
-            SearchLabel.Size = new Size(127, 41);
-            SearchLabel.TabIndex = 30;
-            SearchLabel.Text = "Search :";
             // 
             // backButton
             // 
@@ -80,15 +42,53 @@
             backButton.FlatStyle = FlatStyle.Popup;
             backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(665, 24);
+            backButton.Location = new Point(661, 34);
             backButton.Name = "backButton";
             backButton.Size = new Size(112, 51);
-            backButton.TabIndex = 34;
+            backButton.TabIndex = 38;
             backButton.Text = "BACK";
             backButton.UseVisualStyleBackColor = false;
-            backButton.Click += backButton_Click;
+            backButton.Click += backButton_Click_1;
             // 
-            // viewUser
+            // searchGrid
+            // 
+            searchGrid.AllowUserToAddRows = false;
+            searchGrid.AllowUserToDeleteRows = false;
+            searchGrid.AllowUserToResizeRows = false;
+            searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            searchGrid.Location = new Point(28, 98);
+            searchGrid.Name = "searchGrid";
+            searchGrid.ReadOnly = true;
+            searchGrid.RowHeadersWidth = 51;
+            searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            searchGrid.Size = new Size(560, 318);
+            searchGrid.TabIndex = 37;
+            // 
+            // searchField
+            // 
+            searchField.BackColor = SystemColors.ControlLightLight;
+            searchField.BorderStyle = BorderStyle.FixedSingle;
+            searchField.Font = new Font("Segoe UI", 13.8F);
+            searchField.Location = new Point(155, 39);
+            searchField.Multiline = true;
+            searchField.Name = "searchField";
+            searchField.Size = new Size(433, 41);
+            searchField.TabIndex = 36;
+            searchField.TextChanged += searchField_TextChanged_1;
+            // 
+            // SearchLabel
+            // 
+            SearchLabel.AutoSize = true;
+            SearchLabel.BackColor = SystemColors.ActiveCaption;
+            SearchLabel.Font = new Font("Impact", 19.8F);
+            SearchLabel.Location = new Point(28, 39);
+            SearchLabel.Name = "SearchLabel";
+            SearchLabel.Size = new Size(127, 41);
+            SearchLabel.TabIndex = 35;
+            SearchLabel.Text = "Search :";
+            // 
+            // mViewUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -97,9 +97,10 @@
             Controls.Add(searchGrid);
             Controls.Add(searchField);
             Controls.Add(SearchLabel);
-            Name = "viewUser";
+            Name = "mViewUser";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "View User";
+            Text = "mViewUser";
+            Load += mViewUser_Load;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -107,9 +108,9 @@
 
         #endregion
 
+        private Button backButton;
         private DataGridView searchGrid;
         private TextBox searchField;
         private Label SearchLabel;
-        private Button backButton;
     }
 }

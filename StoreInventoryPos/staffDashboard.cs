@@ -20,9 +20,30 @@ namespace StoreInventoryPos
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            LoginPage back = new LoginPage(); // Back
+            LoginPage back = new LoginPage();
             back.Show();
 
+        }
+
+        private void staffProfileButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            profile open = new profile();
+            open.Show();
+        }
+
+        private void inventoryButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            staffInventory Open = new staffInventory();
+            Open.Show();
+        }
+
+        private void posButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            selectionCart Open = new selectionCart();
+            Open.Show();
         }
     }
 }

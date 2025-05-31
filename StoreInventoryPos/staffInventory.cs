@@ -11,9 +11,9 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class searchProduct : Form
+    public partial class staffInventory : Form
     {
-        public searchProduct()
+        public staffInventory()
         {
             InitializeComponent();
             this.Load += Product_Load;
@@ -28,7 +28,7 @@ namespace StoreInventoryPos
             try
             {
                 DataAccess db = new DataAccess();
-                DataTable product = db.getProduct();
+                DataTable product = db.getProductPOS();
 
                 searchGrid.DataSource = product;
 
@@ -37,12 +37,8 @@ namespace StoreInventoryPos
                     searchGrid.Columns["ProductID"].HeaderText = "Product ID";
                 if (searchGrid.Columns.Contains("ProductName"))
                     searchGrid.Columns["ProductName"].HeaderText = "Product Name";
-                if (searchGrid.Columns.Contains("Cost"))
-                    searchGrid.Columns["Cost"].HeaderText = "Cost";
                 if (searchGrid.Columns.Contains("Price"))
                     searchGrid.Columns["Price"].HeaderText = "Price";
-                if (searchGrid.Columns.Contains("Profit"))
-                    searchGrid.Columns["Profit"].HeaderText = "Profit";
                 if (searchGrid.Columns.Contains("Quantity"))
                     searchGrid.Columns["Quantity"].HeaderText = "Quantity";
                 if (searchGrid.Columns.Contains("Size"))
@@ -54,27 +50,21 @@ namespace StoreInventoryPos
             }
         }
 
-
-
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void backButton_Click(object sender, EventArgs e)
-        {
-
-                this.Hide();
-                inventoryManagement Back = new inventoryManagement();
-                Back.Show();
-        }
         private DataAccess dataAccess = new DataAccess();
 
 
         private void searchField_TextChanged(object sender, EventArgs e)
         {
             string productname = searchField.Text.Trim();
-            DataTable result = dataAccess.SearchByProductname(productname);
+            DataTable result = dataAccess.SearchByProductnameStaff(productname);
             searchGrid.DataSource = result;
+        }
+
+        private void backButton_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            staffDashboard Back = new staffDashboard();
+            Back.Show();
         }
     }
 }

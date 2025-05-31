@@ -59,6 +59,7 @@
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             searchGrid.Location = new Point(28, 98);
             searchGrid.Name = "searchGrid";
+            searchGrid.ReadOnly = true;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             searchGrid.Size = new Size(879, 415);
@@ -99,7 +100,6 @@
             Name = "searchProduct";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Product Search";
-            Load += searchProduct_Load;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();

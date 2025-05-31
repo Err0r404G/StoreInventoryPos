@@ -81,6 +81,7 @@
             viewStaff.TabIndex = 12;
             viewStaff.Text = "View Staff";
             viewStaff.UseVisualStyleBackColor = false;
+            viewStaff.Click += viewStaff_Click;
             // 
             // editInventory
             // 
@@ -125,6 +126,7 @@
             saleReport.TabIndex = 15;
             saleReport.Text = "Sale Report";
             saleReport.UseVisualStyleBackColor = false;
+            saleReport.Click += saleReport_Click;
             // 
             // managerProfile
             // 
@@ -139,6 +141,7 @@
             managerProfile.TabIndex = 16;
             managerProfile.Text = "My Profile";
             managerProfile.UseVisualStyleBackColor = false;
+            managerProfile.Click += managerProfile_Click;
             // 
             // button1
             // 
@@ -169,7 +172,7 @@
             Controls.Add(editInventory);
             Controls.Add(logoutButton);
             Name = "managerDashboard";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Manager Dashboard";
             ResumeLayout(false);
         }

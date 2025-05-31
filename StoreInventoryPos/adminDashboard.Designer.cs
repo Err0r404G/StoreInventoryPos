@@ -34,6 +34,7 @@
             modifyUser = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             salesButton = new Button();
+            managerProfile = new Button();
             SuspendLayout();
             // 
             // logOut
@@ -43,7 +44,7 @@
             logOut.FlatStyle = FlatStyle.Popup;
             logOut.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             logOut.ForeColor = Color.Crimson;
-            logOut.Location = new Point(607, 31);
+            logOut.Location = new Point(601, 124);
             logOut.Name = "logOut";
             logOut.Size = new Size(171, 51);
             logOut.TabIndex = 5;
@@ -109,6 +110,22 @@
             salesButton.TabIndex = 9;
             salesButton.Text = "Sales Report";
             salesButton.UseVisualStyleBackColor = false;
+            salesButton.Click += salesButton_Click;
+            // 
+            // managerProfile
+            // 
+            managerProfile.BackColor = Color.Cyan;
+            managerProfile.Cursor = Cursors.Hand;
+            managerProfile.FlatStyle = FlatStyle.Popup;
+            managerProfile.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            managerProfile.ForeColor = Color.Black;
+            managerProfile.Location = new Point(601, 31);
+            managerProfile.Name = "managerProfile";
+            managerProfile.Size = new Size(171, 51);
+            managerProfile.TabIndex = 17;
+            managerProfile.Text = "My Profile";
+            managerProfile.UseVisualStyleBackColor = false;
+            managerProfile.Click += managerProfile_Click;
             // 
             // adminDashboard
             // 
@@ -116,6 +133,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(800, 450);
+            Controls.Add(managerProfile);
             Controls.Add(salesButton);
             Controls.Add(modifyUser);
             Controls.Add(viewUser);
@@ -124,7 +142,6 @@
             Name = "adminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Dashboard";
-            Load += adminDashboard_Load;
             ResumeLayout(false);
         }
 
@@ -136,5 +153,6 @@
         private Button modifyUser;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button salesButton;
+        private Button managerProfile;
     }
 }

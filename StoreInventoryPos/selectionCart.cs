@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
@@ -15,6 +16,13 @@ namespace StoreInventoryPos
         public selectionCart()
         {
             InitializeComponent();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            staffDashboard Open = new staffDashboard();
+            Open.Show();
         }
     }
 }
