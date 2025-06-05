@@ -45,5 +45,12 @@ namespace StoreInventoryPos
             selectionCart Open = new selectionCart();
             Open.Show();
         }
+
+        private void salesButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            StaffSale Open = new StaffSale();
+            Open.Show();
+        }
     }
 }

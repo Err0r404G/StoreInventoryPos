@@ -1,7 +1,9 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using Microsoft.VisualBasic.ApplicationServices;
 using StoreInventoryPos;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WFAManagementPro
@@ -437,7 +439,107 @@ namespace WFAManagementPro
             return dataTable;
         }
 
+        //////////////////////////////////POS DATABASE////////////////////////////
+        ///
 
+        
+        //Validate Promocode
+        public bool ValidatePromo(string code, out int discount)
+        {
+            discount = 0; 
+            string sql = "SELECT DiscountPercent FROM PromoCode WHERE Code = @code";
+            SqlCommand cmd = new SqlCommand(sql, this.Sqlcon);
+
+            cmd.Parameters.AddWithValue("@code", code); 
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    discount = Convert.ToInt32(reader["DiscountPercent"]);
+                    return true;
+                }
+            }
+            return false;
+        }
+        public int InsertSale(string customerName, double totalAmount, string paymentType, string usedPromo, string paymentToken, DateTime saleDate)
+        {
+            string sql = @"INSERT INTO Sales (CustomerName, TotalAmount, PaymentType, UsedPromo, PaymentToken, Date) " +
+                         "VALUES (@CustomerName, @TotalAmount, @PaymentType, @UsedPromo, @PaymentToken, @Date); SELECT CAST(SCOPE_IDENTITY() AS INT)";
+
+            using (SqlCommand cmd = new SqlCommand(sql, Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@CustomerName", customerName);
+                cmd.Parameters.AddWithValue("@TotalAmount", totalAmount);
+                cmd.Parameters.AddWithValue("@PaymentType", paymentType);
+                cmd.Parameters.AddWithValue("@UsedPromo", usedPromo);
+                cmd.Parameters.AddWithValue("@PaymentToken", paymentToken);
+                cmd.Parameters.AddWithValue("@Date", saleDate);
+
+                object result = cmd.ExecuteScalar();
+
+                if (result != null && int.TryParse(result.ToString(), out int saleId))
+                {
+                    return saleId;
+                }
+                else
+                {
+                    throw new Exception("Failed to retrieve generated Sale ID.");
+                }
+            }
+        }
+
+        public void InsertUserSale(string username, int saleId)
+        {
+            string sql = "INSERT INTO UserSale (Username,SaleID) " +
+                         "VALUES (@Username, @SaleID)";
+
+            using (SqlCommand cmd = new SqlCommand(sql, Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@SaleID", saleId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+        public void UpdateProductQuantity(int productId, int soldQuantity)
+        {
+            string query = "UPDATE Product SET Quantity = Quantity - @SoldQuantity WHERE ProductID = @ProductID";
+
+            using (SqlCommand cmd = new SqlCommand(query, Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@SoldQuantity", soldQuantity);
+                cmd.Parameters.AddWithValue("@ProductID", productId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+        public DataTable GetSalesByUser()
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"
+    SELECT s.SaleID, s.CustomerName, s.TotalAmount, s.PaymentType, s.UsedPromo, s.PaymentToken, s.Date
+    FROM UserSale us
+    INNER JOIN Sales s ON us.SaleID = s.SaleID
+    WHERE us.Username = @Username
+    ORDER BY s.Date DESC
+";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@Username", Users.Username);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
 
     }
 }

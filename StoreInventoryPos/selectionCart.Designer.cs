@@ -32,10 +32,10 @@
             searchField = new TextBox();
             label1 = new Label();
             clearButton = new Button();
-            exportButton = new Button();
+            nextButton = new Button();
             backButton = new Button();
             cart = new Label();
-            button1 = new Button();
+            removeButton = new Button();
             addButton = new Button();
             cartGrid = new DataGridView();
             cartTotalLabel = new Label();
@@ -49,13 +49,15 @@
             productGrid.AllowUserToDeleteRows = false;
             productGrid.AllowUserToResizeColumns = false;
             productGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            productGrid.CausesValidation = false;
             productGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            productGrid.Location = new Point(22, 97);
+            productGrid.Location = new Point(19, 73);
+            productGrid.Margin = new Padding(3, 2, 3, 2);
             productGrid.Name = "productGrid";
             productGrid.ReadOnly = true;
             productGrid.RowHeadersWidth = 51;
             productGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            productGrid.Size = new Size(641, 411);
+            productGrid.Size = new Size(561, 308);
             productGrid.TabIndex = 0;
             // 
             // searchField
@@ -63,19 +65,20 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(155, 42);
+            searchField.Location = new Point(136, 32);
+            searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(508, 42);
+            searchField.Size = new Size(445, 32);
             searchField.TabIndex = 39;
             // 
             // label1
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Impact", 19.8F);
-            label1.Location = new Point(22, 42);
+            label1.Location = new Point(19, 32);
             label1.Name = "label1";
-            label1.Size = new Size(641, 41);
+            label1.Size = new Size(561, 31);
             label1.TabIndex = 38;
             label1.Text = "Search :";
             // 
@@ -85,24 +88,27 @@
             clearButton.Cursor = Cursors.Hand;
             clearButton.Font = new Font("Impact", 18F);
             clearButton.ForeColor = Color.White;
-            clearButton.Location = new Point(178, 535);
+            clearButton.Location = new Point(156, 401);
+            clearButton.Margin = new Padding(3, 2, 3, 2);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(150, 50);
+            clearButton.Size = new Size(131, 38);
             clearButton.TabIndex = 42;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
             // 
-            // exportButton
+            // nextButton
             // 
-            exportButton.BackColor = Color.LightSkyBlue;
-            exportButton.Cursor = Cursors.Hand;
-            exportButton.Font = new Font("Impact", 18F);
-            exportButton.Location = new Point(22, 535);
-            exportButton.Name = "exportButton";
-            exportButton.Size = new Size(150, 50);
-            exportButton.TabIndex = 40;
-            exportButton.Text = "Next";
-            exportButton.UseVisualStyleBackColor = false;
+            nextButton.BackColor = Color.LightSkyBlue;
+            nextButton.Cursor = Cursors.Hand;
+            nextButton.Font = new Font("Impact", 18F);
+            nextButton.Location = new Point(19, 401);
+            nextButton.Margin = new Padding(3, 2, 3, 2);
+            nextButton.Name = "nextButton";
+            nextButton.Size = new Size(131, 38);
+            nextButton.TabIndex = 40;
+            nextButton.Text = "Next";
+            nextButton.UseVisualStyleBackColor = false;
+            nextButton.Click += nextButton_Click;
             // 
             // backButton
             // 
@@ -110,9 +116,10 @@
             backButton.Cursor = Cursors.Hand;
             backButton.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(334, 535);
+            backButton.Location = new Point(292, 401);
+            backButton.Margin = new Padding(3, 2, 3, 2);
             backButton.Name = "backButton";
-            backButton.Size = new Size(150, 50);
+            backButton.Size = new Size(131, 38);
             backButton.TabIndex = 43;
             backButton.Text = "BACK";
             backButton.UseVisualStyleBackColor = false;
@@ -123,26 +130,27 @@
             cart.BackColor = SystemColors.Desktop;
             cart.Font = new Font("Impact", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cart.ForeColor = Color.FloralWhite;
-            cart.Location = new Point(912, 25);
+            cart.Location = new Point(744, 19);
             cart.Name = "cart";
-            cart.Size = new Size(439, 69);
+            cart.Size = new Size(438, 52);
             cart.TabIndex = 44;
             cart.Text = "Cart";
             cart.TextAlign = ContentAlignment.TopCenter;
             // 
-            // button1
+            // removeButton
             // 
-            button1.AutoSize = true;
-            button1.BackColor = Color.Firebrick;
-            button1.Cursor = Cursors.Hand;
-            button1.Font = new Font("Impact", 18F);
-            button1.ForeColor = Color.White;
-            button1.Location = new Point(704, 299);
-            button1.Name = "button1";
-            button1.Size = new Size(161, 50);
-            button1.TabIndex = 46;
-            button1.Text = "<<Remove";
-            button1.UseVisualStyleBackColor = false;
+            removeButton.AutoSize = true;
+            removeButton.BackColor = Color.Firebrick;
+            removeButton.Cursor = Cursors.Hand;
+            removeButton.Font = new Font("Impact", 18F);
+            removeButton.ForeColor = Color.White;
+            removeButton.Location = new Point(597, 221);
+            removeButton.Margin = new Padding(3, 2, 3, 2);
+            removeButton.Name = "removeButton";
+            removeButton.Size = new Size(141, 39);
+            removeButton.TabIndex = 46;
+            removeButton.Text = "<<Remove";
+            removeButton.UseVisualStyleBackColor = false;
             // 
             // addButton
             // 
@@ -150,9 +158,10 @@
             addButton.BackColor = Color.OliveDrab;
             addButton.Cursor = Cursors.Hand;
             addButton.Font = new Font("Impact", 18F);
-            addButton.Location = new Point(704, 194);
+            addButton.Location = new Point(597, 145);
+            addButton.Margin = new Padding(3, 2, 3, 2);
             addButton.Name = "addButton";
-            addButton.Size = new Size(161, 50);
+            addButton.Size = new Size(141, 39);
             addButton.TabIndex = 45;
             addButton.Text = "ADD>>";
             addButton.UseVisualStyleBackColor = false;
@@ -164,12 +173,13 @@
             cartGrid.AllowUserToResizeColumns = false;
             cartGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             cartGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            cartGrid.Location = new Point(912, 97);
+            cartGrid.Location = new Point(744, 73);
+            cartGrid.Margin = new Padding(3, 2, 3, 2);
             cartGrid.Name = "cartGrid";
             cartGrid.ReadOnly = true;
             cartGrid.RowHeadersWidth = 51;
             cartGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            cartGrid.Size = new Size(439, 339);
+            cartGrid.Size = new Size(438, 254);
             cartGrid.TabIndex = 1;
             // 
             // cartTotalLabel
@@ -177,28 +187,29 @@
             cartTotalLabel.BackColor = SystemColors.Desktop;
             cartTotalLabel.Font = new Font("Impact", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cartTotalLabel.ForeColor = Color.FloralWhite;
-            cartTotalLabel.Location = new Point(912, 439);
+            cartTotalLabel.Location = new Point(744, 329);
             cartTotalLabel.Name = "cartTotalLabel";
-            cartTotalLabel.Size = new Size(439, 69);
+            cartTotalLabel.Size = new Size(438, 52);
             cartTotalLabel.TabIndex = 48;
             cartTotalLabel.TextAlign = ContentAlignment.TopCenter;
             // 
             // selectionCart
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1377, 646);
+            ClientSize = new Size(1205, 484);
             Controls.Add(cartTotalLabel);
-            Controls.Add(button1);
+            Controls.Add(removeButton);
             Controls.Add(addButton);
             Controls.Add(cart);
             Controls.Add(backButton);
             Controls.Add(clearButton);
-            Controls.Add(exportButton);
+            Controls.Add(nextButton);
             Controls.Add(searchField);
             Controls.Add(label1);
             Controls.Add(cartGrid);
             Controls.Add(productGrid);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "selectionCart";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Product Selection";
@@ -214,10 +225,10 @@
         private TextBox searchField;
         private Label label1;
         private Button clearButton;
-        private Button exportButton;
+        private Button nextButton;
         private Button backButton;
         private Label cart;
-        private Button button1;
+        private Button removeButton;
         private Button addButton;
         private DataGridView cartGrid;
         private Label cartTotalLabel;

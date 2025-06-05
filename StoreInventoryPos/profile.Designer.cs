@@ -44,9 +44,9 @@
             profileLabel.BackColor = Color.Transparent;
             profileLabel.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             profileLabel.ForeColor = SystemColors.MenuText;
-            profileLabel.Location = new Point(229, 28);
+            profileLabel.Location = new Point(200, 21);
             profileLabel.Name = "profileLabel";
-            profileLabel.Size = new Size(154, 42);
+            profileLabel.Size = new Size(125, 34);
             profileLabel.TabIndex = 8;
             profileLabel.Text = "My Profile";
             profileLabel.TextAlign = ContentAlignment.TopCenter;
@@ -58,9 +58,10 @@
             backButton.FlatStyle = FlatStyle.Popup;
             backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(478, 19);
+            backButton.Location = new Point(418, 14);
+            backButton.Margin = new Padding(3, 2, 3, 2);
             backButton.Name = "backButton";
-            backButton.Size = new Size(111, 51);
+            backButton.Size = new Size(97, 38);
             backButton.TabIndex = 17;
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = false;
@@ -70,9 +71,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Impact", 16.2F);
-            label1.Location = new Point(38, 274);
+            label1.Location = new Point(33, 206);
             label1.Name = "label1";
-            label1.Size = new Size(65, 35);
+            label1.Size = new Size(52, 27);
             label1.TabIndex = 21;
             label1.Text = "Role";
             // 
@@ -80,9 +81,9 @@
             // 
             userName.AutoSize = true;
             userName.Font = new Font("Impact", 16.2F);
-            userName.Location = new Point(38, 182);
+            userName.Location = new Point(33, 136);
             userName.Name = "userName";
-            userName.Size = new Size(137, 35);
+            userName.Size = new Size(108, 27);
             userName.TabIndex = 20;
             userName.Text = "User Name";
             // 
@@ -90,9 +91,9 @@
             // 
             fullName.AutoSize = true;
             fullName.Font = new Font("Impact", 16.2F);
-            fullName.Location = new Point(38, 90);
+            fullName.Location = new Point(33, 68);
             fullName.Name = "fullName";
-            fullName.Size = new Size(125, 35);
+            fullName.Size = new Size(100, 27);
             fullName.TabIndex = 19;
             fullName.Text = "Full Name";
             // 
@@ -101,10 +102,11 @@
             fnameField.BackColor = SystemColors.Info;
             fnameField.BorderStyle = BorderStyle.FixedSingle;
             fnameField.Font = new Font("Segoe UI", 19.8000011F);
-            fnameField.Location = new Point(38, 128);
+            fnameField.Location = new Point(33, 96);
+            fnameField.Margin = new Padding(3, 2, 3, 2);
             fnameField.Name = "fnameField";
             fnameField.ReadOnly = true;
-            fnameField.Size = new Size(290, 51);
+            fnameField.Size = new Size(254, 43);
             fnameField.TabIndex = 18;
             // 
             // usernameField
@@ -112,10 +114,11 @@
             usernameField.BackColor = SystemColors.Info;
             usernameField.BorderStyle = BorderStyle.FixedSingle;
             usernameField.Font = new Font("Segoe UI", 19.8000011F);
-            usernameField.Location = new Point(38, 220);
+            usernameField.Location = new Point(33, 165);
+            usernameField.Margin = new Padding(3, 2, 3, 2);
             usernameField.Name = "usernameField";
             usernameField.ReadOnly = true;
-            usernameField.Size = new Size(290, 51);
+            usernameField.Size = new Size(254, 43);
             usernameField.TabIndex = 22;
             // 
             // RoleField
@@ -123,17 +126,18 @@
             RoleField.BackColor = SystemColors.Info;
             RoleField.BorderStyle = BorderStyle.FixedSingle;
             RoleField.Font = new Font("Segoe UI", 19.8000011F);
-            RoleField.Location = new Point(38, 312);
+            RoleField.Location = new Point(33, 234);
+            RoleField.Margin = new Padding(3, 2, 3, 2);
             RoleField.Name = "RoleField";
             RoleField.ReadOnly = true;
-            RoleField.Size = new Size(290, 51);
+            RoleField.Size = new Size(254, 43);
             RoleField.TabIndex = 23;
             // 
             // profile
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(601, 399);
+            ClientSize = new Size(526, 299);
             Controls.Add(RoleField);
             Controls.Add(usernameField);
             Controls.Add(label1);
@@ -142,6 +146,7 @@
             Controls.Add(fnameField);
             Controls.Add(backButton);
             Controls.Add(profileLabel);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "profile";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "profile";
