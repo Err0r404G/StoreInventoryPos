@@ -94,8 +94,9 @@
             passWordField.Cursor = Cursors.IBeam;
             passWordField.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             passWordField.Location = new Point(250, 243);
-            passWordField.Multiline = true;
+            passWordField.Multiline = false;
             passWordField.Name = "passWordField";
+            passWordField.PasswordChar = '*';
             passWordField.Size = new Size(313, 42);
             passWordField.TabIndex = 9;
             passWordField.UseWaitCursor = true;

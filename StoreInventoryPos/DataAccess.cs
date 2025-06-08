@@ -182,7 +182,7 @@ namespace WFAManagementPro
                 SqlCommand cmd = new SqlCommand(query, conn);
 
                 cmd.Parameters.AddWithValue("@ProductID", int.Parse(productID));
-                cmd.Parameters.AddWithValue("@ProductName",productname);
+                cmd.Parameters.AddWithValue("@ProductName", productname);
                 cmd.Parameters.AddWithValue("@Cost", double.Parse(cost));
                 cmd.Parameters.AddWithValue("@Price", double.Parse(price));
                 cmd.Parameters.AddWithValue("@Quantity", int.Parse(quantity));
@@ -256,7 +256,7 @@ namespace WFAManagementPro
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             {
-                cmd.Parameters.AddWithValue("@username",  username + "%");
+                cmd.Parameters.AddWithValue("@username", username + "%");
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
@@ -442,15 +442,15 @@ namespace WFAManagementPro
         //////////////////////////////////POS DATABASE////////////////////////////
         ///
 
-        
+
         //Validate Promocode
         public bool ValidatePromo(string code, out int discount)
         {
-            discount = 0; 
+            discount = 0;
             string sql = "SELECT DiscountPercent FROM PromoCode WHERE Code = @code";
             SqlCommand cmd = new SqlCommand(sql, this.Sqlcon);
 
-            cmd.Parameters.AddWithValue("@code", code); 
+            cmd.Parameters.AddWithValue("@code", code);
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
@@ -541,5 +541,57 @@ namespace WFAManagementPro
             return dataTable;
         }
 
+        public void InsertSaleProduct(string productID, int saleId)
+        {
+            string sql = "INSERT INTO SaleProduct (ProductID,SaleID) " +
+                         "VALUES (@ProductID, @SaleID)";
+
+            using (SqlCommand cmd = new SqlCommand(sql, Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@ProductID", productID);
+                cmd.Parameters.AddWithValue("@SaleID", saleId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public DataTable GetSaleReport()
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"
+        SELECT 
+            s.SaleID, 
+            s.CustomerName, 
+            s.TotalAmount, 
+            s.PaymentType, 
+            s.UsedPromo, 
+            s.PaymentToken, 
+            s.Date,
+            SUM(p.Price - p.Cost) AS TotalProfit
+        FROM Sales s
+        INNER JOIN SaleProduct sp ON s.SaleID = sp.SaleID
+        INNER JOIN Product p ON sp.ProductID = p.ProductID
+        GROUP BY 
+            s.SaleID, 
+            s.CustomerName, 
+            s.TotalAmount, 
+            s.PaymentType, 
+            s.UsedPromo, 
+            s.PaymentToken, 
+            s.Date
+        ORDER BY s.Date DESC;
+";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
     }
 }

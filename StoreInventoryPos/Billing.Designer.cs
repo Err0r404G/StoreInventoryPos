@@ -115,9 +115,11 @@
             // dgvCartItems
             // 
             dgvCartItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCartItems.ColumnHeadersVisible = false;
             dgvCartItems.Location = new Point(30, 223);
             dgvCartItems.Name = "dgvCartItems";
             dgvCartItems.ReadOnly = true;
+            dgvCartItems.RowHeadersVisible = false;
             dgvCartItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCartItems.Size = new Size(800, 207);
             dgvCartItems.TabIndex = 9;

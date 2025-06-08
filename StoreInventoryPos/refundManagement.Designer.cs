@@ -35,9 +35,10 @@
             backButton.BackColor = Color.White;
             backButton.Font = new Font("Impact", 18F);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(1280, 30);
+            backButton.Location = new Point(1120, 22);
+            backButton.Margin = new Padding(3, 2, 3, 2);
             backButton.Name = "backButton";
-            backButton.Size = new Size(120, 50);
+            backButton.Size = new Size(105, 38);
             backButton.TabIndex = 16;
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = false;
@@ -49,47 +50,51 @@
             searchGrid.AllowUserToDeleteRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeight = 29;
-            searchGrid.Location = new Point(69, 110);
+            searchGrid.ColumnHeadersVisible = false;
+            searchGrid.Location = new Point(60, 82);
+            searchGrid.Margin = new Padding(3, 2, 3, 2);
             searchGrid.Name = "searchGrid";
             searchGrid.ReadOnly = true;
+            searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(842, 415);
+            searchGrid.Size = new Size(737, 311);
             searchGrid.TabIndex = 2;
             // 
             // refundReasonBox
             // 
             refundReasonBox.Font = new Font("Segoe UI", 13F);
             refundReasonBox.Items.AddRange(new object[] { "Damaged", "Customer Return", "Wrong Item", "Other" });
-            refundReasonBox.Location = new Point(1080, 229);
+            refundReasonBox.Location = new Point(945, 172);
+            refundReasonBox.Margin = new Padding(3, 2, 3, 2);
             refundReasonBox.Name = "refundReasonBox";
-            refundReasonBox.Size = new Size(250, 38);
+            refundReasonBox.Size = new Size(219, 31);
             refundReasonBox.TabIndex = 12;
             // 
             // saleIDLabel
             // 
             saleIDLabel.Font = new Font("Impact", 16F);
-            saleIDLabel.Location = new Point(940, 110);
+            saleIDLabel.Location = new Point(822, 82);
             saleIDLabel.Name = "saleIDLabel";
-            saleIDLabel.Size = new Size(100, 36);
+            saleIDLabel.Size = new Size(88, 27);
             saleIDLabel.TabIndex = 5;
             saleIDLabel.Text = "Sale ID";
             // 
             // refundAmountLabel
             // 
             refundAmountLabel.Font = new Font("Impact", 16F);
-            refundAmountLabel.Location = new Point(940, 170);
+            refundAmountLabel.Location = new Point(822, 128);
             refundAmountLabel.Name = "refundAmountLabel";
-            refundAmountLabel.Size = new Size(100, 36);
+            refundAmountLabel.Size = new Size(88, 27);
             refundAmountLabel.TabIndex = 7;
             refundAmountLabel.Text = "Amount";
             // 
             // refundReasonLabel
             // 
             refundReasonLabel.Font = new Font("Impact", 16F);
-            refundReasonLabel.Location = new Point(940, 229);
+            refundReasonLabel.Location = new Point(822, 172);
             refundReasonLabel.Name = "refundReasonLabel";
-            refundReasonLabel.Size = new Size(100, 38);
+            refundReasonLabel.Size = new Size(88, 28);
             refundReasonLabel.TabIndex = 11;
             refundReasonLabel.Text = "Reason";
             // 
@@ -97,9 +102,10 @@
             // 
             refundButton.BackColor = Color.FromArgb(128, 255, 128);
             refundButton.Font = new Font("Impact", 18F);
-            refundButton.Location = new Point(1002, 296);
+            refundButton.Location = new Point(877, 222);
+            refundButton.Margin = new Padding(3, 2, 3, 2);
             refundButton.Name = "refundButton";
-            refundButton.Size = new Size(150, 50);
+            refundButton.Size = new Size(131, 38);
             refundButton.TabIndex = 13;
             refundButton.Text = "Refund";
             refundButton.UseVisualStyleBackColor = false;
@@ -109,9 +115,10 @@
             clearButton.BackColor = Color.Black;
             clearButton.Font = new Font("Impact", 18F);
             clearButton.ForeColor = Color.White;
-            clearButton.Location = new Point(1180, 296);
+            clearButton.Location = new Point(1032, 222);
+            clearButton.Margin = new Padding(3, 2, 3, 2);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(150, 50);
+            clearButton.Size = new Size(131, 38);
             clearButton.TabIndex = 15;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
@@ -120,9 +127,9 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Impact", 19.8F);
-            label1.Location = new Point(75, 47);
+            label1.Location = new Point(66, 35);
             label1.Name = "label1";
-            label1.Size = new Size(127, 41);
+            label1.Size = new Size(111, 31);
             label1.TabIndex = 0;
             label1.Text = "Search :";
             // 
@@ -131,10 +138,11 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(208, 46);
+            searchField.Location = new Point(182, 34);
+            searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(703, 42);
+            searchField.Size = new Size(615, 32);
             searchField.TabIndex = 37;
             // 
             // saleIDField
@@ -142,11 +150,12 @@
             saleIDField.BackColor = SystemColors.Info;
             saleIDField.BorderStyle = BorderStyle.FixedSingle;
             saleIDField.Font = new Font("Segoe UI", 13.8F);
-            saleIDField.Location = new Point(1080, 104);
+            saleIDField.Location = new Point(945, 78);
+            saleIDField.Margin = new Padding(3, 2, 3, 2);
             saleIDField.Multiline = true;
             saleIDField.Name = "saleIDField";
             saleIDField.ReadOnly = true;
-            saleIDField.Size = new Size(250, 42);
+            saleIDField.Size = new Size(219, 32);
             saleIDField.TabIndex = 38;
             // 
             // amountField
@@ -154,17 +163,18 @@
             amountField.BackColor = SystemColors.ControlLightLight;
             amountField.BorderStyle = BorderStyle.FixedSingle;
             amountField.Font = new Font("Segoe UI", 13.8F);
-            amountField.Location = new Point(1080, 170);
+            amountField.Location = new Point(945, 128);
+            amountField.Margin = new Padding(3, 2, 3, 2);
             amountField.Multiline = true;
             amountField.Name = "amountField";
-            amountField.Size = new Size(250, 42);
+            amountField.Size = new Size(219, 32);
             amountField.TabIndex = 39;
             // 
             // refundManagement
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1450, 600);
+            ClientSize = new Size(1269, 450);
             Controls.Add(amountField);
             Controls.Add(saleIDField);
             Controls.Add(searchField);
@@ -177,6 +187,7 @@
             Controls.Add(refundButton);
             Controls.Add(clearButton);
             Controls.Add(backButton);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "refundManagement";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Refund Management";

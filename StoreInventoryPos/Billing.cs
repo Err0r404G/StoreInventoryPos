@@ -77,7 +77,7 @@ namespace StoreInventoryPos
                 MessageBox.Show("Please fill in all required fields.");
                 return;
             }
-               try
+            try
             {
                 DataAccess db = new DataAccess();
                 int SaleID = db.InsertSale(customerName, total, paymentType, promoCode, paymentToken, saleDate);
@@ -90,6 +90,7 @@ namespace StoreInventoryPos
                     foreach (var item in cartItems)
                     {
                         db.UpdateProductQuantity(int.Parse(item.ProductID), item.Quantity);
+                        db.InsertSaleProduct(item.ProductID, SaleID);
                     }
                     this.Hide();
                     selectionCart Open = new selectionCart();

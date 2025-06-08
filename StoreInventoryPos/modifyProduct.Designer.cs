@@ -56,9 +56,9 @@
             SearchLabel.AutoSize = true;
             SearchLabel.BackColor = SystemColors.ActiveCaption;
             SearchLabel.Font = new Font("Impact", 19.8F);
-            SearchLabel.Location = new Point(-194, 27);
+            SearchLabel.Location = new Point(-170, 20);
             SearchLabel.Name = "SearchLabel";
-            SearchLabel.Size = new Size(127, 41);
+            SearchLabel.Size = new Size(104, 34);
             SearchLabel.TabIndex = 31;
             SearchLabel.Text = "Search :";
             // 
@@ -69,9 +69,10 @@
             backButton.FlatStyle = FlatStyle.Popup;
             backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(1241, 47);
+            backButton.Location = new Point(1086, 35);
+            backButton.Margin = new Padding(3, 2, 3, 2);
             backButton.Name = "backButton";
-            backButton.Size = new Size(112, 51);
+            backButton.Size = new Size(98, 38);
             backButton.TabIndex = 73;
             backButton.Text = "BACK";
             backButton.UseVisualStyleBackColor = false;
@@ -84,11 +85,16 @@
             searchGrid.AllowUserToResizeRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.Location = new Point(69, 110);
+            searchGrid.ColumnHeadersVisible = false;
+            searchGrid.Location = new Point(60, 82);
+            searchGrid.Margin = new Padding(3, 2, 3, 2);
+            searchGrid.MultiSelect = false;
             searchGrid.Name = "searchGrid";
+            searchGrid.ReadOnly = true;
+            searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(842, 415);
+            searchGrid.Size = new Size(737, 311);
             searchGrid.TabIndex = 72;
             searchGrid.CellClick += searchGrid_CellClick;
             // 
@@ -96,18 +102,19 @@
             // 
             sizeBox.FormattingEnabled = true;
             sizeBox.Items.AddRange(new object[] { "38", "39", "40", "41", "42", "43", "44" });
-            sizeBox.Location = new Point(1097, 467);
+            sizeBox.Location = new Point(960, 350);
+            sizeBox.Margin = new Padding(3, 2, 3, 2);
             sizeBox.Name = "sizeBox";
-            sizeBox.Size = new Size(163, 28);
+            sizeBox.Size = new Size(143, 23);
             sizeBox.TabIndex = 70;
             // 
             // roleLabel
             // 
             roleLabel.BorderStyle = BorderStyle.FixedSingle;
             roleLabel.Font = new Font("Impact", 13.8F);
-            roleLabel.Location = new Point(1047, 467);
+            roleLabel.Location = new Point(916, 350);
             roleLabel.Name = "roleLabel";
-            roleLabel.Size = new Size(52, 28);
+            roleLabel.Size = new Size(46, 22);
             roleLabel.TabIndex = 69;
             roleLabel.Text = "Size";
             // 
@@ -118,9 +125,10 @@
             updateButton.FlatStyle = FlatStyle.Popup;
             updateButton.Font = new Font("Impact", 19.8F);
             updateButton.ForeColor = Color.Black;
-            updateButton.Location = new Point(996, 552);
+            updateButton.Location = new Point(872, 414);
+            updateButton.Margin = new Padding(3, 2, 3, 2);
             updateButton.Name = "updateButton";
-            updateButton.Size = new Size(158, 48);
+            updateButton.Size = new Size(138, 36);
             updateButton.TabIndex = 68;
             updateButton.Text = "Update";
             updateButton.UseVisualStyleBackColor = false;
@@ -133,9 +141,10 @@
             deleteButton.FlatStyle = FlatStyle.Popup;
             deleteButton.Font = new Font("Impact", 19.8F);
             deleteButton.ForeColor = Color.LavenderBlush;
-            deleteButton.Location = new Point(1194, 552);
+            deleteButton.Location = new Point(1045, 414);
+            deleteButton.Margin = new Padding(3, 2, 3, 2);
             deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(158, 48);
+            deleteButton.Size = new Size(138, 36);
             deleteButton.TabIndex = 67;
             deleteButton.Text = "Delete";
             deleteButton.UseVisualStyleBackColor = false;
@@ -146,10 +155,11 @@
             costField.BackColor = SystemColors.ControlLightLight;
             costField.BorderStyle = BorderStyle.FixedSingle;
             costField.Font = new Font("Segoe UI", 13.8F);
-            costField.Location = new Point(1096, 265);
+            costField.Location = new Point(959, 199);
+            costField.Margin = new Padding(3, 2, 3, 2);
             costField.Multiline = true;
             costField.Name = "costField";
-            costField.Size = new Size(257, 43);
+            costField.Size = new Size(225, 33);
             costField.TabIndex = 66;
             // 
             // costLabel
@@ -158,9 +168,9 @@
             costLabel.BorderStyle = BorderStyle.FixedSingle;
             costLabel.FlatStyle = FlatStyle.Flat;
             costLabel.Font = new Font("Impact", 19.8F);
-            costLabel.Location = new Point(968, 265);
+            costLabel.Location = new Point(847, 199);
             costLabel.Name = "costLabel";
-            costLabel.Size = new Size(131, 43);
+            costLabel.Size = new Size(115, 33);
             costLabel.TabIndex = 63;
             costLabel.Text = "Cost";
             // 
@@ -170,9 +180,9 @@
             productIDlabel.BorderStyle = BorderStyle.FixedSingle;
             productIDlabel.FlatStyle = FlatStyle.Flat;
             productIDlabel.Font = new Font("Impact", 19.8F);
-            productIDlabel.Location = new Point(968, 124);
+            productIDlabel.Location = new Point(847, 93);
             productIDlabel.Name = "productIDlabel";
-            productIDlabel.Size = new Size(131, 44);
+            productIDlabel.Size = new Size(115, 34);
             productIDlabel.TabIndex = 62;
             productIDlabel.Text = "Product ID";
             // 
@@ -182,9 +192,9 @@
             productNameLabel.BorderStyle = BorderStyle.FixedSingle;
             productNameLabel.FlatStyle = FlatStyle.Flat;
             productNameLabel.Font = new Font("Impact", 19.8F);
-            productNameLabel.Location = new Point(968, 194);
+            productNameLabel.Location = new Point(847, 146);
             productNameLabel.Name = "productNameLabel";
-            productNameLabel.Size = new Size(131, 43);
+            productNameLabel.Size = new Size(115, 33);
             productNameLabel.TabIndex = 61;
             productNameLabel.Text = "Name";
             // 
@@ -193,10 +203,11 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(208, 47);
+            searchField.Location = new Point(182, 35);
+            searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(703, 42);
+            searchField.Size = new Size(615, 32);
             searchField.TabIndex = 60;
             searchField.TextChanged += searchField_TextChanged;
             // 
@@ -204,9 +215,9 @@
             // 
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Impact", 19.8F);
-            label1.Location = new Point(75, 47);
+            label1.Location = new Point(66, 35);
             label1.Name = "label1";
-            label1.Size = new Size(127, 41);
+            label1.Size = new Size(111, 31);
             label1.TabIndex = 74;
             label1.Text = "Search :";
             // 
@@ -215,10 +226,11 @@
             QuantityField.BackColor = SystemColors.ControlLightLight;
             QuantityField.BorderStyle = BorderStyle.FixedSingle;
             QuantityField.Font = new Font("Segoe UI", 13.8F);
-            QuantityField.Location = new Point(1097, 408);
+            QuantityField.Location = new Point(960, 306);
+            QuantityField.Margin = new Padding(3, 2, 3, 2);
             QuantityField.Multiline = true;
             QuantityField.Name = "QuantityField";
-            QuantityField.Size = new Size(256, 43);
+            QuantityField.Size = new Size(224, 33);
             QuantityField.TabIndex = 78;
             // 
             // priceField
@@ -226,10 +238,11 @@
             priceField.BackColor = SystemColors.ControlLightLight;
             priceField.BorderStyle = BorderStyle.FixedSingle;
             priceField.Font = new Font("Segoe UI", 13.8F);
-            priceField.Location = new Point(1097, 337);
+            priceField.Location = new Point(960, 253);
+            priceField.Margin = new Padding(3, 2, 3, 2);
             priceField.Multiline = true;
             priceField.Name = "priceField";
-            priceField.Size = new Size(256, 44);
+            priceField.Size = new Size(224, 34);
             priceField.TabIndex = 77;
             // 
             // quantityLabel
@@ -238,9 +251,9 @@
             quantityLabel.BorderStyle = BorderStyle.FixedSingle;
             quantityLabel.FlatStyle = FlatStyle.Flat;
             quantityLabel.Font = new Font("Impact", 19.8F);
-            quantityLabel.Location = new Point(968, 408);
+            quantityLabel.Location = new Point(847, 306);
             quantityLabel.Name = "quantityLabel";
-            quantityLabel.Size = new Size(138, 43);
+            quantityLabel.Size = new Size(121, 33);
             quantityLabel.TabIndex = 76;
             quantityLabel.Text = "Quantity";
             // 
@@ -250,9 +263,9 @@
             priceLabel.BorderStyle = BorderStyle.FixedSingle;
             priceLabel.FlatStyle = FlatStyle.Flat;
             priceLabel.Font = new Font("Impact", 19.8F);
-            priceLabel.Location = new Point(968, 338);
+            priceLabel.Location = new Point(847, 254);
             priceLabel.Name = "priceLabel";
-            priceLabel.Size = new Size(138, 43);
+            priceLabel.Size = new Size(121, 33);
             priceLabel.TabIndex = 75;
             priceLabel.Text = "Price";
             // 
@@ -261,10 +274,11 @@
             ProductNameField.BackColor = SystemColors.ControlLightLight;
             ProductNameField.BorderStyle = BorderStyle.FixedSingle;
             ProductNameField.Font = new Font("Segoe UI", 13.8F);
-            ProductNameField.Location = new Point(1096, 194);
+            ProductNameField.Location = new Point(959, 146);
+            ProductNameField.Margin = new Padding(3, 2, 3, 2);
             ProductNameField.Multiline = true;
             ProductNameField.Name = "ProductNameField";
-            ProductNameField.Size = new Size(256, 43);
+            ProductNameField.Size = new Size(224, 33);
             ProductNameField.TabIndex = 65;
             // 
             // productIDField
@@ -272,11 +286,12 @@
             productIDField.BackColor = SystemColors.Info;
             productIDField.BorderStyle = BorderStyle.FixedSingle;
             productIDField.Font = new Font("Segoe UI", 13.8F);
-            productIDField.Location = new Point(1096, 124);
+            productIDField.Location = new Point(959, 93);
+            productIDField.Margin = new Padding(3, 2, 3, 2);
             productIDField.Multiline = true;
             productIDField.Name = "productIDField";
             productIDField.ReadOnly = true;
-            productIDField.Size = new Size(257, 44);
+            productIDField.Size = new Size(225, 34);
             productIDField.TabIndex = 79;
             // 
             // clearButton
@@ -286,9 +301,10 @@
             clearButton.FlatStyle = FlatStyle.Popup;
             clearButton.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             clearButton.ForeColor = Color.LavenderBlush;
-            clearButton.Location = new Point(1096, 636);
+            clearButton.Location = new Point(959, 477);
+            clearButton.Margin = new Padding(3, 2, 3, 2);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(158, 48);
+            clearButton.Size = new Size(138, 36);
             clearButton.TabIndex = 80;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
@@ -296,9 +312,9 @@
             // 
             // modifyProduct
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1404, 757);
+            ClientSize = new Size(1228, 568);
             Controls.Add(clearButton);
             Controls.Add(productIDField);
             Controls.Add(QuantityField);
@@ -319,6 +335,7 @@
             Controls.Add(productNameLabel);
             Controls.Add(searchField);
             Controls.Add(SearchLabel);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "modifyProduct";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Modify Product";

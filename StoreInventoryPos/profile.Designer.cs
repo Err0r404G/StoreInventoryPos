@@ -2,154 +2,93 @@
 {
     partial class profile
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             profileLabel = new Label();
             backButton = new Button();
-            label1 = new Label();
-            userName = new Label();
-            fullName = new Label();
-            fnameField = new TextBox();
-            usernameField = new TextBox();
-            RoleField = new TextBox();
+            lblFullName = new Label();
+            lblUsername = new Label();
+            lblRole = new Label();
+            txtFullName = new TextBox();
+            txtUsername = new TextBox();
+            txtRole = new TextBox();
+
             SuspendLayout();
-            // 
+
             // profileLabel
-            // 
             profileLabel.AutoSize = true;
-            profileLabel.BackColor = Color.Transparent;
-            profileLabel.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            profileLabel.ForeColor = SystemColors.MenuText;
-            profileLabel.Location = new Point(200, 21);
+            profileLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            profileLabel.Location = new Point(30, 20);
             profileLabel.Name = "profileLabel";
-            profileLabel.Size = new Size(125, 34);
-            profileLabel.TabIndex = 8;
+            profileLabel.Size = new Size(130, 32);
             profileLabel.Text = "My Profile";
-            profileLabel.TextAlign = ContentAlignment.TopCenter;
-            // 
+
             // backButton
-            // 
-            backButton.BackColor = Color.White;
-            backButton.Cursor = Cursors.Hand;
-            backButton.FlatStyle = FlatStyle.Popup;
-            backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(418, 14);
-            backButton.Margin = new Padding(3, 2, 3, 2);
-            backButton.Name = "backButton";
-            backButton.Size = new Size(97, 38);
-            backButton.TabIndex = 17;
             backButton.Text = "Back";
-            backButton.UseVisualStyleBackColor = false;
+            backButton.Location = new Point(350, 20);
+            backButton.Size = new Size(75, 32);
             backButton.Click += backButton_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Impact", 16.2F);
-            label1.Location = new Point(33, 206);
-            label1.Name = "label1";
-            label1.Size = new Size(52, 27);
-            label1.TabIndex = 21;
-            label1.Text = "Role";
-            // 
-            // userName
-            // 
-            userName.AutoSize = true;
-            userName.Font = new Font("Impact", 16.2F);
-            userName.Location = new Point(33, 136);
-            userName.Name = "userName";
-            userName.Size = new Size(108, 27);
-            userName.TabIndex = 20;
-            userName.Text = "User Name";
-            // 
-            // fullName
-            // 
-            fullName.AutoSize = true;
-            fullName.Font = new Font("Impact", 16.2F);
-            fullName.Location = new Point(33, 68);
-            fullName.Name = "fullName";
-            fullName.Size = new Size(100, 27);
-            fullName.TabIndex = 19;
-            fullName.Text = "Full Name";
-            // 
-            // fnameField
-            // 
-            fnameField.BackColor = SystemColors.Info;
-            fnameField.BorderStyle = BorderStyle.FixedSingle;
-            fnameField.Font = new Font("Segoe UI", 19.8000011F);
-            fnameField.Location = new Point(33, 96);
-            fnameField.Margin = new Padding(3, 2, 3, 2);
-            fnameField.Name = "fnameField";
-            fnameField.ReadOnly = true;
-            fnameField.Size = new Size(254, 43);
-            fnameField.TabIndex = 18;
-            // 
-            // usernameField
-            // 
-            usernameField.BackColor = SystemColors.Info;
-            usernameField.BorderStyle = BorderStyle.FixedSingle;
-            usernameField.Font = new Font("Segoe UI", 19.8000011F);
-            usernameField.Location = new Point(33, 165);
-            usernameField.Margin = new Padding(3, 2, 3, 2);
-            usernameField.Name = "usernameField";
-            usernameField.ReadOnly = true;
-            usernameField.Size = new Size(254, 43);
-            usernameField.TabIndex = 22;
-            // 
-            // RoleField
-            // 
-            RoleField.BackColor = SystemColors.Info;
-            RoleField.BorderStyle = BorderStyle.FixedSingle;
-            RoleField.Font = new Font("Segoe UI", 19.8000011F);
-            RoleField.Location = new Point(33, 234);
-            RoleField.Margin = new Padding(3, 2, 3, 2);
-            RoleField.Name = "RoleField";
-            RoleField.ReadOnly = true;
-            RoleField.Size = new Size(254, 43);
-            RoleField.TabIndex = 23;
-            // 
-            // profile
-            // 
+
+            // lblFullName
+            lblFullName.AutoSize = true;
+            lblFullName.Location = new Point(30, 80);
+            lblFullName.Text = "Full Name";
+
+            // txtFullName
+            txtFullName.Location = new Point(120, 75);
+            txtFullName.Size = new Size(200, 25);
+            txtFullName.ReadOnly = true;
+            txtFullName.BackColor = SystemColors.ControlLight;
+
+            // lblUsername
+            lblUsername.AutoSize = true;
+            lblUsername.Location = new Point(30, 120);
+            lblUsername.Text = "Username";
+
+            // txtUsername
+            txtUsername.Location = new Point(120, 115);
+            txtUsername.Size = new Size(200, 25);
+            txtUsername.ReadOnly = true;
+            txtUsername.BackColor = SystemColors.ControlLight;
+
+            // lblRole
+            lblRole.AutoSize = true;
+            lblRole.Location = new Point(30, 160);
+            lblRole.Text = "Role";
+
+            // txtRole
+            txtRole.Location = new Point(120, 155);
+            txtRole.Size = new Size(200, 25);
+            txtRole.ReadOnly = true;
+            txtRole.BackColor = SystemColors.ControlLight;
+
+            // profile form
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(526, 299);
-            Controls.Add(RoleField);
-            Controls.Add(usernameField);
-            Controls.Add(label1);
-            Controls.Add(userName);
-            Controls.Add(fullName);
-            Controls.Add(fnameField);
-            Controls.Add(backButton);
+            ClientSize = new Size(450, 220);
             Controls.Add(profileLabel);
-            Margin = new Padding(3, 2, 3, 2);
+            Controls.Add(backButton);
+            Controls.Add(lblFullName);
+            Controls.Add(txtFullName);
+            Controls.Add(lblUsername);
+            Controls.Add(txtUsername);
+            Controls.Add(lblRole);
+            Controls.Add(txtRole);
             Name = "profile";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "profile";
+            Text = "Profile";
+
             ResumeLayout(false);
             PerformLayout();
         }
@@ -158,11 +97,11 @@
 
         private Label profileLabel;
         private Button backButton;
-        private Label label1;
-        private Label userName;
-        private Label fullName;
-        private TextBox fnameField;
-        private TextBox usernameField;
-        private TextBox RoleField;
+        private Label lblFullName;
+        private Label lblUsername;
+        private Label lblRole;
+        private TextBox txtFullName;
+        private TextBox txtUsername;
+        private TextBox txtRole;
     }
 }

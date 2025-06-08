@@ -65,11 +65,12 @@
             promoField.BackColor = SystemColors.Info;
             promoField.BorderStyle = BorderStyle.FixedSingle;
             promoField.Font = new Font("Segoe UI", 13.8F);
-            promoField.Location = new Point(237, 63);
+            promoField.Location = new Point(207, 47);
+            promoField.Margin = new Padding(3, 2, 3, 2);
             promoField.Multiline = true;
             promoField.Name = "promoField";
             promoField.ReadOnly = true;
-            promoField.Size = new Size(190, 42);
+            promoField.Size = new Size(166, 32);
             promoField.TabIndex = 91;
             // 
             // label1
@@ -77,9 +78,9 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Impact", 19.8F);
-            label1.Location = new Point(26, 66);
+            label1.Location = new Point(23, 50);
             label1.Name = "label1";
-            label1.Size = new Size(127, 41);
+            label1.Size = new Size(104, 34);
             label1.TabIndex = 88;
             label1.Text = "Search :";
             // 
@@ -90,9 +91,10 @@
             backButton.FlatStyle = FlatStyle.Popup;
             backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(907, 9);
+            backButton.Location = new Point(794, 7);
+            backButton.Margin = new Padding(3, 2, 3, 2);
             backButton.Name = "backButton";
-            backButton.Size = new Size(149, 51);
+            backButton.Size = new Size(130, 38);
             backButton.TabIndex = 87;
             backButton.Text = "BACK";
             backButton.UseVisualStyleBackColor = false;
@@ -105,13 +107,16 @@
             searchGrid.AllowUserToResizeColumns = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.Location = new Point(26, 123);
+            searchGrid.ColumnHeadersVisible = false;
+            searchGrid.Location = new Point(23, 92);
+            searchGrid.Margin = new Padding(3, 2, 3, 2);
             searchGrid.MultiSelect = false;
             searchGrid.Name = "searchGrid";
             searchGrid.ReadOnly = true;
+            searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(484, 202);
+            searchGrid.Size = new Size(424, 152);
             searchGrid.TabIndex = 86;
             searchGrid.CellClick += searchGrid_CellClick_1;
             // 
@@ -122,9 +127,10 @@
             deleteButton.FlatStyle = FlatStyle.Popup;
             deleteButton.Font = new Font("Impact", 19.8F);
             deleteButton.ForeColor = Color.LavenderBlush;
-            deleteButton.Location = new Point(174, 206);
+            deleteButton.Location = new Point(152, 154);
+            deleteButton.Margin = new Padding(3, 2, 3, 2);
             deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(158, 48);
+            deleteButton.Size = new Size(138, 36);
             deleteButton.TabIndex = 83;
             deleteButton.Text = "Delete";
             deleteButton.UseVisualStyleBackColor = false;
@@ -135,11 +141,12 @@
             discountField.BackColor = SystemColors.Info;
             discountField.BorderStyle = BorderStyle.FixedSingle;
             discountField.Font = new Font("Segoe UI", 13.8F);
-            discountField.Location = new Point(237, 124);
+            discountField.Location = new Point(207, 93);
+            discountField.Margin = new Padding(3, 2, 3, 2);
             discountField.Multiline = true;
             discountField.Name = "discountField";
             discountField.ReadOnly = true;
-            discountField.Size = new Size(190, 42);
+            discountField.Size = new Size(166, 32);
             discountField.TabIndex = 81;
             // 
             // promoLabel
@@ -147,9 +154,9 @@
             promoLabel.AutoSize = true;
             promoLabel.BackColor = Color.Transparent;
             promoLabel.Font = new Font("Impact", 19.8F);
-            promoLabel.Location = new Point(14, 63);
+            promoLabel.Location = new Point(12, 47);
             promoLabel.Name = "promoLabel";
-            promoLabel.Size = new Size(175, 41);
+            promoLabel.Size = new Size(145, 34);
             promoLabel.TabIndex = 80;
             promoLabel.Text = "PromoCode";
             // 
@@ -158,9 +165,9 @@
             discountLabl.AutoSize = true;
             discountLabl.BackColor = Color.Transparent;
             discountLabl.Font = new Font("Impact", 19.8F);
-            discountLabl.Location = new Point(51, 124);
+            discountLabl.Location = new Point(45, 93);
             discountLabl.Name = "discountLabl";
-            discountLabl.Size = new Size(138, 41);
+            discountLabl.Size = new Size(113, 34);
             discountLabl.TabIndex = 92;
             discountLabl.Text = "Discount";
             // 
@@ -170,9 +177,9 @@
             deleteLabl.BackColor = Color.Transparent;
             deleteLabl.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             deleteLabl.ForeColor = Color.IndianRed;
-            deleteLabl.Location = new Point(161, 9);
+            deleteLabl.Location = new Point(141, 7);
             deleteLabl.Name = "deleteLabl";
-            deleteLabl.Size = new Size(202, 42);
+            deleteLabl.Size = new Size(165, 34);
             deleteLabl.TabIndex = 93;
             deleteLabl.Text = "Delete Promo";
             deleteLabl.TextAlign = ContentAlignment.TopCenter;
@@ -186,9 +193,10 @@
             deletePanel.Controls.Add(discountLabl);
             deletePanel.Controls.Add(deleteButton);
             deletePanel.Controls.Add(promoField);
-            deletePanel.Location = new Point(567, 377);
+            deletePanel.Location = new Point(496, 283);
+            deletePanel.Margin = new Padding(3, 2, 3, 2);
             deletePanel.Name = "deletePanel";
-            deletePanel.Size = new Size(484, 276);
+            deletePanel.Size = new Size(424, 207);
             deletePanel.TabIndex = 94;
             // 
             // searchField
@@ -196,10 +204,11 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(159, 66);
+            searchField.Location = new Point(139, 50);
+            searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(351, 42);
+            searchField.Size = new Size(307, 32);
             searchField.TabIndex = 95;
             searchField.TextChanged += searchField_TextChanged;
             // 
@@ -212,9 +221,10 @@
             createPanel.Controls.Add(addButton);
             createPanel.Controls.Add(discountBox);
             createPanel.Controls.Add(label7);
-            createPanel.Location = new Point(567, 66);
+            createPanel.Location = new Point(496, 50);
+            createPanel.Margin = new Padding(3, 2, 3, 2);
             createPanel.Name = "createPanel";
-            createPanel.Size = new Size(489, 259);
+            createPanel.Size = new Size(428, 194);
             createPanel.TabIndex = 100;
             // 
             // label5
@@ -222,9 +232,9 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Impact", 19.8F);
-            label5.Location = new Point(16, 57);
+            label5.Location = new Point(14, 43);
             label5.Name = "label5";
-            label5.Size = new Size(175, 41);
+            label5.Size = new Size(145, 34);
             label5.TabIndex = 94;
             label5.Text = "PromoCode";
             // 
@@ -233,10 +243,11 @@
             promoBox.BackColor = SystemColors.ControlLightLight;
             promoBox.BorderStyle = BorderStyle.FixedSingle;
             promoBox.Font = new Font("Segoe UI", 13.8F);
-            promoBox.Location = new Point(239, 57);
+            promoBox.Location = new Point(209, 43);
+            promoBox.Margin = new Padding(3, 2, 3, 2);
             promoBox.Multiline = true;
             promoBox.Name = "promoBox";
-            promoBox.Size = new Size(190, 42);
+            promoBox.Size = new Size(166, 32);
             promoBox.TabIndex = 97;
             // 
             // label6
@@ -245,9 +256,9 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.SeaGreen;
-            label6.Location = new Point(163, 3);
+            label6.Location = new Point(143, 2);
             label6.Name = "label6";
-            label6.Size = new Size(205, 42);
+            label6.Size = new Size(168, 34);
             label6.TabIndex = 99;
             label6.Text = "Create Promo";
             label6.TextAlign = ContentAlignment.TopCenter;
@@ -259,9 +270,10 @@
             addButton.FlatStyle = FlatStyle.Popup;
             addButton.Font = new Font("Impact", 19.8F);
             addButton.ForeColor = Color.Black;
-            addButton.Location = new Point(176, 200);
+            addButton.Location = new Point(154, 150);
+            addButton.Margin = new Padding(3, 2, 3, 2);
             addButton.Name = "addButton";
-            addButton.Size = new Size(158, 48);
+            addButton.Size = new Size(138, 36);
             addButton.TabIndex = 96;
             addButton.Text = "ADD";
             addButton.UseVisualStyleBackColor = false;
@@ -272,10 +284,11 @@
             discountBox.BackColor = SystemColors.ControlLightLight;
             discountBox.BorderStyle = BorderStyle.FixedSingle;
             discountBox.Font = new Font("Segoe UI", 13.8F);
-            discountBox.Location = new Point(239, 118);
+            discountBox.Location = new Point(209, 88);
+            discountBox.Margin = new Padding(3, 2, 3, 2);
             discountBox.Multiline = true;
             discountBox.Name = "discountBox";
-            discountBox.Size = new Size(190, 42);
+            discountBox.Size = new Size(166, 32);
             discountBox.TabIndex = 95;
             // 
             // label7
@@ -283,9 +296,9 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Impact", 19.8F);
-            label7.Location = new Point(53, 118);
+            label7.Location = new Point(46, 88);
             label7.Name = "label7";
-            label7.Size = new Size(138, 41);
+            label7.Size = new Size(113, 34);
             label7.TabIndex = 98;
             label7.Text = "Discount";
             // 
@@ -296,9 +309,10 @@
             clearButton.FlatStyle = FlatStyle.Popup;
             clearButton.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             clearButton.ForeColor = Color.LavenderBlush;
-            clearButton.Location = new Point(269, 206);
+            clearButton.Location = new Point(235, 154);
+            clearButton.Margin = new Padding(3, 2, 3, 2);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(158, 48);
+            clearButton.Size = new Size(138, 36);
             clearButton.TabIndex = 94;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
@@ -314,9 +328,10 @@
             updatePanel.Controls.Add(label4);
             updatePanel.Controls.Add(updateButton);
             updatePanel.Controls.Add(UpromoField);
-            updatePanel.Location = new Point(26, 377);
+            updatePanel.Location = new Point(23, 283);
+            updatePanel.Margin = new Padding(3, 2, 3, 2);
             updatePanel.Name = "updatePanel";
-            updatePanel.Size = new Size(484, 276);
+            updatePanel.Size = new Size(424, 207);
             updatePanel.TabIndex = 101;
             // 
             // label2
@@ -324,9 +339,9 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Impact", 19.8F);
-            label2.Location = new Point(14, 63);
+            label2.Location = new Point(12, 47);
             label2.Name = "label2";
-            label2.Size = new Size(175, 41);
+            label2.Size = new Size(145, 34);
             label2.TabIndex = 80;
             label2.Text = "PromoCode";
             // 
@@ -336,9 +351,9 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.MediumBlue;
-            label3.Location = new Point(161, 9);
+            label3.Location = new Point(141, 7);
             label3.Name = "label3";
-            label3.Size = new Size(212, 42);
+            label3.Size = new Size(172, 34);
             label3.TabIndex = 93;
             label3.Text = "Update Promo";
             label3.TextAlign = ContentAlignment.TopCenter;
@@ -348,10 +363,11 @@
             UdiscountField.BackColor = SystemColors.ControlLightLight;
             UdiscountField.BorderStyle = BorderStyle.FixedSingle;
             UdiscountField.Font = new Font("Segoe UI", 13.8F);
-            UdiscountField.Location = new Point(237, 124);
+            UdiscountField.Location = new Point(207, 93);
+            UdiscountField.Margin = new Padding(3, 2, 3, 2);
             UdiscountField.Multiline = true;
             UdiscountField.Name = "UdiscountField";
-            UdiscountField.Size = new Size(190, 42);
+            UdiscountField.Size = new Size(166, 32);
             UdiscountField.TabIndex = 81;
             // 
             // label4
@@ -359,9 +375,9 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Impact", 19.8F);
-            label4.Location = new Point(51, 124);
+            label4.Location = new Point(45, 93);
             label4.Name = "label4";
-            label4.Size = new Size(138, 41);
+            label4.Size = new Size(113, 34);
             label4.TabIndex = 92;
             label4.Text = "Discount";
             // 
@@ -372,9 +388,10 @@
             updateButton.FlatStyle = FlatStyle.Popup;
             updateButton.Font = new Font("Impact", 19.8F);
             updateButton.ForeColor = Color.LavenderBlush;
-            updateButton.Location = new Point(70, 206);
+            updateButton.Location = new Point(61, 154);
+            updateButton.Margin = new Padding(3, 2, 3, 2);
             updateButton.Name = "updateButton";
-            updateButton.Size = new Size(158, 48);
+            updateButton.Size = new Size(138, 36);
             updateButton.TabIndex = 83;
             updateButton.Text = "Update";
             updateButton.UseVisualStyleBackColor = false;
@@ -385,18 +402,19 @@
             UpromoField.BackColor = SystemColors.Info;
             UpromoField.BorderStyle = BorderStyle.FixedSingle;
             UpromoField.Font = new Font("Segoe UI", 13.8F);
-            UpromoField.Location = new Point(237, 63);
+            UpromoField.Location = new Point(207, 47);
+            UpromoField.Margin = new Padding(3, 2, 3, 2);
             UpromoField.Multiline = true;
             UpromoField.Name = "UpromoField";
             UpromoField.ReadOnly = true;
-            UpromoField.Size = new Size(190, 42);
+            UpromoField.Size = new Size(166, 32);
             UpromoField.TabIndex = 91;
             // 
             // PromoCode
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1130, 720);
+            ClientSize = new Size(989, 540);
             Controls.Add(updatePanel);
             Controls.Add(deletePanel);
             Controls.Add(createPanel);
@@ -404,6 +422,7 @@
             Controls.Add(label1);
             Controls.Add(backButton);
             Controls.Add(searchGrid);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "PromoCode";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Promo Code";
