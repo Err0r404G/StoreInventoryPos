@@ -35,9 +35,9 @@ namespace StoreInventoryPos
                     {
                         if (reader.Read())
                         {
-                            lblFullName.Text = reader["Fullname"].ToString();
-                            lblUsername.Text = reader["Username"].ToString();
-                            lblRole.Text = reader["Role"].ToString();
+                            txtFullName.Text = reader["Fullname"].ToString();
+                            txtUsername.Text = reader["Username"].ToString();
+                            txtRole.Text = reader["Role"].ToString();
                         }
                         else
                         {

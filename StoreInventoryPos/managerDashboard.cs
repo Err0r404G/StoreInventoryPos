@@ -72,7 +72,7 @@ namespace StoreInventoryPos
         private void viewStaff_Click(object sender, EventArgs e)
         {
             this.Hide();
-            mViewUser Open = new mViewUser();
+            ViewStaff Open = new ViewStaff();
             Open.Show();
         }
     }

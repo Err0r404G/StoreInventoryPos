@@ -19,19 +19,39 @@ namespace StoreInventoryPos
             this.Load += PosGrid;
             addButton.Click += addButton_Click;
             removeButton.Click += removeButton_Click;
+            cartItems = new List<CartItem>();
 
+        }
+        public selectionCart(List<CartItem> existingCart)
+        {
+            InitializeComponent();
+            this.Load += PosGrid;
+            addButton.Click += addButton_Click;
+            removeButton.Click += removeButton_Click;
+
+            this.cartItems = existingCart;
+            RefreshCartGrid();
         }
 
         private void PosGrid(object sender, EventArgs e)
         {
             LoadProductIntoGrid();
         }
-        private void LoadProductIntoGrid()
+        private void LoadProductIntoGrid(string productName = "")
         {
             try
             {
                 DataAccess db = new DataAccess();
-                DataTable posProduct = db.getProductPOS();
+                DataTable posProduct;
+
+                if (string.IsNullOrWhiteSpace(productName))
+                {
+                    posProduct = db.getProductPOS();
+                }
+                else
+                {
+                    posProduct = db.getProductPOS(productName);
+                }
                 DataView filteredView = new DataView(posProduct);
                 filteredView.RowFilter = "Quantity > 0";
 
@@ -60,20 +80,14 @@ namespace StoreInventoryPos
             Open.Show();
         }
 
-        private DataAccess dataAccess = new DataAccess();
-        private void searchField_TextChanged(object sender, EventArgs e)
-        {
-            string productname = searchField.Text.Trim();
-            DataTable result = dataAccess.SearchByProductnameStaff(productname);
-            productGrid.DataSource = result;
-        }
+
 
 
 
 
         //////////////////cart//////////////
 
-        private List<CartItem> cartItems = new List<CartItem>();
+        private List<CartItem> cartItems;
 
         private void RefreshCartGrid()
         {
@@ -144,9 +158,23 @@ namespace StoreInventoryPos
                 return;
             }
 
-            Billing billingForm = new Billing(cartItems); 
+            Billing billingForm = new Billing(cartItems);
             billingForm.Show();
             this.Hide();
+        }
+
+        private void searchField_TextChanged_1(object sender, EventArgs e)
+        {
+            string productname = searchField.Text.Trim();
+            LoadProductIntoGrid(productname);
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            searchField.Text = string.Empty;    
+            LoadProductIntoGrid();           
+            cartItems.Clear();                   
+            RefreshCartGrid();
         }
     }
 }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using WFAManagementPro;
 
 namespace StoreInventoryPos
@@ -18,6 +20,7 @@ namespace StoreInventoryPos
             InitializeComponent();
             LoadSaleIntoGrid();
         }
+
 
         private void backButton_Click(object sender, EventArgs e)
         {
@@ -41,12 +44,13 @@ namespace StoreInventoryPos
                 Back.Show();
             }
         }
-        private void LoadSaleIntoGrid()
+        private void LoadSaleIntoGrid(string saleId = "")
+
         {
             try
             {
                 DataAccess db = new DataAccess();
-                DataTable sales = db.GetSaleReport();
+                DataTable sales = db.GetSaleReport(saleId);
 
                 searchGrid.DataSource = sales;
 
@@ -83,5 +87,18 @@ namespace StoreInventoryPos
             }
         }
 
+        private void searchField_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = searchField.Text.Trim();
+            LoadSaleIntoGrid(searchText);
+        }
+
+
+
+        private void clearButton_Click_1(object sender, EventArgs e)
+        {
+            searchField.Text = "";
+            LoadSaleIntoGrid();
+        }
     }
 }

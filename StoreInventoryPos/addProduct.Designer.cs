@@ -60,6 +60,7 @@
             // 
             sizeBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             sizeBox.FormattingEnabled = true;
+            sizeBox.DropDownStyle = ComboBoxStyle.DropDownList;
             sizeBox.Items.AddRange(new object[] { "38", "39", "40", "41", "42", "43", "44" });
             sizeBox.Location = new Point(388, 288);
             sizeBox.Name = "sizeBox";

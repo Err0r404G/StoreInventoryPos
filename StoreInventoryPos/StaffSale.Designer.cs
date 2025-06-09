@@ -56,8 +56,10 @@
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             searchGrid.Location = new Point(46, 85);
             searchGrid.Margin = new Padding(3, 2, 3, 2);
+            searchGrid.MultiSelect = false;
             searchGrid.Name = "searchGrid";
             searchGrid.ReadOnly = true;
+            searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             searchGrid.Size = new Size(728, 300);
@@ -85,7 +87,7 @@
             Controls.Add(searchGrid);
             Name = "StaffSale";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "StaffSale";
+            Text = "My Sales";
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
         }

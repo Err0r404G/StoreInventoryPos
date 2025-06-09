@@ -112,7 +112,9 @@ namespace StoreInventoryPos
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            selectionCart backToCart = new selectionCart(cartItems);
+            backToCart.Show();
         }
 
         private void btnCheck_Click(object sender, EventArgs e)

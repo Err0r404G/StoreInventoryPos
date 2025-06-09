@@ -11,9 +11,9 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class mViewUser : Form
+    public partial class ViewStaff : Form
     {
-        public mViewUser()
+        public ViewStaff()
         {
             InitializeComponent();
             this.Load += mViewUser_Load;

@@ -85,7 +85,6 @@
             searchGrid.AllowUserToResizeRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.ColumnHeadersVisible = false;
             searchGrid.Location = new Point(60, 82);
             searchGrid.Margin = new Padding(3, 2, 3, 2);
             searchGrid.MultiSelect = false;
@@ -100,6 +99,7 @@
             // 
             // sizeBox
             // 
+            sizeBox.DropDownStyle = ComboBoxStyle.DropDownList;
             sizeBox.FormattingEnabled = true;
             sizeBox.Items.AddRange(new object[] { "38", "39", "40", "41", "42", "43", "44" });
             sizeBox.Location = new Point(960, 350);
@@ -114,7 +114,7 @@
             roleLabel.Font = new Font("Impact", 13.8F);
             roleLabel.Location = new Point(916, 350);
             roleLabel.Name = "roleLabel";
-            roleLabel.Size = new Size(46, 22);
+            roleLabel.Size = new Size(46, 23);
             roleLabel.TabIndex = 69;
             roleLabel.Text = "Size";
             // 
@@ -123,7 +123,7 @@
             updateButton.BackColor = Color.FromArgb(128, 255, 128);
             updateButton.Cursor = Cursors.Hand;
             updateButton.FlatStyle = FlatStyle.Popup;
-            updateButton.Font = new Font("Impact", 19.8F);
+            updateButton.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             updateButton.ForeColor = Color.Black;
             updateButton.Location = new Point(872, 414);
             updateButton.Margin = new Padding(3, 2, 3, 2);
@@ -139,7 +139,7 @@
             deleteButton.BackColor = Color.Red;
             deleteButton.Cursor = Cursors.Hand;
             deleteButton.FlatStyle = FlatStyle.Popup;
-            deleteButton.Font = new Font("Impact", 19.8F);
+            deleteButton.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             deleteButton.ForeColor = Color.LavenderBlush;
             deleteButton.Location = new Point(1045, 414);
             deleteButton.Margin = new Padding(3, 2, 3, 2);
@@ -203,11 +203,11 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(182, 35);
+            searchField.Location = new Point(171, 35);
             searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(615, 32);
+            searchField.Size = new Size(626, 31);
             searchField.TabIndex = 60;
             searchField.TextChanged += searchField_TextChanged;
             // 
@@ -238,11 +238,11 @@
             priceField.BackColor = SystemColors.ControlLightLight;
             priceField.BorderStyle = BorderStyle.FixedSingle;
             priceField.Font = new Font("Segoe UI", 13.8F);
-            priceField.Location = new Point(960, 253);
+            priceField.Location = new Point(960, 254);
             priceField.Margin = new Padding(3, 2, 3, 2);
             priceField.Multiline = true;
             priceField.Name = "priceField";
-            priceField.Size = new Size(224, 34);
+            priceField.Size = new Size(224, 33);
             priceField.TabIndex = 77;
             // 
             // quantityLabel
@@ -337,7 +337,7 @@
             Controls.Add(SearchLabel);
             Margin = new Padding(3, 2, 3, 2);
             Name = "modifyProduct";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Modify Product";
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);

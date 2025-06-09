@@ -55,6 +55,7 @@
             productGrid.Margin = new Padding(3, 2, 3, 2);
             productGrid.Name = "productGrid";
             productGrid.ReadOnly = true;
+            productGrid.RowHeadersVisible = false;
             productGrid.RowHeadersWidth = 51;
             productGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             productGrid.Size = new Size(561, 308);
@@ -65,20 +66,21 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(136, 32);
+            searchField.Location = new Point(126, 32);
             searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(445, 32);
+            searchField.Size = new Size(454, 31);
             searchField.TabIndex = 39;
+            searchField.TextChanged += searchField_TextChanged_1;
             // 
             // label1
             // 
             label1.BackColor = SystemColors.ActiveCaption;
-            label1.Font = new Font("Impact", 19.8F);
+            label1.Font = new Font("Impact", 18.8F);
             label1.Location = new Point(19, 32);
             label1.Name = "label1";
-            label1.Size = new Size(561, 31);
+            label1.Size = new Size(110, 31);
             label1.TabIndex = 38;
             label1.Text = "Search :";
             // 
@@ -95,6 +97,7 @@
             clearButton.TabIndex = 42;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += clearButton_Click;
             // 
             // nextButton
             // 
@@ -172,11 +175,11 @@
             cartGrid.AllowUserToDeleteRows = false;
             cartGrid.AllowUserToResizeColumns = false;
             cartGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            cartGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             cartGrid.Location = new Point(744, 73);
             cartGrid.Margin = new Padding(3, 2, 3, 2);
             cartGrid.Name = "cartGrid";
             cartGrid.ReadOnly = true;
+            cartGrid.RowHeadersVisible = false;
             cartGrid.RowHeadersWidth = 51;
             cartGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             cartGrid.Size = new Size(438, 254);

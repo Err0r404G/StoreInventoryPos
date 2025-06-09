@@ -33,8 +33,6 @@
             clearButton = new Button();
             backButton = new Button();
             searchGrid = new DataGridView();
-            exportButton = new Button();
-            printButton = new Button();
             ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
             SuspendLayout();
             // 
@@ -43,42 +41,47 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(183, 25);
+            searchField.Location = new Point(149, 19);
+            searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(438, 42);
+            searchField.Size = new Size(384, 31);
             searchField.TabIndex = 44;
+            searchField.TextChanged += searchField_TextChanged;
             // 
             // searchLabel
             // 
             searchLabel.BackColor = SystemColors.ActiveCaption;
             searchLabel.Font = new Font("Impact", 19.8F);
-            searchLabel.Location = new Point(50, 25);
+            searchLabel.Location = new Point(44, 19);
             searchLabel.Name = "searchLabel";
-            searchLabel.Size = new Size(127, 41);
+            searchLabel.Size = new Size(111, 31);
             searchLabel.TabIndex = 43;
             searchLabel.Text = "Search :";
             // 
             // clearButton
             // 
             clearButton.BackColor = Color.Black;
-            clearButton.Font = new Font("Impact", 18F);
+            clearButton.Font = new Font("Impact", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             clearButton.ForeColor = Color.White;
-            clearButton.Location = new Point(362, 505);
+            clearButton.Location = new Point(539, 19);
+            clearButton.Margin = new Padding(3, 2, 3, 2);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(150, 50);
+            clearButton.Size = new Size(78, 31);
             clearButton.TabIndex = 42;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += clearButton_Click_1;
             // 
             // backButton
             // 
             backButton.BackColor = Color.White;
             backButton.Font = new Font("Impact", 18F);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(1130, 25);
+            backButton.Location = new Point(989, 19);
+            backButton.Margin = new Padding(3, 2, 3, 2);
             backButton.Name = "backButton";
-            backButton.Size = new Size(120, 50);
+            backButton.Size = new Size(105, 38);
             backButton.TabIndex = 41;
             backButton.Text = "Back";
             backButton.UseVisualStyleBackColor = false;
@@ -90,48 +93,27 @@
             searchGrid.AllowUserToDeleteRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.Location = new Point(50, 85);
+            searchGrid.Location = new Point(44, 64);
+            searchGrid.Margin = new Padding(3, 2, 3, 2);
             searchGrid.Name = "searchGrid";
             searchGrid.ReadOnly = true;
+            searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(1200, 400);
+            searchGrid.Size = new Size(1050, 300);
             searchGrid.TabIndex = 38;
-            // 
-            // exportButton
-            // 
-            exportButton.BackColor = Color.LightSkyBlue;
-            exportButton.Font = new Font("Impact", 18F);
-            exportButton.Location = new Point(50, 505);
-            exportButton.Name = "exportButton";
-            exportButton.Size = new Size(150, 50);
-            exportButton.TabIndex = 39;
-            exportButton.Text = "Export";
-            exportButton.UseVisualStyleBackColor = false;
-            // 
-            // printButton
-            // 
-            printButton.BackColor = Color.Khaki;
-            printButton.Font = new Font("Impact", 18F);
-            printButton.Location = new Point(206, 505);
-            printButton.Name = "printButton";
-            printButton.Size = new Size(150, 50);
-            printButton.TabIndex = 40;
-            printButton.Text = "Print";
-            printButton.UseVisualStyleBackColor = false;
             // 
             // saleReport
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 580);
+            ClientSize = new Size(1138, 435);
             Controls.Add(searchField);
             Controls.Add(searchLabel);
             Controls.Add(clearButton);
             Controls.Add(backButton);
             Controls.Add(searchGrid);
-            Controls.Add(exportButton);
-            Controls.Add(printButton);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "saleReport";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sales Report";
@@ -147,7 +129,5 @@
         private Button clearButton;
         private Button backButton;
         private DataGridView searchGrid;
-        private Button exportButton;
-        private Button printButton;
     }
 }

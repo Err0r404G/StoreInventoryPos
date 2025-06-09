@@ -51,11 +51,11 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(163, 22);
+            searchField.Location = new Point(134, 22);
             searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(395, 32);
+            searchField.Size = new Size(411, 34);
             searchField.TabIndex = 17;
             searchField.TextChanged += searchField_TextChanged;
             // 
@@ -64,11 +64,11 @@
             SearchLabel.AutoSize = true;
             SearchLabel.BackColor = SystemColors.ActiveCaption;
             SearchLabel.Font = new Font("Impact", 19.8F);
-            SearchLabel.Location = new Point(46, 23);
+            SearchLabel.Location = new Point(34, 22);
             SearchLabel.Name = "SearchLabel";
-            SearchLabel.Size = new Size(104, 34);
+            SearchLabel.Size = new Size(99, 34);
             SearchLabel.TabIndex = 16;
-            SearchLabel.Text = "Search :";
+            SearchLabel.Text = "Search ";
             // 
             // fNameLabel
             // 
@@ -109,12 +109,12 @@
             userNameField.BorderStyle = BorderStyle.FixedSingle;
             userNameField.Font = new Font("Segoe UI", 13.8F);
             userNameField.ForeColor = SystemColors.InfoText;
-            userNameField.Location = new Point(757, 77);
+            userNameField.Location = new Point(743, 78);
             userNameField.Margin = new Padding(3, 2, 3, 2);
             userNameField.Multiline = true;
             userNameField.Name = "userNameField";
             userNameField.ReadOnly = true;
-            userNameField.Size = new Size(201, 32);
+            userNameField.Size = new Size(201, 34);
             userNameField.TabIndex = 21;
             // 
             // fullNameField
@@ -122,11 +122,11 @@
             fullNameField.BackColor = SystemColors.ControlLightLight;
             fullNameField.BorderStyle = BorderStyle.FixedSingle;
             fullNameField.Font = new Font("Segoe UI", 13.8F);
-            fullNameField.Location = new Point(757, 130);
+            fullNameField.Location = new Point(743, 130);
             fullNameField.Margin = new Padding(3, 2, 3, 2);
             fullNameField.Multiline = true;
             fullNameField.Name = "fullNameField";
-            fullNameField.Size = new Size(201, 32);
+            fullNameField.Size = new Size(201, 34);
             fullNameField.TabIndex = 22;
             // 
             // passwordField
@@ -134,11 +134,11 @@
             passwordField.BackColor = SystemColors.ControlLightLight;
             passwordField.BorderStyle = BorderStyle.FixedSingle;
             passwordField.Font = new Font("Segoe UI", 13.8F);
-            passwordField.Location = new Point(757, 183);
+            passwordField.Location = new Point(743, 183);
             passwordField.Margin = new Padding(3, 2, 3, 2);
             passwordField.Multiline = true;
             passwordField.Name = "passwordField";
-            passwordField.Size = new Size(201, 32);
+            passwordField.Size = new Size(201, 34);
             passwordField.TabIndex = 23;
             // 
             // deleteButton
@@ -146,7 +146,7 @@
             deleteButton.BackColor = Color.Red;
             deleteButton.Cursor = Cursors.Hand;
             deleteButton.FlatStyle = FlatStyle.Popup;
-            deleteButton.Font = new Font("Impact", 19.8F);
+            deleteButton.Font = new Font("Impact", 15.75F);
             deleteButton.ForeColor = Color.LavenderBlush;
             deleteButton.Location = new Point(806, 285);
             deleteButton.Margin = new Padding(3, 2, 3, 2);
@@ -162,7 +162,7 @@
             updateButton.BackColor = Color.FromArgb(128, 255, 128);
             updateButton.Cursor = Cursors.Hand;
             updateButton.FlatStyle = FlatStyle.Popup;
-            updateButton.Font = new Font("Impact", 19.8F);
+            updateButton.Font = new Font("Impact", 15.75F);
             updateButton.ForeColor = Color.Black;
             updateButton.Location = new Point(633, 285);
             updateButton.Margin = new Padding(3, 2, 3, 2);
@@ -177,7 +177,7 @@
             // 
             roleBox.FormattingEnabled = true;
             roleBox.Items.AddRange(new object[] { "ADMIN", "MANAGER", "STAFF" });
-            roleBox.Location = new Point(757, 232);
+            roleBox.Location = new Point(743, 232);
             roleBox.Margin = new Padding(3, 2, 3, 2);
             roleBox.Name = "roleBox";
             roleBox.Size = new Size(143, 23);
@@ -201,7 +201,6 @@
             searchGrid.AllowUserToResizeRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.ColumnHeadersVisible = false;
             searchGrid.Location = new Point(34, 68);
             searchGrid.Margin = new Padding(3, 2, 3, 2);
             searchGrid.MultiSelect = false;

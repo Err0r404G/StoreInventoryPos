@@ -439,6 +439,30 @@ namespace WFAManagementPro
             return dataTable;
         }
 
+        public DataTable getProductPOS(string productName)
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"
+        SELECT ProductID, ProductName, Price, Quantity, Size 
+        FROM Product
+        WHERE ProductName LIKE @ProductName
+    ";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@ProductName", productName + "%");
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
+
+
         //////////////////////////////////POS DATABASE////////////////////////////
         ///
 
@@ -593,5 +617,122 @@ namespace WFAManagementPro
 
             return dataTable;
         }
+    
+    public DataTable GetSaleReport(string saleId)
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"
+        SELECT 
+            s.SaleID, 
+            s.CustomerName, 
+            s.TotalAmount, 
+            s.PaymentType, 
+            s.UsedPromo, 
+            s.PaymentToken, 
+            s.Date,
+            SUM(p.Price - p.Cost) AS TotalProfit
+        FROM Sales s
+        INNER JOIN SaleProduct sp ON s.SaleID = sp.SaleID
+        INNER JOIN Product p ON sp.ProductID = p.ProductID
+        WHERE s.SaleID LIKE @SaleID
+        GROUP BY 
+            s.SaleID, 
+            s.CustomerName, 
+            s.TotalAmount, 
+            s.PaymentType, 
+            s.UsedPromo, 
+            s.PaymentToken, 
+            s.Date
+        ORDER BY s.Date DESC;
+    ";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@SaleID",saleId + "%");
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
+
+        public int InsertRefundAndGetId(decimal amount, string reason)
+        {
+            string query = @"
+        INSERT INTO Refund (Amount, Reason)
+        OUTPUT INSERTED.RefundID
+        VALUES (@Amount, @Reason)";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@Amount", amount);
+                cmd.Parameters.AddWithValue("@Reason", reason);
+
+                if (this.Sqlcon.State != ConnectionState.Open)
+                    this.Sqlcon.Open();
+
+                return (int)cmd.ExecuteScalar();
+            }
+        }
+
+        public bool LinkSaleToRefund(string saleId, int refundId)
+        {
+            string query = @"
+        INSERT INTO SaleRefund (SaleID, RefundID)
+        VALUES (@SaleID, @RefundID)";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@SaleID", saleId);
+                cmd.Parameters.AddWithValue("@RefundID", refundId);
+
+                if (this.Sqlcon.State != ConnectionState.Open)
+                    this.Sqlcon.Open();
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+        public DataTable GetRefundReport(string saleId = "")
+        {
+            DataTable dataTable = new DataTable();
+
+            string query = @"
+        SELECT 
+            sr.SaleID,
+            us.Username AS SoldBy,
+            r.RefundID,
+            r.Amount,
+            r.Reason,
+            p.ProductID,
+            p.ProductName,
+            p.Size,
+            p.Price
+        FROM SaleRefund sr
+        INNER JOIN Refund r ON sr.RefundID = r.RefundID
+        INNER JOIN UserSale us ON sr.SaleID = us.SaleID
+        INNER JOIN SaleProduct sp ON sr.SaleID = sp.SaleID
+        INNER JOIN Product p ON sp.ProductID = p.ProductID
+        WHERE (@SaleID = '' OR sr.SaleID LIKE @SaleID + '%')
+    ";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@SaleID", saleId);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
+        }
+
+
+
     }
 }

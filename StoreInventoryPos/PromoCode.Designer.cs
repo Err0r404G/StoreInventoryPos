@@ -107,7 +107,6 @@
             searchGrid.AllowUserToResizeColumns = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.ColumnHeadersVisible = false;
             searchGrid.Location = new Point(23, 92);
             searchGrid.Margin = new Padding(3, 2, 3, 2);
             searchGrid.MultiSelect = false;
@@ -125,7 +124,7 @@
             deleteButton.BackColor = Color.Red;
             deleteButton.Cursor = Cursors.Hand;
             deleteButton.FlatStyle = FlatStyle.Popup;
-            deleteButton.Font = new Font("Impact", 19.8F);
+            deleteButton.Font = new Font("Impact", 18F);
             deleteButton.ForeColor = Color.LavenderBlush;
             deleteButton.Location = new Point(152, 154);
             deleteButton.Margin = new Padding(3, 2, 3, 2);
@@ -204,11 +203,11 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(139, 50);
+            searchField.Location = new Point(123, 50);
             searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(307, 32);
+            searchField.Size = new Size(324, 34);
             searchField.TabIndex = 95;
             searchField.TextChanged += searchField_TextChanged;
             // 
@@ -268,7 +267,7 @@
             addButton.BackColor = Color.MediumSeaGreen;
             addButton.Cursor = Cursors.Hand;
             addButton.FlatStyle = FlatStyle.Popup;
-            addButton.Font = new Font("Impact", 19.8F);
+            addButton.Font = new Font("Impact", 18F);
             addButton.ForeColor = Color.Black;
             addButton.Location = new Point(154, 150);
             addButton.Margin = new Padding(3, 2, 3, 2);
@@ -386,7 +385,7 @@
             updateButton.BackColor = Color.MediumBlue;
             updateButton.Cursor = Cursors.Hand;
             updateButton.FlatStyle = FlatStyle.Popup;
-            updateButton.Font = new Font("Impact", 19.8F);
+            updateButton.Font = new Font("Impact", 18F);
             updateButton.ForeColor = Color.LavenderBlush;
             updateButton.Location = new Point(61, 154);
             updateButton.Margin = new Padding(3, 2, 3, 2);

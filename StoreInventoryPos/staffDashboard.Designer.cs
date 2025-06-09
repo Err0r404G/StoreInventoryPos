@@ -42,7 +42,7 @@
             staffProfileButton.FlatStyle = FlatStyle.Popup;
             staffProfileButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             staffProfileButton.ForeColor = Color.Black;
-            staffProfileButton.Location = new Point(529, 35);
+            staffProfileButton.Location = new Point(358, 35);
             staffProfileButton.Margin = new Padding(3, 2, 3, 2);
             staffProfileButton.Name = "staffProfileButton";
             staffProfileButton.Size = new Size(150, 38);
@@ -56,12 +56,12 @@
             salesButton.BackColor = Color.LightSteelBlue;
             salesButton.Cursor = Cursors.Hand;
             salesButton.FlatStyle = FlatStyle.Popup;
-            salesButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            salesButton.Font = new Font("Impact", 27.75F);
             salesButton.ForeColor = Color.Black;
-            salesButton.Location = new Point(22, 218);
+            salesButton.Location = new Point(42, 251);
             salesButton.Margin = new Padding(3, 2, 3, 2);
             salesButton.Name = "salesButton";
-            salesButton.Size = new Size(236, 38);
+            salesButton.Size = new Size(207, 55);
             salesButton.TabIndex = 20;
             salesButton.Text = "Sales";
             salesButton.UseVisualStyleBackColor = false;
@@ -72,12 +72,12 @@
             posButton.BackColor = Color.LightSteelBlue;
             posButton.Cursor = Cursors.Hand;
             posButton.FlatStyle = FlatStyle.Popup;
-            posButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            posButton.Font = new Font("Impact", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
             posButton.ForeColor = Color.Black;
-            posButton.Location = new Point(22, 35);
+            posButton.Location = new Point(42, 35);
             posButton.Margin = new Padding(3, 2, 3, 2);
             posButton.Name = "posButton";
-            posButton.Size = new Size(236, 38);
+            posButton.Size = new Size(207, 108);
             posButton.TabIndex = 19;
             posButton.Text = "POS";
             posButton.UseVisualStyleBackColor = false;
@@ -88,12 +88,12 @@
             inventoryButton.BackColor = Color.LightSteelBlue;
             inventoryButton.Cursor = Cursors.Hand;
             inventoryButton.FlatStyle = FlatStyle.Popup;
-            inventoryButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            inventoryButton.Font = new Font("Impact", 27.75F);
             inventoryButton.ForeColor = Color.Black;
-            inventoryButton.Location = new Point(22, 121);
+            inventoryButton.Location = new Point(42, 173);
             inventoryButton.Margin = new Padding(3, 2, 3, 2);
             inventoryButton.Name = "inventoryButton";
-            inventoryButton.Size = new Size(236, 38);
+            inventoryButton.Size = new Size(207, 55);
             inventoryButton.TabIndex = 18;
             inventoryButton.Text = "Inventory";
             inventoryButton.UseVisualStyleBackColor = false;
@@ -106,7 +106,7 @@
             button1.FlatStyle = FlatStyle.Popup;
             button1.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.Crimson;
-            button1.Location = new Point(529, 105);
+            button1.Location = new Point(358, 105);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(150, 38);
@@ -119,7 +119,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(541, 338);
             Controls.Add(staffProfileButton);
             Controls.Add(salesButton);
             Controls.Add(posButton);
@@ -128,7 +128,7 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "staffDashboard";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "staffDashboard";
+            Text = "Staff Dashboard";
             ResumeLayout(false);
         }
 

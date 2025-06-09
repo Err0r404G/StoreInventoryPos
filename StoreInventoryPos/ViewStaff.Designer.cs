@@ -1,6 +1,6 @@
 ﻿namespace StoreInventoryPos
 {
-    partial class mViewUser
+    partial class ViewStaff
     {
         /// <summary>
         /// Required designer variable.
@@ -58,7 +58,6 @@
             searchGrid.AllowUserToResizeRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.ColumnHeadersVisible = false;
             searchGrid.Location = new Point(24, 74);
             searchGrid.Margin = new Padding(3, 2, 3, 2);
             searchGrid.Name = "searchGrid";
@@ -66,7 +65,7 @@
             searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(490, 238);
+            searchGrid.Size = new Size(521, 238);
             searchGrid.TabIndex = 37;
             // 
             // searchField
@@ -74,11 +73,11 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(136, 29);
+            searchField.Location = new Point(123, 29);
             searchField.Margin = new Padding(3, 2, 3, 2);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(379, 31);
+            searchField.Size = new Size(422, 34);
             searchField.TabIndex = 36;
             searchField.TextChanged += searchField_TextChanged_1;
             // 
@@ -93,7 +92,7 @@
             SearchLabel.TabIndex = 35;
             SearchLabel.Text = "Search :";
             // 
-            // mViewUser
+            // ViewStaff
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -103,9 +102,9 @@
             Controls.Add(searchField);
             Controls.Add(SearchLabel);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "mViewUser";
+            Name = "ViewStaff";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "mViewUser";
+            Text = "VIEW STAFF";
             Load += mViewUser_Load;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
