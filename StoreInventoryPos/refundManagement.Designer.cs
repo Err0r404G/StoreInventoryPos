@@ -60,11 +60,13 @@
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             searchGrid.Size = new Size(737, 311);
             searchGrid.TabIndex = 2;
+            searchGrid.CellClick += searchGrid_CellClick_1;
             // 
             // refundReasonBox
             // 
             refundReasonBox.Font = new Font("Segoe UI", 13F);
             refundReasonBox.Items.AddRange(new object[] { "Damaged", "Customer Return", "Wrong Item", "Other" });
+            refundReasonBox.DropDownStyle = ComboBoxStyle.DropDownList;
             refundReasonBox.Location = new Point(945, 172);
             refundReasonBox.Margin = new Padding(3, 2, 3, 2);
             refundReasonBox.Name = "refundReasonBox";
@@ -145,6 +147,7 @@
             searchField.Name = "searchField";
             searchField.Size = new Size(628, 31);
             searchField.TabIndex = 37;
+            searchField.TextChanged += searchField_TextChanged_1;
             // 
             // saleIDField
             // 
@@ -192,6 +195,7 @@
             Name = "refundManagement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Refund Management";
+            Load += refundManagement_Load;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();

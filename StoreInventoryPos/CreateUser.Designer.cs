@@ -159,6 +159,7 @@ namespace StoreInventoryPos
             // roleBox
             // 
             roleBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+            roleBox.DropDownStyle = ComboBoxStyle.DropDownList;
             roleBox.FormattingEnabled = true;
             roleBox.Items.AddRange(new object[] { "ADMIN", "MANAGER", "STAFF" });
             roleBox.Location = new Point(214, 235);

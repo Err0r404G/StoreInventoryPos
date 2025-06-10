@@ -660,6 +660,7 @@ namespace WFAManagementPro
             return dataTable;
         }
 
+        ///Insert Into Refund table/////////////////////
         public int InsertRefundAndGetId(decimal amount, string reason)
         {
             string query = @"
@@ -678,7 +679,7 @@ namespace WFAManagementPro
                 return (int)cmd.ExecuteScalar();
             }
         }
-
+        ///Aggrigation To SaleID and RedundID/////////////////////
         public bool LinkSaleToRefund(string saleId, int refundId)
         {
             string query = @"
@@ -691,11 +692,12 @@ namespace WFAManagementPro
                 cmd.Parameters.AddWithValue("@RefundID", refundId);
 
                 if (this.Sqlcon.State != ConnectionState.Open)
-                    this.Sqlcon.Open();
+                    this.Sqlcon.Open(); 
 
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        ///Search Refund Report By SaleID///////////////////
         public DataTable GetRefundReport(string saleId = "")
         {
             DataTable dataTable = new DataTable();
@@ -731,6 +733,27 @@ namespace WFAManagementPro
 
             return dataTable;
         }
+
+        ///Check if a sale has been refunded?????????????
+
+        public bool IsSaleRefunded(string saleId)
+        {
+            string query = "SELECT COUNT(*) FROM SaleRefund WHERE SaleID = @SaleID";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@SaleID", saleId);
+
+                if (this.Sqlcon.State != ConnectionState.Open)
+                    this.Sqlcon.Open();
+
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+
+
 
 
 

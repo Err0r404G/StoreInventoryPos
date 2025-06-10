@@ -96,7 +96,7 @@ namespace StoreInventoryPos
 
         private void searchGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) // To avoid header clicks
+            if (e.RowIndex >= 0) 
             {
                 DataGridViewRow row = searchGrid.Rows[e.RowIndex];
                 userNameField.Text = row.Cells["Username"].Value.ToString();

@@ -8,27 +8,33 @@ namespace StoreInventoryPos
         public refundManagement()
         {
             InitializeComponent();
-            LoadSalesIntoGrid(); // Load all on form load
-
-            searchField.TextChanged += searchField_TextChanged;
-            clearButton.Click += clearButton_Click;
-            refundButton.Click += refundButton_Click;
-            searchGrid.CellClick += searchGrid_CellClick;
+            this.Load += refundManagement_Load;
         }
-
+        private void ClearField()
+        {
+            saleIDField.Clear();
+            amountField.Clear();
+            refundReasonBox.SelectedIndex = -1;
+            searchField.Clear();
+            searchGrid.ClearSelection();
+            LoadSalesIntoGrid();
+        }
         private void backButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             managerDashboard Back = new managerDashboard();
             Back.Show();
         }
-
-        private void LoadSalesIntoGrid(string saleId = "")
+        private void refundManagement_Load(object sender, EventArgs e)
+        {
+            LoadSalesIntoGrid();
+        }
+        private void LoadSalesIntoGrid()
         {
             try
             {
                 DataAccess db = new DataAccess();
-                DataTable sales = db.GetSaleReport(saleId);
+                DataTable sales = db.GetSaleReport();
                 searchGrid.DataSource = sales;
 
                 if (searchGrid.Columns.Contains("SaleID"))
@@ -45,6 +51,15 @@ namespace StoreInventoryPos
                     searchGrid.Columns["Date"].HeaderText = "Date";
                 if (searchGrid.Columns.Contains("PaymentToken"))
                     searchGrid.Columns["PaymentToken"].Visible = false;
+
+                foreach (DataGridViewRow row in searchGrid.Rows)
+                {
+                    string saleId = row.Cells["SaleID"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(saleId) && db.IsSaleRefunded(saleId))
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -52,30 +67,12 @@ namespace StoreInventoryPos
             }
         }
 
-        private void searchField_TextChanged(object sender, EventArgs e)
-        {
-            string searchText = searchField.Text.Trim();
-            LoadSalesIntoGrid(searchText);
-        }
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            searchField.Text = "";
-            saleIDField.Text = "";
-            amountField.Text = "";
-            refundReasonBox.SelectedIndex = -1;
-            LoadSalesIntoGrid();
+            ClearField();
         }
 
-        private void searchGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && searchGrid.Rows.Count > 0)
-            {
-                DataGridViewRow row = searchGrid.Rows[e.RowIndex];
-                saleIDField.Text = row.Cells["SaleID"].Value.ToString();
-                amountField.Text = row.Cells["TotalAmount"].Value.ToString();
-            }
-        }
 
         private void refundButton_Click(object sender, EventArgs e)
         {
@@ -83,46 +80,74 @@ namespace StoreInventoryPos
             string reason = refundReasonBox.Text.Trim();
             string saleId = saleIDField.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(amountText) ||
-                string.IsNullOrWhiteSpace(reason) ||
-                string.IsNullOrWhiteSpace(saleId))
+            if (string.IsNullOrEmpty(amountText) || string.IsNullOrEmpty(reason) || string.IsNullOrEmpty(saleId))
             {
-                MessageBox.Show("All fields are required.");
+                MessageBox.Show("All fields are required.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!decimal.TryParse(amountText, out decimal amount))
             {
-                MessageBox.Show("Invalid amount format.");
+                MessageBox.Show("Invalid amount format.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            DataAccess dataAccess = new DataAccess();
             try
             {
-                DataAccess db = new DataAccess();
-                int refundId = db.InsertRefundAndGetId(amount, reason);
+                int refundId = dataAccess.InsertRefundAndGetId(amount, reason);
 
                 if (refundId > 0)
                 {
-                    bool linkSuccess = db.LinkSaleToRefund(saleId, refundId);
+                    bool linkSuccess = dataAccess.LinkSaleToRefund(saleId, refundId);
+
                     if (linkSuccess)
                     {
-                        MessageBox.Show("Refund successfully recorded and linked to sale.");
+                        MessageBox.Show("Refund successfully recorded.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         clearButton_Click(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("Refund saved but failed to link to Sale.");
+                        MessageBox.Show("Refund failed", "Partial Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Failed to record refund.");
+                    MessageBox.Show("Failed to record refund.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("An error occurred: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private DataAccess db = new DataAccess();
+        private void searchField_TextChanged_1(object sender, EventArgs e)
+        {
+            string searchText = searchField.Text.Trim();
+            searchGrid.DataSource = db.GetSaleReport(searchText);
+        }
+
+        private void searchGrid_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = searchGrid.Rows[e.RowIndex];
+                string saleId = row.Cells["SaleID"].Value?.ToString() ?? "";
+
+                saleIDField.Text = saleId;
+                amountField.Text = row.Cells["TotalAmount"].Value?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(saleId) && db.IsSaleRefunded(saleId))
+                {
+                    refundButton.Enabled = false;
+                    refundButton.Text = "Already Refunded";
+                }
+                else
+                {
+                    refundButton.Enabled = true;
+                    refundButton.Text = "Refund";
+                }
             }
         }
     }

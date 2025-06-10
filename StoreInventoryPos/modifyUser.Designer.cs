@@ -1,4 +1,6 @@
-﻿namespace StoreInventoryPos
+﻿using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
+
+namespace StoreInventoryPos
 {
     partial class modifyUser
     {
@@ -176,6 +178,7 @@
             // roleBox
             // 
             roleBox.FormattingEnabled = true;
+            roleBox.DropDownStyle = ComboBoxStyle.DropDownList;
             roleBox.Items.AddRange(new object[] { "ADMIN", "MANAGER", "STAFF" });
             roleBox.Location = new Point(743, 232);
             roleBox.Margin = new Padding(3, 2, 3, 2);

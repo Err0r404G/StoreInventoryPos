@@ -51,12 +51,11 @@
             // 
             // userName
             // 
-            userName.AutoSize = true;
             userName.BackColor = SystemColors.ActiveCaption;
             userName.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             userName.Location = new Point(84, 94);
             userName.Name = "userName";
-            userName.Size = new Size(139, 34);
+            userName.Size = new Size(139, 32);
             userName.TabIndex = 8;
             userName.Text = " USERNAME ";
             userName.TextAlign = ContentAlignment.TopCenter;
@@ -69,21 +68,19 @@
             userNameField.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             userNameField.Location = new Point(219, 94);
             userNameField.Margin = new Padding(3, 2, 3, 2);
-            userNameField.Multiline = true;
             userNameField.Name = "userNameField";
-            userNameField.Size = new Size(274, 34);
+            userNameField.Size = new Size(274, 32);
             userNameField.TabIndex = 9;
             userNameField.UseWaitCursor = true;
             userNameField.TextChanged += userNameField_TextChanged;
             // 
             // passWord
             // 
-            passWord.AutoSize = true;
             passWord.BackColor = SystemColors.ActiveCaption;
             passWord.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             passWord.Location = new Point(84, 182);
             passWord.Name = "passWord";
-            passWord.Size = new Size(137, 34);
+            passWord.Size = new Size(137, 29);
             passWord.TabIndex = 10;
             passWord.Text = "PASSWORD";
             passWord.TextAlign = ContentAlignment.MiddleCenter;
@@ -96,10 +93,9 @@
             passWordField.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             passWordField.Location = new Point(219, 182);
             passWordField.Margin = new Padding(3, 2, 3, 2);
-            passWordField.Multiline = true;
             passWordField.Name = "passWordField";
             passWordField.PasswordChar = '*';
-            passWordField.Size = new Size(274, 34);
+            passWordField.Size = new Size(274, 29);
             passWordField.TabIndex = 9;
             passWordField.UseWaitCursor = true;
             passWordField.TextChanged += passWordField_TextChanged;
