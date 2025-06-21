@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            userName = new Label();
             userNameField = new TextBox();
             passWord = new Label();
             passWordField = new TextBox();
-            loginutton = new Button();
+            loginButton = new Button(); // Renamed button
+            userName = new Label();
             SuspendLayout();
             // 
             // label1
@@ -42,23 +42,12 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.IndianRed;
-            label1.Location = new Point(243, 44);
+            label1.Location = new Point(278, 59);
             label1.Name = "label1";
-            label1.Size = new Size(138, 34);
+            label1.Size = new Size(171, 42);
             label1.TabIndex = 7;
             label1.Text = "USER LOGIN";
             label1.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // userName
-            // 
-            userName.BackColor = SystemColors.ActiveCaption;
-            userName.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            userName.Location = new Point(84, 94);
-            userName.Name = "userName";
-            userName.Size = new Size(139, 32);
-            userName.TabIndex = 8;
-            userName.Text = " USERNAME ";
-            userName.TextAlign = ContentAlignment.TopCenter;
             // 
             // userNameField
             // 
@@ -66,21 +55,18 @@
             userNameField.BorderStyle = BorderStyle.FixedSingle;
             userNameField.Cursor = Cursors.IBeam;
             userNameField.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            userNameField.Location = new Point(219, 94);
-            userNameField.Margin = new Padding(3, 2, 3, 2);
+            userNameField.Location = new Point(253, 126);
             userNameField.Name = "userNameField";
-            userNameField.Size = new Size(274, 32);
+            userNameField.Size = new Size(313, 38);
             userNameField.TabIndex = 9;
-            userNameField.UseWaitCursor = true;
-            userNameField.TextChanged += userNameField_TextChanged;
             // 
             // passWord
             // 
             passWord.BackColor = SystemColors.ActiveCaption;
-            passWord.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passWord.Location = new Point(84, 182);
+            passWord.Font = new Font("Impact", 18F);
+            passWord.Location = new Point(96, 244);
             passWord.Name = "passWord";
-            passWord.Size = new Size(137, 29);
+            passWord.Size = new Size(160, 38);
             passWord.TabIndex = 10;
             passWord.Text = "PASSWORD";
             passWord.TextAlign = ContentAlignment.MiddleCenter;
@@ -90,44 +76,50 @@
             passWordField.BackColor = SystemColors.ControlLightLight;
             passWordField.BorderStyle = BorderStyle.FixedSingle;
             passWordField.Cursor = Cursors.IBeam;
-            passWordField.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passWordField.Location = new Point(219, 182);
-            passWordField.Margin = new Padding(3, 2, 3, 2);
+            passWordField.Font = new Font("Segoe UI", 13.8F);
+            passWordField.Location = new Point(253, 244);
             passWordField.Name = "passWordField";
             passWordField.PasswordChar = '*';
-            passWordField.Size = new Size(274, 29);
+            passWordField.Size = new Size(313, 38);
             passWordField.TabIndex = 9;
-            passWordField.UseWaitCursor = true;
-            passWordField.TextChanged += passWordField_TextChanged;
             // 
-            // loginutton
+            // loginButton
             // 
-            loginutton.BackColor = Color.White;
-            loginutton.Cursor = Cursors.Hand;
-            loginutton.FlatStyle = FlatStyle.Popup;
-            loginutton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            loginutton.ForeColor = Color.Crimson;
-            loginutton.Location = new Point(243, 236);
-            loginutton.Margin = new Padding(3, 2, 3, 2);
-            loginutton.Name = "loginutton";
-            loginutton.Size = new Size(150, 38);
-            loginutton.TabIndex = 12;
-            loginutton.Text = "LOGIN";
-            loginutton.UseVisualStyleBackColor = false;
-            loginutton.Click += loginutton_Click;
+            loginButton.BackColor = Color.White;
+            loginButton.Cursor = Cursors.Hand;
+            loginButton.FlatStyle = FlatStyle.Popup;
+            loginButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            loginButton.ForeColor = Color.Crimson;
+            loginButton.Location = new Point(278, 315);
+            loginButton.Name = "loginButton"; // Renamed button
+            loginButton.Size = new Size(171, 51);
+            loginButton.TabIndex = 12;
+            loginButton.Text = "LOGIN";
+            loginButton.UseVisualStyleBackColor = false;
+            loginButton.Click += loginButton_Click; // Event handler attached
+            // 
+            // userName
+            // 
+            userName.BackColor = SystemColors.ActiveCaption;
+            userName.Font = new Font("Impact", 18F);
+            userName.Location = new Point(96, 126);
+            userName.Name = "userName";
+            userName.Size = new Size(160, 38);
+            userName.TabIndex = 13;
+            userName.Text = "USERNAME";
+            userName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // LoginPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(600, 334);
-            Controls.Add(loginutton);
+            ClientSize = new Size(686, 445);
+            Controls.Add(userName);
+            Controls.Add(loginButton); // Renamed button added
             Controls.Add(passWordField);
             Controls.Add(passWord);
             Controls.Add(userNameField);
-            Controls.Add(userName);
             Controls.Add(label1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "LoginPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LOGIN PAGE";
@@ -138,10 +130,10 @@
         #endregion
 
         private Label label1;
-        private Label userName;
         private TextBox userNameField;
         private Label passWord;
         private TextBox passWordField;
-        private Button loginutton;
+        private Button loginButton; // Renamed button variable
+        private Label userName;
     }
-}
+    }

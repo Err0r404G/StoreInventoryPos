@@ -19,17 +19,8 @@ namespace StoreInventoryPos
             InitializeComponent();
         }
 
-        private void userNameField_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void passWordField_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loginutton_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
             string username = userNameField.Text.Trim();
             string password = passWordField.Text.Trim();
@@ -81,7 +72,6 @@ namespace StoreInventoryPos
                 MessageBox.Show("An error occurred during login:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }
 

@@ -38,7 +38,7 @@ namespace WFAManagementPro
             set { this.ds = value; }
         }
 
-        private readonly string connectionString = @"Data Source=VICTUS-20H5\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Persist Security Info=True;User ID=sa;Password=@1812;";
+        private readonly string connectionString = @"Data Source=VICTUS-24H2\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Persist Security Info=True;User ID=sa;Password=@1812;";
 
         public DataAccess()
         {
@@ -127,6 +127,7 @@ namespace WFAManagementPro
 
         public int UpdateUser(string username, string fullname, string password, string role)
         {
+#pragma warning disable CS0618 // Type or member is obsolete
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 string query = "UPDATE Users SET Fullname = @fullname, Password = @Password, Role = @Role WHERE Username = @Username";
@@ -140,6 +141,7 @@ namespace WFAManagementPro
                 conn.Open();
                 return cmd.ExecuteNonQuery();
             }
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         //Delete User
