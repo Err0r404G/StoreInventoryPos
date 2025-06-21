@@ -23,60 +23,96 @@
             txtFullName = new TextBox();
             txtUsername = new TextBox();
             txtRole = new TextBox();
-
             SuspendLayout();
-
+            // 
             // profileLabel
+            // 
             profileLabel.AutoSize = true;
-            profileLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            profileLabel.Location = new Point(30, 20);
+            profileLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            profileLabel.Location = new Point(34, 27);
             profileLabel.Name = "profileLabel";
-            profileLabel.Size = new Size(130, 32);
+            profileLabel.Size = new Size(217, 54);
+            profileLabel.TabIndex = 0;
             profileLabel.Text = "My Profile";
-
+            // 
             // backButton
+            // 
+            backButton.Location = new Point(400, 27);
+            backButton.Margin = new Padding(3, 4, 3, 4);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(86, 43);
+            backButton.TabIndex = 1;
             backButton.Text = "Back";
-            backButton.Location = new Point(350, 20);
-            backButton.Size = new Size(75, 32);
             backButton.Click += backButton_Click;
-
+            // 
             // lblFullName
+            // 
             lblFullName.AutoSize = true;
-            lblFullName.Location = new Point(30, 80);
+            lblFullName.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            lblFullName.Location = new Point(34, 107);
+            lblFullName.Name = "lblFullName";
+            lblFullName.Size = new Size(97, 25);
+            lblFullName.TabIndex = 2;
             lblFullName.Text = "Full Name";
-
-            // txtFullName
-            txtFullName.Location = new Point(120, 75);
-            txtFullName.Size = new Size(200, 25);
-            txtFullName.ReadOnly = true;
-            txtFullName.BackColor = SystemColors.ControlLight;
-
+            // 
             // lblUsername
+            // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(30, 120);
+            lblUsername.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            lblUsername.Location = new Point(34, 160);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(97, 25);
+            lblUsername.TabIndex = 4;
             lblUsername.Text = "Username";
-
-            // txtUsername
-            txtUsername.Location = new Point(120, 115);
-            txtUsername.Size = new Size(200, 25);
-            txtUsername.ReadOnly = true;
-            txtUsername.BackColor = SystemColors.ControlLight;
-
+            // 
             // lblRole
+            // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(30, 160);
+            lblRole.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            lblRole.Location = new Point(34, 213);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(50, 25);
+            lblRole.TabIndex = 6;
             lblRole.Text = "Role";
-
+            // 
+            // txtFullName
+            // 
+            txtFullName.BackColor = SystemColors.ControlLight;
+            txtFullName.Font = new Font("Times New Roman", 12F);
+            txtFullName.Location = new Point(137, 100);
+            txtFullName.Margin = new Padding(3, 4, 3, 4);
+            txtFullName.Name = "txtFullName";
+            txtFullName.ReadOnly = true;
+            txtFullName.Size = new Size(228, 30);
+            txtFullName.TabIndex = 3;
+            // 
+            // txtUsername
+            // 
+            txtUsername.BackColor = SystemColors.ControlLight;
+            txtUsername.Font = new Font("Times New Roman", 12F);
+            txtUsername.Location = new Point(137, 153);
+            txtUsername.Margin = new Padding(3, 4, 3, 4);
+            txtUsername.Name = "txtUsername";
+            txtUsername.ReadOnly = true;
+            txtUsername.Size = new Size(228, 30);
+            txtUsername.TabIndex = 5;
+            // 
             // txtRole
-            txtRole.Location = new Point(120, 155);
-            txtRole.Size = new Size(200, 25);
-            txtRole.ReadOnly = true;
+            // 
             txtRole.BackColor = SystemColors.ControlLight;
-
-            // profile form
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            txtRole.Font = new Font("Times New Roman", 12F);
+            txtRole.Location = new Point(137, 207);
+            txtRole.Margin = new Padding(3, 4, 3, 4);
+            txtRole.Name = "txtRole";
+            txtRole.ReadOnly = true;
+            txtRole.Size = new Size(228, 30);
+            txtRole.TabIndex = 7;
+            // 
+            // profile
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(450, 220);
+            ClientSize = new Size(514, 293);
             Controls.Add(profileLabel);
             Controls.Add(backButton);
             Controls.Add(lblFullName);
@@ -85,10 +121,10 @@
             Controls.Add(txtUsername);
             Controls.Add(lblRole);
             Controls.Add(txtRole);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "profile";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Profile";
-
             ResumeLayout(false);
             PerformLayout();
         }

@@ -32,7 +32,7 @@
             userNameField = new TextBox();
             passWord = new Label();
             passWordField = new TextBox();
-            loginButton = new Button(); // Renamed button
+            loginButton = new Button();
             userName = new Label();
             SuspendLayout();
             // 
@@ -91,12 +91,12 @@
             loginButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             loginButton.ForeColor = Color.Crimson;
             loginButton.Location = new Point(278, 315);
-            loginButton.Name = "loginButton"; // Renamed button
+            loginButton.Name = "loginButton";
             loginButton.Size = new Size(171, 51);
             loginButton.TabIndex = 12;
             loginButton.Text = "LOGIN";
             loginButton.UseVisualStyleBackColor = false;
-            loginButton.Click += loginButton_Click; // Event handler attached
+            loginButton.Click += loginButton_Click;
             // 
             // userName
             // 
@@ -114,11 +114,11 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(686, 445);
+            Controls.Add(userNameField);
             Controls.Add(userName);
-            Controls.Add(loginButton); // Renamed button added
+            Controls.Add(loginButton);
             Controls.Add(passWordField);
             Controls.Add(passWord);
-            Controls.Add(userNameField);
             Controls.Add(label1);
             Name = "LoginPage";
             StartPosition = FormStartPosition.CenterScreen;

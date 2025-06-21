@@ -42,10 +42,9 @@
             backButton.FlatStyle = FlatStyle.Popup;
             backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(578, 26);
-            backButton.Margin = new Padding(3, 2, 3, 2);
+            backButton.Location = new Point(661, 35);
             backButton.Name = "backButton";
-            backButton.Size = new Size(98, 38);
+            backButton.Size = new Size(112, 51);
             backButton.TabIndex = 38;
             backButton.Text = "BACK";
             backButton.UseVisualStyleBackColor = false;
@@ -58,14 +57,13 @@
             searchGrid.AllowUserToResizeRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.Location = new Point(24, 74);
-            searchGrid.Margin = new Padding(3, 2, 3, 2);
+            searchGrid.Location = new Point(27, 99);
             searchGrid.Name = "searchGrid";
             searchGrid.ReadOnly = true;
             searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(521, 238);
+            searchGrid.Size = new Size(595, 317);
             searchGrid.TabIndex = 37;
             // 
             // searchField
@@ -73,11 +71,10 @@
             searchField.BackColor = SystemColors.ControlLightLight;
             searchField.BorderStyle = BorderStyle.FixedSingle;
             searchField.Font = new Font("Segoe UI", 13.8F);
-            searchField.Location = new Point(123, 29);
-            searchField.Margin = new Padding(3, 2, 3, 2);
+            searchField.Location = new Point(153, 39);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(422, 34);
+            searchField.Size = new Size(470, 41);
             searchField.TabIndex = 36;
             searchField.TextChanged += searchField_TextChanged_1;
             // 
@@ -86,22 +83,21 @@
             SearchLabel.AutoSize = true;
             SearchLabel.BackColor = SystemColors.ActiveCaption;
             SearchLabel.Font = new Font("Impact", 19.8F);
-            SearchLabel.Location = new Point(24, 29);
+            SearchLabel.Location = new Point(27, 39);
             SearchLabel.Name = "SearchLabel";
-            SearchLabel.Size = new Size(104, 34);
+            SearchLabel.Size = new Size(127, 41);
             SearchLabel.TabIndex = 35;
             SearchLabel.Text = "Search :";
             // 
             // ViewStaff
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 338);
+            ClientSize = new Size(800, 451);
             Controls.Add(backButton);
             Controls.Add(searchGrid);
             Controls.Add(searchField);
             Controls.Add(SearchLabel);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "ViewStaff";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VIEW STAFF";
