@@ -141,11 +141,15 @@ namespace StoreInventoryPos
                 if (!string.IsNullOrEmpty(saleId) && db.IsSaleRefunded(saleId))
                 {
                     refundButton.Enabled = false;
+                    amountField.ReadOnly = true;
+                    refundReasonBox.Enabled = false;
                     refundButton.Text = "Already Refunded";
                 }
                 else
                 {
                     refundButton.Enabled = true;
+                    amountField.ReadOnly = false;
+                    refundReasonBox.Enabled = true;
                     refundButton.Text = "Refund";
                 }
             }
