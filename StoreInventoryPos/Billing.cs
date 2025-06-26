@@ -13,14 +13,17 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace StoreInventoryPos
 {
+
     public partial class Billing : Form
     {
         private List<CartItem> cartItems;
         private double appliedDiscount = 0;
-        internal Billing(List<CartItem> items)
+        private selectionCart previousForm; 
+        internal Billing(List<CartItem> items, selectionCart callingForm)
         {
             InitializeComponent();
             this.cartItems = items;
+            this.previousForm = callingForm;
             txtSalesman.Text = Users.Username;
             LoadBillingData();
         }
@@ -113,8 +116,7 @@ namespace StoreInventoryPos
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-            selectionCart backToCart = new selectionCart(cartItems);
-            backToCart.Show();
+            previousForm.Show();
         }
 
         private void btnCheck_Click(object sender, EventArgs e)

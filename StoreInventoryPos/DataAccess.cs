@@ -426,25 +426,40 @@ namespace WFAManagementPro
             return dataTable;
         }
 
-        //Product FOR POS
-        public DataTable getProductPOS()
+
+
+        //////////////////////////////////POS DATABASE////////////////////////////
+        ///
+
+        ////POS GET Product/////////
+        public List<Product> GetProductPOS()
         {
-            DataTable dataTable = new DataTable();
-            string query = "SELECT ProductID,ProductName, Price, Quantity, Size FROM Product";
+            List<Product> products = new List<Product>();
+            string query = "SELECT ProductID, ProductName, Price, Quantity, Size FROM Product";
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                adapter.Fill(dataTable);
+                while (reader.Read())
+                {
+                    products.Add(new Product()
+                    {
+                        ProductID = reader.GetInt32(0),
+                        ProductName = reader.GetString(1),
+                        Price = reader.GetDecimal(2),
+                        Quantity = reader.GetInt32(3),
+                        Size = reader.GetInt32(4)
+                    });
+                }
             }
-
-            return dataTable;
+            return products;
         }
 
-        public DataTable getProductPOS(string productName)
+        ////POS GET Product Search By Name/////////
+        ///
+        public List<Product> GetProductPOS(string productName)
         {
-            DataTable dataTable = new DataTable();
-
+            List<Product> products = new List<Product>();
             string query = @"
         SELECT ProductID, ProductName, Price, Quantity, Size 
         FROM Product
@@ -455,19 +470,23 @@ namespace WFAManagementPro
             {
                 cmd.Parameters.AddWithValue("@ProductName", productName + "%");
 
-                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    adapter.Fill(dataTable);
+                    while (reader.Read())
+                    {
+                        products.Add(new Product()
+                        {
+                            ProductID = reader.GetInt32(0),
+                            ProductName = reader.GetString(1),
+                            Price = reader.GetDecimal(2),
+                            Quantity = reader.GetInt32(3),
+                            Size = reader.GetInt32(4)
+                        });
+                    }
                 }
             }
-
-            return dataTable;
+            return products;
         }
-
-
-        //////////////////////////////////POS DATABASE////////////////////////////
-        ///
-
 
         //Validate Promocode
         public bool ValidatePromo(string code, out int discount)
@@ -753,10 +772,6 @@ namespace WFAManagementPro
                 return count > 0;
             }
         }
-
-
-
-
 
 
     }

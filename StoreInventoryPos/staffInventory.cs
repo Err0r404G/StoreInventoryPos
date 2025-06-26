@@ -28,10 +28,9 @@ namespace StoreInventoryPos
             try
             {
                 DataAccess db = new DataAccess();
-                DataTable product = db.getProductPOS();
+                List<Product> products = db.GetProductPOS(); // make sure this method returns List<Product>
 
-                searchGrid.DataSource = product;
-
+                searchGrid.DataSource = products;
 
                 if (searchGrid.Columns.Contains("ProductID"))
                     searchGrid.Columns["ProductID"].HeaderText = "Product ID";
@@ -49,6 +48,7 @@ namespace StoreInventoryPos
                 MessageBox.Show("Error loading products: " + ex.Message);
             }
         }
+
 
         private DataAccess dataAccess = new DataAccess();
 
