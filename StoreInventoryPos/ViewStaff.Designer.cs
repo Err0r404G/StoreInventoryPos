@@ -101,6 +101,7 @@
             Name = "ViewStaff";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "VIEW STAFF";
+            FormClosed += ViewStaff_FormClosed;
             Load += mViewUser_Load;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);

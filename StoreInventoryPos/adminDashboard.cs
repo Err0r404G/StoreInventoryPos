@@ -63,5 +63,10 @@ namespace StoreInventoryPos
             Open.Show();
 
         }
+
+        private void adminDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

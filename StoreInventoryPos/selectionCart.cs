@@ -180,7 +180,7 @@ namespace StoreInventoryPos
                     var product = currentProducts.FirstOrDefault(p => p.ProductID.ToString() == productId && p.Size.ToString() == size);
                     if (product != null)
                     {
-                        product.Quantity += item.Quantity; 
+                        product.Quantity += item.Quantity;
                     }
 
                     cartItems.Remove(item);
@@ -231,6 +231,10 @@ namespace StoreInventoryPos
             RefreshCartGrid();
         }
 
+        private void selectionCart_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }
 

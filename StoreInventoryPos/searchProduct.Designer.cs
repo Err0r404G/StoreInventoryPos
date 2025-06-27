@@ -101,6 +101,7 @@
             Name = "searchProduct";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Product Search";
+            FormClosed += searchProduct_FormClosed;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();

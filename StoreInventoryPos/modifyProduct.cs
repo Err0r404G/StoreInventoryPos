@@ -159,5 +159,10 @@ namespace StoreInventoryPos
         {
             ClearField();
         }
+
+        private void modifyProduct_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

@@ -45,5 +45,10 @@ namespace StoreInventoryPos
             Open.Show();
 
         }
+
+        private void inventoryManagement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

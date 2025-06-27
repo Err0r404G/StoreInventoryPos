@@ -16,6 +16,7 @@ namespace StoreInventoryPos
         public addProduct()
         {
             InitializeComponent();
+            this.AcceptButton = addButton;
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -64,10 +65,10 @@ namespace StoreInventoryPos
                 int rows = db.InsertProduct(productname, cost, price, quantity, size);
 
                 if (rows > 0)
-                { 
+                {
                     MessageBox.Show("Product inserted successfully!");
-                ClearField();
-            }
+                    ClearField();
+                }
                 else
                     MessageBox.Show("Insertion failed.");
             }
@@ -81,8 +82,10 @@ namespace StoreInventoryPos
             }
         }
 
-
-
+        private void addProduct_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }
 

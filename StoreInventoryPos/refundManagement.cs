@@ -154,5 +154,10 @@ namespace StoreInventoryPos
                 }
             }
         }
+
+        private void refundManagement_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

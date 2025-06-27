@@ -64,5 +64,10 @@ namespace StoreInventoryPos
             DataTable result = dataAccess.SearchUsersByUsername(username);
             searchGrid.DataSource = result;
         }
+
+        private void viewUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

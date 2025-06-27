@@ -189,6 +189,11 @@ namespace StoreInventoryPos
                 MessageBox.Show("An error occurred while updating: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void PromoCode_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }
 

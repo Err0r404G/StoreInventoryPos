@@ -16,6 +16,7 @@ namespace StoreInventoryPos
         public CreateUser()
         {
             InitializeComponent();
+            this.AcceptButton = createButton;
         }
         private void ClearField()
         {
@@ -27,7 +28,7 @@ namespace StoreInventoryPos
         }
 
         private void createButton_Click(object sender, EventArgs e)
-{
+        {
             string username = userNameField.Text.Trim();
             string password = passWordField.Text.Trim();
             string confirmPassword = CpassWordField.Text.Trim();
@@ -79,6 +80,11 @@ namespace StoreInventoryPos
             this.Hide();
             adminDashboard Back = new adminDashboard();
             Back.Show();
+        }
+
+        private void CreateUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
         }
     }
 }

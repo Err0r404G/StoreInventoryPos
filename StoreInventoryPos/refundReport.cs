@@ -69,6 +69,9 @@ namespace StoreInventoryPos
             back.Show();
         }
 
-
+        private void refundReport_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

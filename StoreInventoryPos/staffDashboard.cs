@@ -52,5 +52,10 @@ namespace StoreInventoryPos
             StaffSale Open = new StaffSale();
             Open.Show();
         }
+
+        private void staffDashboard_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

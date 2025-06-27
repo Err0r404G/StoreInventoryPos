@@ -106,6 +106,7 @@
             Name = "inventoryManagement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inventory Management";
+            FormClosed += inventoryManagement_FormClosed;
             ResumeLayout(false);
         }
 

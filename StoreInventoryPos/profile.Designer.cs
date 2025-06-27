@@ -125,6 +125,7 @@
             Name = "profile";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Profile";
+            FormClosed += profile_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

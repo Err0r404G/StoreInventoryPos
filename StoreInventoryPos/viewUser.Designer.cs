@@ -102,6 +102,7 @@
             Name = "viewUser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "View User";
+            FormClosed += viewUser_FormClosed;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();

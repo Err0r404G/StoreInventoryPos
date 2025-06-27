@@ -104,6 +104,7 @@
             Name = "staffInventory";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Inventory";
+            FormClosed += staffInventory_FormClosed;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -75,6 +75,11 @@ namespace StoreInventoryPos
             }
 
         }
+
+        private void profile_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }
 

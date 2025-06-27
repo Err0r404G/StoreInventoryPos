@@ -326,6 +326,7 @@
             Name = "modifyProduct";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Modify Product";
+            FormClosed += modifyProduct_FormClosed;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();

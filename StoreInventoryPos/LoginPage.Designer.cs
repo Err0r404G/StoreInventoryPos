@@ -123,6 +123,7 @@
             Name = "LoginPage";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "LOGIN PAGE";
+            FormClosed += LoginPage_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -186,6 +186,7 @@
             Name = "refundManagement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Refund Management";
+            FormClosed += refundManagement_FormClosed;
             Load += refundManagement_Load;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);

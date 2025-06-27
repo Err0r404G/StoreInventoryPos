@@ -63,9 +63,9 @@ namespace StoreInventoryPos
         private void backButton_Click(object sender, EventArgs e)
         {
 
-                this.Hide();
-                inventoryManagement Back = new inventoryManagement();
-                Back.Show();
+            this.Hide();
+            inventoryManagement Back = new inventoryManagement();
+            Back.Show();
         }
         private DataAccess dataAccess = new DataAccess();
 
@@ -75,6 +75,11 @@ namespace StoreInventoryPos
             string productname = searchField.Text.Trim();
             DataTable result = dataAccess.SearchByProductname(productname);
             searchGrid.DataSource = result;
+        }
+
+        private void searchProduct_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
         }
     }
 }

@@ -408,6 +408,7 @@
             Name = "PromoCode";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Promo Code";
+            FormClosed += PromoCode_FormClosed;
             Load += createPromo_Load;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             deletePanel.ResumeLayout(false);

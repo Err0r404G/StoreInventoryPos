@@ -96,7 +96,7 @@ namespace StoreInventoryPos
 
         private void searchGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = searchGrid.Rows[e.RowIndex];
                 userNameField.Text = row.Cells["Username"].Value.ToString();
@@ -158,6 +158,11 @@ namespace StoreInventoryPos
         private void clearButton_Click(object sender, EventArgs e)
         {
             ClearField();
+        }
+
+        private void modifyUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
         }
     }
 }

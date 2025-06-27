@@ -18,7 +18,7 @@ namespace StoreInventoryPos
     {
         private List<CartItem> cartItems;
         private double appliedDiscount = 0;
-        private selectionCart previousForm; 
+        private selectionCart previousForm;
         internal Billing(List<CartItem> items, selectionCart callingForm)
         {
             InitializeComponent();
@@ -26,6 +26,7 @@ namespace StoreInventoryPos
             this.previousForm = callingForm;
             txtSalesman.Text = Users.Username;
             LoadBillingData();
+            this.AcceptButton = btnConfirm;
         }
 
         private void LoadBillingData()
@@ -57,10 +58,12 @@ namespace StoreInventoryPos
             if (cmbPaymentType.SelectedItem != null && cmbPaymentType.SelectedItem.ToString() == "CARD")
             {
                 txtPaymentToken.Enabled = true;
+                lblPaymentToken.Visible = true;
             }
             else
             {
                 txtPaymentToken.Enabled = false;
+                lblPaymentToken.Visible = false;
                 txtPaymentToken.Text = "";
             }
 
@@ -155,6 +158,10 @@ namespace StoreInventoryPos
             }
         }
 
+        private void Billing_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 
 }

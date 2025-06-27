@@ -100,5 +100,10 @@ namespace StoreInventoryPos
             searchField.Text = "";
             LoadSaleIntoGrid();
         }
+
+        private void saleReport_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }

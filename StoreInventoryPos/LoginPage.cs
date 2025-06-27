@@ -17,6 +17,7 @@ namespace StoreInventoryPos
         public LoginPage()
         {
             InitializeComponent();
+            this.AcceptButton = loginButton;
         }
 
 
@@ -71,6 +72,11 @@ namespace StoreInventoryPos
             {
                 MessageBox.Show("An error occurred during login:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void LoginPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
         }
     }
 }

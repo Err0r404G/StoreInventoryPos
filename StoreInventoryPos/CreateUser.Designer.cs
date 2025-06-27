@@ -158,7 +158,6 @@ namespace StoreInventoryPos
             // 
             // roleBox
             // 
-            roleBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             roleBox.DropDownStyle = ComboBoxStyle.DropDownList;
             roleBox.FormattingEnabled = true;
             roleBox.Items.AddRange(new object[] { "ADMIN", "MANAGER", "STAFF" });
@@ -188,6 +187,7 @@ namespace StoreInventoryPos
             Name = "CreateUser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CreateUser";
+            FormClosed += CreateUser_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

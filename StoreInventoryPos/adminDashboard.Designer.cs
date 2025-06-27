@@ -142,6 +142,7 @@
             Name = "adminDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Dashboard";
+            FormClosed += adminDashboard_FormClosed;
             ResumeLayout(false);
         }
 

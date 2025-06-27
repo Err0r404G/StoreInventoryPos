@@ -263,6 +263,7 @@ namespace StoreInventoryPos
             Name = "modifyUser";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Modify User";
+            FormClosed += modifyUser_FormClosed;
             ((System.ComponentModel.ISupportInitialize)searchGrid).EndInit();
             ResumeLayout(false);
             PerformLayout();

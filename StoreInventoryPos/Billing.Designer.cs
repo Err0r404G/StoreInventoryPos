@@ -107,6 +107,7 @@
             lblPaymentToken.Size = new Size(114, 31);
             lblPaymentToken.TabIndex = 7;
             lblPaymentToken.Text = "Payment Token:";
+            lblPaymentToken.Visible = false;
             // 
             // txtPaymentToken
             // 
@@ -222,6 +223,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "Billing";
             Text = "Billing";
+            FormClosed += Billing_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dgvCartItems).EndInit();
             ResumeLayout(false);
             PerformLayout();

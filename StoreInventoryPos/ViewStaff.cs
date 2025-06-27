@@ -61,5 +61,10 @@ namespace StoreInventoryPos
             managerDashboard Back = new managerDashboard();
             Back.Show();
         }
+
+        private void ViewStaff_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Exit App
+        }
     }
 }
