@@ -28,10 +28,10 @@
             // profileLabel
             // 
             profileLabel.AutoSize = true;
-            profileLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            profileLabel.Font = new Font("Impact", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             profileLabel.Location = new Point(34, 27);
             profileLabel.Name = "profileLabel";
-            profileLabel.Size = new Size(217, 54);
+            profileLabel.Size = new Size(182, 48);
             profileLabel.TabIndex = 0;
             profileLabel.Text = "My Profile";
             // 

@@ -120,6 +120,7 @@
             clearButton.TabIndex = 15;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
+            clearButton.Click += clearButton_Click_1;
             // 
             // label1
             // 

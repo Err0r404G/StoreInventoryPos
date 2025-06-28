@@ -68,7 +68,7 @@ namespace StoreInventoryPos
         }
 
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void clearButton_Click_1(object sender, EventArgs e)
         {
             ClearField();
         }
@@ -104,7 +104,7 @@ namespace StoreInventoryPos
                     if (linkSuccess)
                     {
                         MessageBox.Show("Refund successfully recorded.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        clearButton_Click(null, null);
+                        clearButton_Click_1(null, null);
                     }
                     else
                     {
@@ -159,5 +159,7 @@ namespace StoreInventoryPos
         {
             Application.Exit(); //Exit App
         }
+
+
     }
 }

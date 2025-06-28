@@ -18,6 +18,9 @@ namespace StoreInventoryPos
         {
             InitializeComponent();
             this.Load += PromoCode_Load;
+            btnaddPanel.Click += btnaddPanel_Click;
+            btnupdatePanel.Click += btnupdatePanel_Click;
+            btndeletePanel.Click += btndeletePanel_Click;
         }
         private void PromoCode_Load(object sender, EventArgs e)
         {
@@ -60,9 +63,9 @@ namespace StoreInventoryPos
         }
         private void createPromo_Load(object sender, EventArgs e)
         {
-            createPanel.Visible = true;
-            deletePanel.Visible = true;
-            updatePanel.Visible = true;
+            createPanel.Visible = false;
+            deletePanel.Visible = false;
+            updatePanel.Visible = false;
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -193,6 +196,39 @@ namespace StoreInventoryPos
         private void PromoCode_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit(); //Exit App
+        }
+
+        private void btnaddPanel_Click(object sender, EventArgs e)
+        {
+            createPanel.Visible = true;
+            createPanel.BringToFront();
+
+            updatePanel.Visible = false;
+            deletePanel.Visible = false;
+
+            ClearField();
+        }
+
+        private void btnupdatePanel_Click(object sender, EventArgs e)
+        {
+            updatePanel.Visible = true;
+            updatePanel.BringToFront();
+
+            createPanel.Visible = false;
+            deletePanel.Visible = false;
+
+            ClearField();
+        }
+
+        private void btndeletePanel_Click(object sender, EventArgs e)
+        {
+            deletePanel.Visible = true;
+            deletePanel.BringToFront();
+
+            createPanel.Visible = false;
+            updatePanel.Visible = false;
+
+            ClearField();
         }
     }
 }

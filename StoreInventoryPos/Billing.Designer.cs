@@ -222,6 +222,7 @@
             Controls.Add(lblTotalAmount);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Billing";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Billing";
             FormClosed += Billing_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dgvCartItems).EndInit();

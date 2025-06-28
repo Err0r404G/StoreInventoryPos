@@ -54,6 +54,9 @@
             label4 = new Label();
             updateButton = new Button();
             UpromoField = new TextBox();
+            btnaddPanel = new Button();
+            btnupdatePanel = new Button();
+            btndeletePanel = new Button();
             ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
             deletePanel.SuspendLayout();
             createPanel.SuspendLayout();
@@ -90,7 +93,7 @@
             backButton.FlatStyle = FlatStyle.Popup;
             backButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
             backButton.ForeColor = Color.Crimson;
-            backButton.Location = new Point(907, 9);
+            backButton.Location = new Point(907, 55);
             backButton.Name = "backButton";
             backButton.Size = new Size(149, 51);
             backButton.TabIndex = 87;
@@ -112,7 +115,7 @@
             searchGrid.RowHeadersVisible = false;
             searchGrid.RowHeadersWidth = 51;
             searchGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            searchGrid.Size = new Size(485, 203);
+            searchGrid.Size = new Size(485, 282);
             searchGrid.TabIndex = 86;
             searchGrid.CellClick += searchGrid_CellClick_1;
             // 
@@ -180,16 +183,16 @@
             // 
             // deletePanel
             // 
-            deletePanel.BackColor = Color.LemonChiffon;
+            deletePanel.BackColor = Color.MistyRose;
             deletePanel.Controls.Add(promoLabel);
             deletePanel.Controls.Add(deleteLabl);
             deletePanel.Controls.Add(discountField);
             deletePanel.Controls.Add(discountLabl);
             deletePanel.Controls.Add(deleteButton);
             deletePanel.Controls.Add(promoField);
-            deletePanel.Location = new Point(567, 377);
+            deletePanel.Location = new Point(567, 123);
             deletePanel.Name = "deletePanel";
-            deletePanel.Size = new Size(485, 276);
+            deletePanel.Size = new Size(485, 282);
             deletePanel.TabIndex = 94;
             // 
             // searchField
@@ -206,16 +209,16 @@
             // 
             // createPanel
             // 
-            createPanel.BackColor = Color.LemonChiffon;
+            createPanel.BackColor = Color.Honeydew;
             createPanel.Controls.Add(label5);
             createPanel.Controls.Add(promoBox);
             createPanel.Controls.Add(label6);
             createPanel.Controls.Add(addButton);
             createPanel.Controls.Add(discountBox);
             createPanel.Controls.Add(label7);
-            createPanel.Location = new Point(567, 67);
+            createPanel.Location = new Point(567, 123);
             createPanel.Name = "createPanel";
-            createPanel.Size = new Size(489, 259);
+            createPanel.Size = new Size(485, 282);
             createPanel.TabIndex = 100;
             // 
             // label5
@@ -307,7 +310,7 @@
             // 
             // updatePanel
             // 
-            updatePanel.BackColor = Color.LemonChiffon;
+            updatePanel.BackColor = Color.Lavender;
             updatePanel.Controls.Add(label2);
             updatePanel.Controls.Add(clearButton);
             updatePanel.Controls.Add(label3);
@@ -315,9 +318,9 @@
             updatePanel.Controls.Add(label4);
             updatePanel.Controls.Add(updateButton);
             updatePanel.Controls.Add(UpromoField);
-            updatePanel.Location = new Point(26, 377);
+            updatePanel.Location = new Point(567, 123);
             updatePanel.Name = "updatePanel";
-            updatePanel.Size = new Size(485, 276);
+            updatePanel.Size = new Size(485, 282);
             updatePanel.TabIndex = 101;
             // 
             // label2
@@ -393,18 +396,66 @@
             UpromoField.Size = new Size(189, 42);
             UpromoField.TabIndex = 91;
             // 
+            // btnaddPanel
+            // 
+            btnaddPanel.BackColor = Color.MediumSeaGreen;
+            btnaddPanel.Cursor = Cursors.Hand;
+            btnaddPanel.FlatStyle = FlatStyle.Popup;
+            btnaddPanel.Font = new Font("Impact", 18F);
+            btnaddPanel.ForeColor = Color.Black;
+            btnaddPanel.Location = new Point(26, 417);
+            btnaddPanel.Name = "btnaddPanel";
+            btnaddPanel.Size = new Size(158, 48);
+            btnaddPanel.TabIndex = 102;
+            btnaddPanel.Text = "ADD";
+            btnaddPanel.UseVisualStyleBackColor = false;
+            btnaddPanel.Click += btnaddPanel_Click;
+            // 
+            // btnupdatePanel
+            // 
+            btnupdatePanel.BackColor = Color.MediumBlue;
+            btnupdatePanel.Cursor = Cursors.Hand;
+            btnupdatePanel.FlatStyle = FlatStyle.Popup;
+            btnupdatePanel.Font = new Font("Impact", 18F);
+            btnupdatePanel.ForeColor = Color.LavenderBlush;
+            btnupdatePanel.Location = new Point(190, 417);
+            btnupdatePanel.Name = "btnupdatePanel";
+            btnupdatePanel.Size = new Size(158, 48);
+            btnupdatePanel.TabIndex = 95;
+            btnupdatePanel.Text = "Update";
+            btnupdatePanel.UseVisualStyleBackColor = false;
+            btnupdatePanel.Click += btnupdatePanel_Click;
+            // 
+            // btndeletePanel
+            // 
+            btndeletePanel.BackColor = Color.Red;
+            btndeletePanel.Cursor = Cursors.Hand;
+            btndeletePanel.FlatStyle = FlatStyle.Popup;
+            btndeletePanel.Font = new Font("Impact", 18F);
+            btndeletePanel.ForeColor = Color.LavenderBlush;
+            btndeletePanel.Location = new Point(354, 417);
+            btndeletePanel.Name = "btndeletePanel";
+            btndeletePanel.Size = new Size(158, 48);
+            btndeletePanel.TabIndex = 103;
+            btndeletePanel.Text = "Delete";
+            btndeletePanel.UseVisualStyleBackColor = false;
+            btndeletePanel.Click += btndeletePanel_Click;
+            // 
             // PromoCode
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1130, 720);
+            ClientSize = new Size(1128, 547);
+            Controls.Add(btndeletePanel);
+            Controls.Add(btnupdatePanel);
+            Controls.Add(btnaddPanel);
             Controls.Add(searchField);
-            Controls.Add(updatePanel);
-            Controls.Add(deletePanel);
             Controls.Add(createPanel);
             Controls.Add(label1);
             Controls.Add(backButton);
             Controls.Add(searchGrid);
+            Controls.Add(updatePanel);
+            Controls.Add(deletePanel);
             Name = "PromoCode";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Promo Code";
@@ -449,5 +500,8 @@
         private Label label4;
         private Button updateButton;
         private TextBox UpromoField;
+        private Button btnaddPanel;
+        private Button btnupdatePanel;
+        private Button btndeletePanel;
     }
 }

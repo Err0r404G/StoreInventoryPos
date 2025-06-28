@@ -60,7 +60,7 @@ namespace StoreInventoryPos
                 productGrid.DataSource = null;
                 productGrid.DataSource = currentProducts;
 
-                // Column headers update (optional)
+                // Column headers update 
                 if (productGrid.Columns.Contains("ProductID"))
                     productGrid.Columns["ProductID"].HeaderText = "Product ID";
                 if (productGrid.Columns.Contains("ProductName"))

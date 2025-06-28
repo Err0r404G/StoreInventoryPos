@@ -128,9 +128,9 @@
             cart.BackColor = SystemColors.Desktop;
             cart.Font = new Font("Impact", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cart.ForeColor = Color.FloralWhite;
-            cart.Location = new Point(850, 25);
+            cart.Location = new Point(850, 52);
             cart.Name = "cart";
-            cart.Size = new Size(501, 69);
+            cart.Size = new Size(641, 69);
             cart.TabIndex = 44;
             cart.Text = "Cart";
             cart.TextAlign = ContentAlignment.TopCenter;
@@ -169,13 +169,13 @@
             cartGrid.AllowUserToResizeColumns = false;
             cartGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             cartGrid.ColumnHeadersHeight = 29;
-            cartGrid.Location = new Point(850, 97);
+            cartGrid.Location = new Point(850, 115);
             cartGrid.Name = "cartGrid";
             cartGrid.ReadOnly = true;
             cartGrid.RowHeadersVisible = false;
             cartGrid.RowHeadersWidth = 51;
             cartGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            cartGrid.Size = new Size(501, 339);
+            cartGrid.Size = new Size(641, 321);
             cartGrid.TabIndex = 1;
             // 
             // cartTotalLabel
@@ -185,7 +185,7 @@
             cartTotalLabel.ForeColor = Color.FloralWhite;
             cartTotalLabel.Location = new Point(850, 439);
             cartTotalLabel.Name = "cartTotalLabel";
-            cartTotalLabel.Size = new Size(501, 69);
+            cartTotalLabel.Size = new Size(641, 69);
             cartTotalLabel.TabIndex = 48;
             cartTotalLabel.TextAlign = ContentAlignment.TopCenter;
             // 
@@ -193,7 +193,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1377, 645);
+            ClientSize = new Size(1511, 645);
             Controls.Add(cartTotalLabel);
             Controls.Add(removeButton);
             Controls.Add(addButton);
