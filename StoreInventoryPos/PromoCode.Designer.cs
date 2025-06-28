@@ -203,7 +203,7 @@
             searchField.Location = new Point(150, 67);
             searchField.Multiline = true;
             searchField.Name = "searchField";
-            searchField.Size = new Size(361, 41);
+            searchField.Size = new Size(252, 41);
             searchField.TabIndex = 95;
             searchField.TextChanged += searchField_TextChanged;
             // 
@@ -298,11 +298,11 @@
             clearButton.BackColor = SystemColors.WindowText;
             clearButton.Cursor = Cursors.Hand;
             clearButton.FlatStyle = FlatStyle.Popup;
-            clearButton.Font = new Font("Impact", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            clearButton.Font = new Font("Impact", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             clearButton.ForeColor = Color.LavenderBlush;
-            clearButton.Location = new Point(269, 205);
+            clearButton.Location = new Point(408, 67);
             clearButton.Name = "clearButton";
-            clearButton.Size = new Size(158, 48);
+            clearButton.Size = new Size(103, 41);
             clearButton.TabIndex = 94;
             clearButton.Text = "Clear";
             clearButton.UseVisualStyleBackColor = false;
@@ -312,7 +312,6 @@
             // 
             updatePanel.BackColor = Color.Lavender;
             updatePanel.Controls.Add(label2);
-            updatePanel.Controls.Add(clearButton);
             updatePanel.Controls.Add(label3);
             updatePanel.Controls.Add(UdiscountField);
             updatePanel.Controls.Add(label4);
@@ -376,7 +375,7 @@
             updateButton.FlatStyle = FlatStyle.Popup;
             updateButton.Font = new Font("Impact", 18F);
             updateButton.ForeColor = Color.LavenderBlush;
-            updateButton.Location = new Point(70, 205);
+            updateButton.Location = new Point(161, 205);
             updateButton.Name = "updateButton";
             updateButton.Size = new Size(158, 48);
             updateButton.TabIndex = 83;
@@ -447,13 +446,14 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1128, 547);
             Controls.Add(btndeletePanel);
+            Controls.Add(clearButton);
             Controls.Add(btnupdatePanel);
             Controls.Add(btnaddPanel);
             Controls.Add(searchField);
-            Controls.Add(createPanel);
             Controls.Add(label1);
             Controls.Add(backButton);
             Controls.Add(searchGrid);
+            Controls.Add(createPanel);
             Controls.Add(updatePanel);
             Controls.Add(deletePanel);
             Name = "PromoCode";

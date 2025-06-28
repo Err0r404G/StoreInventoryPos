@@ -33,6 +33,7 @@
             clearButton = new Button();
             backButton = new Button();
             searchGrid = new DataGridView();
+            btnExport = new Button();
             ((System.ComponentModel.ISupportInitialize)searchGrid).BeginInit();
             SuspendLayout();
             // 
@@ -99,11 +100,25 @@
             searchGrid.Size = new Size(1200, 400);
             searchGrid.TabIndex = 38;
             // 
+            // btnExport
+            // 
+            btnExport.BackColor = SystemColors.MenuHighlight;
+            btnExport.Font = new Font("Impact", 18F);
+            btnExport.ForeColor = Color.Black;
+            btnExport.Location = new Point(50, 502);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(120, 51);
+            btnExport.TabIndex = 45;
+            btnExport.Text = "Export";
+            btnExport.UseVisualStyleBackColor = false;
+            btnExport.Click += btnExport_Click;
+            // 
             // saleReport
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1301, 580);
+            Controls.Add(btnExport);
             Controls.Add(searchField);
             Controls.Add(searchLabel);
             Controls.Add(clearButton);
@@ -125,5 +140,6 @@
         private Button clearButton;
         private Button backButton;
         private DataGridView searchGrid;
+        private Button btnExport;
     }
 }

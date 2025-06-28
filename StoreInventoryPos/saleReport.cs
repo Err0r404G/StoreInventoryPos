@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
 
 using WFAManagementPro;
 
@@ -105,5 +108,82 @@ namespace StoreInventoryPos
         {
             Application.Exit(); //Exit App
         }
+
+private void btnExport_Click(object sender, EventArgs e)
+{
+    try
+    {
+        if (searchGrid.Rows.Count == 0)
+        {
+            MessageBox.Show("No data to export.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+
+        SaveFileDialog sfd = new SaveFileDialog
+        {
+            Filter = "PDF files (*.pdf)|*.pdf",
+            FileName = "SaleReport.pdf"
+        };
+
+        if (sfd.ShowDialog() == DialogResult.OK)
+        {
+            // Only count visible columns
+            var visibleColumns = searchGrid.Columns
+                .Cast<DataGridViewColumn>()
+                .Where(c => c.Visible)
+                .ToList();
+
+            Document doc = new Document(PageSize.A4.Rotate(), 10f, 10f, 20f, 10f); // Landscape
+            PdfWriter.GetInstance(doc, new FileStream(sfd.FileName, FileMode.Create));
+            doc.Open();
+
+            Paragraph title = new Paragraph("Sale Report", FontFactory.GetFont("Arial", 16));
+            title.Alignment = Element.ALIGN_CENTER;
+            title.SpacingAfter = 20f;
+            doc.Add(title);
+
+            PdfPTable pdfTable = new PdfPTable(visibleColumns.Count);
+            pdfTable.WidthPercentage = 100;
+            pdfTable.HeaderRows = 1;
+
+            // Add headers
+            foreach (var column in visibleColumns)
+            {
+                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText))
+                {
+                    BackgroundColor = new BaseColor(230, 230, 250), // light color
+                    Padding = 5,
+                    HorizontalAlignment = Element.ALIGN_CENTER
+                };
+                pdfTable.AddCell(cell);
+            }
+
+            // Add data
+            foreach (DataGridViewRow row in searchGrid.Rows)
+            {
+                foreach (var column in visibleColumns)
+                {
+                    var cellValue = row.Cells[column.Index].Value?.ToString() ?? "";
+                    PdfPCell cell = new PdfPCell(new Phrase(cellValue))
+                    {
+                        Padding = 4,
+                        HorizontalAlignment = Element.ALIGN_CENTER
+                    };
+                    pdfTable.AddCell(cell);
+                }
+            }
+
+            doc.Add(pdfTable);
+            doc.Close();
+
+            MessageBox.Show("PDF exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Error exporting PDF: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
+
     }
 }
