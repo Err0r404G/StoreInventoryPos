@@ -40,12 +40,7 @@ namespace StoreInventoryPos
                 managerDashboard Back = new managerDashboard();
                 Back.Show();
             }
-            if (Users.Role == "STAFF")
-            {
-                this.Hide();
-                staffDashboard Back = new staffDashboard();
-                Back.Show();
-            }
+
         }
         private void LoadSaleIntoGrid(string saleId = "")
 

@@ -57,7 +57,6 @@
             searchGrid.AllowUserToResizeRows = false;
             searchGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             searchGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            searchGrid.ColumnHeadersVisible = false;
             searchGrid.Location = new Point(30, 104);
             searchGrid.MultiSelect = false;
             searchGrid.Name = "searchGrid";

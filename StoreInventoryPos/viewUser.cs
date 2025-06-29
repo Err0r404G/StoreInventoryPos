@@ -47,7 +47,6 @@ namespace StoreInventoryPos
             }
         }
 
-        private DataAccess dataAccess = new DataAccess();
 
         private void backButton_Click(object sender, EventArgs e)
         {
@@ -58,6 +57,7 @@ namespace StoreInventoryPos
 
 
 
+        private DataAccess dataAccess = new DataAccess();
         private void searchField_TextChanged(object sender, EventArgs e)
         {
             string username = searchField.Text.Trim();
