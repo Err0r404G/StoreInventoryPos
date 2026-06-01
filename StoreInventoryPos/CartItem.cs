@@ -8,9 +8,9 @@ namespace StoreInventoryPos
 {
     public class CartItem
     {
-        public string ProductID { get; set; }
-        public string ProductName { get; set; }
-        public string Size { get; set; }
+        public string ProductID { get; set; } = string.Empty;
+        public string ProductName { get; set; } = string.Empty;
+        public string Size { get; set; } = string.Empty;
         public double Price { get; set; }
         public int Quantity { get; set; }
 

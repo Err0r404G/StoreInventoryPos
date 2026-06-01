@@ -100,14 +100,19 @@ namespace StoreInventoryPos
             cartTotalLabel.Text = $"Total: {cartItems.Sum(i => i.Total):c}";
         }
 
+        private static string GetCellText(DataGridViewRow row, string columnName)
+        {
+            return row.Cells[columnName].Value?.ToString() ?? string.Empty;
+        }
+
         ///add Button//////////
         private void addButton_Click(object sender, EventArgs e)
         {
             if (productGrid.CurrentRow != null)
             {
-                string productId = productGrid.CurrentRow.Cells["ProductID"].Value.ToString();
-                string productName = productGrid.CurrentRow.Cells["ProductName"].Value.ToString();
-                string size = productGrid.CurrentRow.Cells["Size"].Value.ToString();
+                string productId = GetCellText(productGrid.CurrentRow, "ProductID");
+                string productName = GetCellText(productGrid.CurrentRow, "ProductName");
+                string size = GetCellText(productGrid.CurrentRow, "Size");
 
                 // Find product in currentProducts list
                 var product = currentProducts.FirstOrDefault(p => p.ProductID.ToString() == productId && p.Size.ToString() == size);
@@ -171,8 +176,8 @@ namespace StoreInventoryPos
         {
             if (cartGrid.CurrentRow != null)
             {
-                string productId = cartGrid.CurrentRow.Cells["ProductID"].Value.ToString();
-                string size = cartGrid.CurrentRow.Cells["Size"].Value.ToString();
+                string productId = GetCellText(cartGrid.CurrentRow, "ProductID");
+                string size = GetCellText(cartGrid.CurrentRow, "Size");
 
                 var item = cartItems.FirstOrDefault(i => i.ProductID == productId && i.Size == size);
                 if (item != null)

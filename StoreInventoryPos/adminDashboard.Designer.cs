@@ -35,6 +35,7 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             salesButton = new Button();
             managerProfile = new Button();
+            auditLogButton = new Button();
             SuspendLayout();
             // 
             // logOut
@@ -127,12 +128,28 @@
             managerProfile.UseVisualStyleBackColor = false;
             managerProfile.Click += managerProfile_Click;
             // 
+            // auditLogButton
+            // 
+            auditLogButton.BackColor = Color.LightSteelBlue;
+            auditLogButton.Cursor = Cursors.Hand;
+            auditLogButton.FlatStyle = FlatStyle.Popup;
+            auditLogButton.Font = new Font("Impact", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            auditLogButton.ForeColor = Color.Black;
+            auditLogButton.Location = new Point(328, 333);
+            auditLogButton.Name = "auditLogButton";
+            auditLogButton.Size = new Size(205, 51);
+            auditLogButton.TabIndex = 18;
+            auditLogButton.Text = "Audit Log";
+            auditLogButton.UseVisualStyleBackColor = false;
+            auditLogButton.Click += auditLogButton_Click;
+            // 
             // adminDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(800, 450);
+            Controls.Add(auditLogButton);
             Controls.Add(managerProfile);
             Controls.Add(salesButton);
             Controls.Add(modifyUser);
@@ -155,5 +172,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Button salesButton;
         private Button managerProfile;
+        private Button auditLogButton;
     }
 }

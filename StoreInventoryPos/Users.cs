@@ -9,8 +9,8 @@ namespace StoreInventoryPos
 {
     internal class Users
     {
-        public static string Username { get; set; }
-        public static string Role { get;  set; }
+        public static string? Username { get; set; }
+        public static string? Role { get;  set; }
 
         public static void SetSession(string username, string role)
         {

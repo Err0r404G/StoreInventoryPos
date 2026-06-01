@@ -54,7 +54,7 @@ namespace StoreInventoryPos
 
                 foreach (DataGridViewRow row in searchGrid.Rows)
                 {
-                    string saleId = row.Cells["SaleID"].Value?.ToString();
+                    string saleId = row.Cells["SaleID"].Value?.ToString() ?? string.Empty;
                     if (!string.IsNullOrEmpty(saleId) && db.IsSaleRefunded(saleId))
                     {
                         row.DefaultCellStyle.BackColor = Color.Red;
@@ -104,7 +104,7 @@ namespace StoreInventoryPos
                     if (linkSuccess)
                     {
                         MessageBox.Show("Refund successfully recorded.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        clearButton_Click_1(null, null);
+                        clearButton_Click_1(this, EventArgs.Empty);
                     }
                     else
                     {

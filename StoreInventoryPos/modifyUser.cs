@@ -33,11 +33,8 @@ namespace StoreInventoryPos
 
                 searchGrid.DataSource = users;
 
-                // Optionally adjust column headers if those columns exist
                 if (searchGrid.Columns.Contains("Username"))
                     searchGrid.Columns["Username"].HeaderText = "Username";
-                if (searchGrid.Columns.Contains("Password"))
-                    searchGrid.Columns["Password"].HeaderText = "Password";
                 if (searchGrid.Columns.Contains("Fullname"))
                     searchGrid.Columns["Fullname"].HeaderText = "Full Name";
                 if (searchGrid.Columns.Contains("Role"))
@@ -99,10 +96,10 @@ namespace StoreInventoryPos
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = searchGrid.Rows[e.RowIndex];
-                userNameField.Text = row.Cells["Username"].Value.ToString();
-                passwordField.Text = row.Cells["Password"].Value.ToString();
-                fullNameField.Text = row.Cells["Fullname"].Value.ToString();
-                roleBox.Text = row.Cells["Role"].Value.ToString();
+                userNameField.Text = row.Cells["Username"].Value?.ToString();
+                passwordField.Clear();
+                fullNameField.Text = row.Cells["Fullname"].Value?.ToString();
+                roleBox.Text = row.Cells["Role"].Value?.ToString();
             }
         }
 
@@ -118,9 +115,9 @@ namespace StoreInventoryPos
                 MessageBox.Show("Please select a valid user to update.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (string.IsNullOrEmpty(fullname) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(role))
+            if (string.IsNullOrEmpty(fullname) || string.IsNullOrEmpty(role))
             {
-                MessageBox.Show("Full Name, Password and Role are required.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Full Name and Role are required. Leave Password empty to keep it unchanged.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

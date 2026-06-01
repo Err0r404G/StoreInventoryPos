@@ -72,7 +72,7 @@ namespace StoreInventoryPos
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             string customerName = txtCustomerName.Text.Trim();
-            string paymentType = cmbPaymentType.SelectedItem?.ToString();
+            string paymentType = cmbPaymentType.SelectedItem?.ToString() ?? string.Empty;
             string paymentToken = txtPaymentToken.Text.Trim();
             string promoCode = PromoCodeField.Text.Trim();
             double total = cartItems.Sum(item => item.Total);
@@ -91,7 +91,7 @@ namespace StoreInventoryPos
                 if (SaleID > 0)
                 {
                     MessageBox.Show("Sale completed successfully!");
-                    db.InsertUserSale(Users.Username, SaleID);
+                    db.InsertUserSale(Users.Username ?? string.Empty, SaleID);
 
                     foreach (var item in cartItems)
                     {

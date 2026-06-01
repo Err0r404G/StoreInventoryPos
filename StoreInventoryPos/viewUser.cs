@@ -31,11 +31,8 @@ namespace StoreInventoryPos
 
                 searchGrid.DataSource = users;
 
-                // Optionally adjust column headers if those columns exist
                 if (searchGrid.Columns.Contains("Username"))
                     searchGrid.Columns["Username"].HeaderText = "Username";
-                if (searchGrid.Columns.Contains("Password"))
-                    searchGrid.Columns["Password"].HeaderText = "Password";
                 if (searchGrid.Columns.Contains("Fullname"))
                     searchGrid.Columns["Fullname"].HeaderText = "Full Name";
                 if (searchGrid.Columns.Contains("Role"))

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
@@ -20,6 +21,16 @@ namespace StoreInventoryPos
 
         private void logOut_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DataAccess dataAccess = new DataAccess();
+                dataAccess.RecordAuditLog("Logout", $"User '{Users.Username}' logged out.");
+            }
+            catch
+            {
+                // Logout should continue even if audit logging is unavailable.
+            }
+
             Users.ClearSession();
             this.Hide();
             LoginPage Back = new LoginPage();
@@ -53,6 +64,13 @@ namespace StoreInventoryPos
         {
             this.Hide();
             saleReport Open = new saleReport();
+            Open.Show();
+        }
+
+        private void auditLogButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AuditLog Open = new AuditLog();
             Open.Show();
         }
 

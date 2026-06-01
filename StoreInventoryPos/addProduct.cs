@@ -55,7 +55,7 @@ namespace StoreInventoryPos
                 double cost = double.Parse(costField.Text.Trim());
                 double price = double.Parse(priceField.Text.Trim());
                 int quantity = int.Parse(quantityField.Text.Trim());
-                int Size = int.Parse(sizeBox.SelectedItem.ToString().Trim());
+                int Size = int.Parse(sizeBox.SelectedItem?.ToString()?.Trim() ?? string.Empty);
 
                 // Convert size int to string for InsertProduct
                 string size = Size.ToString();

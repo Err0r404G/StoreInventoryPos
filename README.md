@@ -1,42 +1,80 @@
 # StoreInventoryPos
 
-**StoreInventoryPos** is a comprehensive Windows Forms (WinForms) application built in C# for managing retail store operations such as inventory, sales, promotions, refunds, and reporting.
+StoreInventoryPos is a Windows Forms point-of-sale and inventory management application for retail store operations. It supports role-based dashboards, inventory tracking, sales processing, refund management, reporting, and audit logging.
 
----
+## Screenshots
 
-## 🚀 Features
+### Admin Dashboard
 
-- 🔐 **User Roles**: Admin, Manager, and Staff with custom dashboards
-- 💼 **Inventory Management**: Track products by name, quantity, size, and price
-- 💵 **Sales Processing**: Record sales, apply promo codes, and choose payment types
-- 🔁 **Refund Management**: Manage and track refunds with reasons and related sales
-- 📊 **Sales and Refund Reports**: Generate searchable and filterable reports
-- 🔍 **Search & Filter**: Search by Sale ID or product name
-- 🖨️ **Print Support**: Print receipts or reports (integrated via `System.Drawing.Printing`)
-- 🗃️ **Database Integration**: Uses SQL Server for all data storage and relationships
+![Admin dashboard](assets/screenshots/admin-dashboard.png)
 
----
+### Audit Log
 
-## 🛠️ Tech Stack
+![Audit log](assets/screenshots/audit-log.png)
 
-- **Frontend**: Windows Forms (.NET Framework)
-- **Backend**: C#
-- **Database**: Microsoft SQL Server
-- **Data Access**: ADO.NET using `SqlConnection`, `SqlCommand`, and `SqlDataAdapter`
+## Features
 
----
+- Role-based access for Admin, Manager, and Staff users.
+- Inventory management for products, price, cost, size, quantity, and profit tracking.
+- Sales workflow with cart selection, promo code validation, payment type, and stock deduction.
+- Refund management with sale-to-refund linking.
+- Sales and refund reports with search and PDF export.
+- Audit log for user activity, including login, logout, user changes, product changes, promo changes, sales, stock updates, and refunds.
+- Secure password storage using PBKDF2 hashing.
+- Configurable SQL Server connection string through `STORE_POS_CONNECTION_STRING`.
 
-## 📁 Project Structure
+## Technology Stack
 
-StoreInventoryPos/
-│
-├── Forms/
-│ ├── adminDashboard.cs
-│ ├── managerDashboard.cs
-│ ├── staffDashboard.cs
-│
-├── DataAccess.cs // SQL interaction logic
-├── Users.cs // Static role/user session data
-├── Program.cs // Entry point
-├── App.config // DB connection string
-└── README.md
+- C#
+- .NET 8 Windows Forms
+- Microsoft SQL Server
+- ADO.NET with `Microsoft.Data.SqlClient`
+- iTextSharp for PDF export
+
+## Database
+
+The application expects a SQL Server database named `ShoeStorePOS` by default.
+
+Default connection:
+
+```text
+Data Source=.\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Integrated Security=True;Trust Server Certificate=True;
+```
+
+To use another server or login, set:
+
+```powershell
+$env:STORE_POS_CONNECTION_STRING="Data Source=YOUR_SERVER;Initial Catalog=ShoeStorePOS;Integrated Security=True;Trust Server Certificate=True;"
+```
+
+## Default Development Users
+
+```text
+Username: ADMIN
+Password: ADMIN
+Role: ADMIN
+```
+
+```text
+Username: MANAGER
+Password: MANAGER
+Role: MANAGER
+```
+
+Passwords are stored as hashes in the database.
+
+## Build
+
+```powershell
+dotnet build StoreInventoryPos.sln
+```
+
+## Run
+
+Build the project, then run:
+
+```powershell
+.\Run.bat
+```
+
+You can also start the application from Visual Studio using `StoreInventoryPos.sln`.

@@ -33,7 +33,7 @@ namespace StoreInventoryPos
             string password = passWordField.Text.Trim();
             string confirmPassword = CpassWordField.Text.Trim();
             string fullname = fNameField.Text.Trim();
-            string role = roleBox.SelectedItem?.ToString().Trim();
+            string role = roleBox.SelectedItem?.ToString()?.Trim() ?? string.Empty;
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) ||
                 string.IsNullOrEmpty(confirmPassword) || string.IsNullOrEmpty(fullname) ||

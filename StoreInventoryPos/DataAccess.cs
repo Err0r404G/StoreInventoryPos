@@ -1,49 +1,114 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using Microsoft.VisualBasic.ApplicationServices;
+using Microsoft.Data.SqlClient;
 using StoreInventoryPos;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WFAManagementPro
 {
     class DataAccess
     {
-        private SqlConnection sqlcon;
+        private SqlConnection sqlcon = null!;
         public SqlConnection Sqlcon
         {
             get { return this.sqlcon; }
             set { this.sqlcon = value; }
         }
 
-        private SqlCommand sqlcom;
+        private SqlCommand sqlcom = null!;
         public SqlCommand Sqlcom
         {
             get { return this.sqlcom; }
             set { this.sqlcom = value; }
         }
 
-        private SqlDataAdapter sda;
+        private SqlDataAdapter sda = null!;
         public SqlDataAdapter Sda
         {
             get { return this.sda; }
             set { this.sda = value; }
         }
 
-        private DataSet ds;
+        private DataSet ds = null!;
         public DataSet Ds
         {
             get { return this.ds; }
             set { this.ds = value; }
         }
 
-        private readonly string connectionString = @"Data Source=VICTUS-24H2\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Persist Security Info=True;User ID=sa;Password=@1812;";
+        private readonly string connectionString = Environment.GetEnvironmentVariable("STORE_POS_CONNECTION_STRING")
+            ?? @"Data Source=.\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Integrated Security=True;Trust Server Certificate=True;";
 
         public DataAccess()
         {
             this.Sqlcon = new SqlConnection(connectionString);
             this.Sqlcon.Open();
+            EnsureAuditLogTable();
+        }
+
+        private void EnsureAuditLogTable()
+        {
+            string sql = @"
+IF OBJECT_ID('dbo.AuditLog', 'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.AuditLog
+    (
+        AuditLogID INT IDENTITY(1,1) PRIMARY KEY,
+        Username NVARCHAR(50) NOT NULL,
+        Role NVARCHAR(20) NOT NULL,
+        Action NVARCHAR(100) NOT NULL,
+        Details NVARCHAR(1000) NOT NULL,
+        CreatedAt DATETIME2 NOT NULL DEFAULT SYSUTCDATETIME()
+    );
+END";
+
+            using (SqlCommand cmd = new SqlCommand(sql, this.Sqlcon))
+            {
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void RecordAuditLog(string action, string details)
+        {
+            string sql = @"
+INSERT INTO AuditLog (Username, Role, Action, Details, CreatedAt)
+VALUES (@Username, @Role, @Action, @Details, SYSUTCDATETIME())";
+
+            using (SqlCommand cmd = new SqlCommand(sql, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@Username", Users.Username ?? "SYSTEM");
+                cmd.Parameters.AddWithValue("@Role", Users.Role ?? "SYSTEM");
+                cmd.Parameters.AddWithValue("@Action", action);
+                cmd.Parameters.AddWithValue("@Details", details);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public DataTable GetAuditLogs(string username = "")
+        {
+            DataTable dataTable = new DataTable();
+            string query = @"
+SELECT
+    AuditLogID,
+    Username,
+    Role,
+    Action,
+    Details,
+    DATEADD(MINUTE, DATEDIFF(MINUTE, GETUTCDATE(), GETDATE()), CreatedAt) AS CreatedAt
+FROM AuditLog
+WHERE (@Username = '' OR Username LIKE @Username + '%')
+ORDER BY CreatedAt DESC, AuditLogID DESC";
+
+            using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@Username", username);
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    adapter.Fill(dataTable);
+                }
+            }
+
+            return dataTable;
         }
 
         /* private void QueryText(string query)
@@ -87,21 +152,45 @@ namespace WFAManagementPro
         public bool ValidateUser(string username, string password, out string role)
         {
             role = string.Empty;
-            string sql = "SELECT Role FROM Users WHERE Username = @username AND Password = @password";
+            string sql = "SELECT Password, Role FROM Users WHERE Username = @username";
             SqlCommand cmd = new SqlCommand(sql, this.Sqlcon);
 
             cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue("@password", password);
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    role = reader["Role"].ToString();
-                    return true;
+                    string storedPassword = reader["Password"]?.ToString() ?? string.Empty;
+                    if (!Security.VerifyPassword(password, storedPassword))
+                    {
+                        return false;
+                    }
+
+                    role = reader["Role"]?.ToString() ?? string.Empty;
+
+                    if (!Security.IsHashed(storedPassword))
+                    {
+                        reader.Close();
+                        UpdatePasswordHash(username, Security.HashPassword(password));
+                    }
+
+                    return !string.IsNullOrEmpty(role);
                 }
             }
             return false;
+        }
+
+        private void UpdatePasswordHash(string username, string passwordHash)
+        {
+            string sql = "UPDATE Users SET Password = @Password WHERE Username = @Username";
+
+            using (SqlCommand cmd = new SqlCommand(sql, this.Sqlcon))
+            {
+                cmd.Parameters.AddWithValue("@Username", username);
+                cmd.Parameters.AddWithValue("@Password", passwordHash);
+                cmd.ExecuteNonQuery();
+            }
         }
 
 
@@ -116,32 +205,48 @@ namespace WFAManagementPro
             SqlCommand cmd = new SqlCommand(sql, this.Sqlcon);
 
             cmd.Parameters.AddWithValue("@username", username);
-            cmd.Parameters.AddWithValue("@password", password);
+            cmd.Parameters.AddWithValue("@password", Security.HashPassword(password));
             cmd.Parameters.AddWithValue("@fullname", fullname);
             cmd.Parameters.AddWithValue("@role", role);
 
-            return cmd.ExecuteNonQuery();
+            int rows = cmd.ExecuteNonQuery();
+            if (rows > 0)
+            {
+                RecordAuditLog("Create User", $"Created user '{username}' with role '{role}'.");
+            }
+
+            return rows;
         }
 
         //Update User
 
         public int UpdateUser(string username, string fullname, string password, string role)
         {
-#pragma warning disable CS0618 // Type or member is obsolete
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "UPDATE Users SET Fullname = @fullname, Password = @Password, Role = @Role WHERE Username = @Username";
+                string query = string.IsNullOrWhiteSpace(password)
+                    ? "UPDATE Users SET Fullname = @Fullname, Role = @Role WHERE Username = @Username"
+                    : "UPDATE Users SET Fullname = @Fullname, Password = @Password, Role = @Role WHERE Username = @Username";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
                 cmd.Parameters.AddWithValue("@Fullname", fullname);
-                cmd.Parameters.AddWithValue("@Password", password);
                 cmd.Parameters.AddWithValue("@Role", role);
+
+                if (!string.IsNullOrWhiteSpace(password))
+                {
+                    cmd.Parameters.AddWithValue("@Password", Security.HashPassword(password));
+                }
 
 
                 conn.Open();
-                return cmd.ExecuteNonQuery();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    RecordAuditLog("Update User", $"Updated user '{username}' with role '{role}'. Password changed: {!string.IsNullOrWhiteSpace(password)}.");
+                }
+
+                return rows;
             }
-#pragma warning restore CS0618 // Type or member is obsolete
         }
 
         //Delete User
@@ -154,7 +259,13 @@ namespace WFAManagementPro
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Username", username);
                 conn.Open();
-                return cmd.ExecuteNonQuery();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    RecordAuditLog("Delete User", $"Deleted user '{username}'.");
+                }
+
+                return rows;
             }
         }
 
@@ -172,7 +283,13 @@ namespace WFAManagementPro
             cmd.Parameters.AddWithValue("@Quantity", quantity);
             cmd.Parameters.AddWithValue("@Size", size);
 
-            return cmd.ExecuteNonQuery();
+            int rows = cmd.ExecuteNonQuery();
+            if (rows > 0)
+            {
+                RecordAuditLog("Create Product", $"Created product '{productname}' size '{size}' quantity {quantity} price {price}.");
+            }
+
+            return rows;
         }
 
         //Update Product
@@ -191,7 +308,13 @@ namespace WFAManagementPro
                 cmd.Parameters.AddWithValue("@Size", int.Parse(size));
 
                 conn.Open();
-                return cmd.ExecuteNonQuery();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    RecordAuditLog("Update Product", $"Updated product ID '{productID}' to '{productname}', quantity '{quantity}', price '{price}'.");
+                }
+
+                return rows;
             }
         }
         //Delete Product
@@ -204,7 +327,13 @@ namespace WFAManagementPro
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ProductID", int.Parse(productID));
                 conn.Open();
-                return cmd.ExecuteNonQuery();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    RecordAuditLog("Delete Product", $"Deleted product ID '{productID}'.");
+                }
+
+                return rows;
             }
         }
 
@@ -219,7 +348,13 @@ namespace WFAManagementPro
             cmd.Parameters.AddWithValue("@Code", code);
             cmd.Parameters.AddWithValue("@discountpercent", discountpercent);
 
-            return cmd.ExecuteNonQuery();
+            int rows = cmd.ExecuteNonQuery();
+            if (rows > 0)
+            {
+                RecordAuditLog("Create Promo Code", $"Created promo code '{code}' with discount '{discountpercent}'.");
+            }
+
+            return rows;
         }
 
         //Upadte Promo
@@ -231,7 +366,13 @@ namespace WFAManagementPro
             cmd.Parameters.AddWithValue("@code", code);
             cmd.Parameters.AddWithValue("@discountpercent", discountpercent);
 
-            return cmd.ExecuteNonQuery();
+            int rows = cmd.ExecuteNonQuery();
+            if (rows > 0)
+            {
+                RecordAuditLog("Update Promo Code", $"Updated promo code '{code}' with discount '{discountpercent}'.");
+            }
+
+            return rows;
         }
 
 
@@ -245,7 +386,13 @@ namespace WFAManagementPro
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@code", code);
                 conn.Open();
-                return cmd.ExecuteNonQuery();
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    RecordAuditLog("Delete Promo Code", $"Deleted promo code '{code}'.");
+                }
+
+                return rows;
             }
         }
         ///////////////////////////////////////Admin Search Query//////////////////////////////
@@ -254,7 +401,7 @@ namespace WFAManagementPro
         public DataTable SearchUsersByUsername(string username)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT Username,Password, Fullname, Role FROM Users WHERE Username LIKE @username";
+            string query = "SELECT Username, Fullname, Role FROM Users WHERE Username LIKE @username";
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             {
@@ -275,7 +422,7 @@ namespace WFAManagementPro
         public DataTable SearchUsersByUsernameManager(string username)
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT Username,Password, Fullname, Role FROM Users WHERE (Role = 'MANAGER' OR Role = 'STAFF') AND Username LIKE @username";
+            string query = "SELECT Username, Fullname, Role FROM Users WHERE (Role = 'MANAGER' OR Role = 'STAFF') AND Username LIKE @username";
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             {
@@ -354,7 +501,7 @@ namespace WFAManagementPro
         public DataTable getUser()
         {
             DataTable dataTable = new DataTable();
-            string query = "SELECT * FROM Users";
+            string query = "SELECT Username, Fullname, Role FROM Users";
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
@@ -525,6 +672,7 @@ namespace WFAManagementPro
 
                 if (result != null && int.TryParse(result.ToString(), out int saleId))
                 {
+                    RecordAuditLog("Create Sale", $"Created sale ID '{saleId}' for customer '{customerName}' total {totalAmount} payment '{paymentType}'. Promo: '{usedPromo}'.");
                     return saleId;
                 }
                 else
@@ -544,6 +692,7 @@ namespace WFAManagementPro
                 cmd.Parameters.AddWithValue("@Username", username);
                 cmd.Parameters.AddWithValue("@SaleID", saleId);
                 cmd.ExecuteNonQuery();
+                RecordAuditLog("Assign Sale", $"Assigned sale ID '{saleId}' to user '{username}'.");
             }
         }
 
@@ -557,6 +706,7 @@ namespace WFAManagementPro
                 cmd.Parameters.AddWithValue("@SoldQuantity", soldQuantity);
                 cmd.Parameters.AddWithValue("@ProductID", productId);
                 cmd.ExecuteNonQuery();
+                RecordAuditLog("Update Stock", $"Reduced product ID '{productId}' stock by {soldQuantity}.");
             }
         }
 
@@ -575,7 +725,7 @@ namespace WFAManagementPro
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))
             {
-                cmd.Parameters.AddWithValue("@Username", Users.Username);
+                cmd.Parameters.AddWithValue("@Username", Users.Username ?? string.Empty);
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                 {
@@ -596,6 +746,7 @@ namespace WFAManagementPro
                 cmd.Parameters.AddWithValue("@ProductID", productID);
                 cmd.Parameters.AddWithValue("@SaleID", saleId);
                 cmd.ExecuteNonQuery();
+                RecordAuditLog("Add Sale Product", $"Linked product ID '{productID}' to sale ID '{saleId}'.");
             }
         }
 
@@ -697,7 +848,9 @@ namespace WFAManagementPro
                 if (this.Sqlcon.State != ConnectionState.Open)
                     this.Sqlcon.Open();
 
-                return (int)cmd.ExecuteScalar();
+                int refundId = (int)cmd.ExecuteScalar();
+                RecordAuditLog("Create Refund", $"Created refund ID '{refundId}' amount {amount}. Reason: {reason}.");
+                return refundId;
             }
         }
         ///Aggrigation To SaleID and RedundID/////////////////////
@@ -715,7 +868,13 @@ namespace WFAManagementPro
                 if (this.Sqlcon.State != ConnectionState.Open)
                     this.Sqlcon.Open(); 
 
-                return cmd.ExecuteNonQuery() > 0;
+                bool linked = cmd.ExecuteNonQuery() > 0;
+                if (linked)
+                {
+                    RecordAuditLog("Link Refund", $"Linked sale ID '{saleId}' to refund ID '{refundId}'.");
+                }
+
+                return linked;
             }
         }
         ///Search Refund Report By SaleID///////////////////

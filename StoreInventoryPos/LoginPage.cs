@@ -44,6 +44,7 @@ namespace StoreInventoryPos
                 {
                     Users.Username = username;
                     Users.Role = role;
+                    dataAccess.RecordAuditLog("Login", $"User '{username}' logged in with role '{role}'.");
 
                     this.Hide();
 
