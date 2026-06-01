@@ -20,35 +20,15 @@ StoreInventoryPos is a Windows Forms point-of-sale and inventory management appl
 
 ![Create user](assets/screenshots/create-user.png)
 
-![View user](assets/screenshots/view-user.png)
-
-![Modify user](assets/screenshots/modify-user.png)
-
-![View staff](assets/screenshots/view-staff.png)
-
-![Profile](assets/screenshots/profile.png)
-
 ### Inventory
 
 ![Inventory management](assets/screenshots/inventory-management.png)
 
 ![Add product](assets/screenshots/add-product.png)
 
-![Search product](assets/screenshots/search-product.png)
-
-![Modify product](assets/screenshots/modify-product.png)
-
-![Staff inventory](assets/screenshots/staff-inventory.png)
-
 ### POS And Billing
 
-![Product selection cart](assets/screenshots/selection-cart.png)
-
 ![Billing](assets/screenshots/billing.png)
-
-### Promotions
-
-![Promo code](assets/screenshots/promo-code.png)
 
 ### Reports
 
@@ -57,12 +37,6 @@ StoreInventoryPos is a Windows Forms point-of-sale and inventory management appl
 ![Staff sales](assets/screenshots/staff-sales.png)
 
 ![Refund report](assets/screenshots/refund-report.png)
-
-### Refunds And Audit
-
-![Refund management](assets/screenshots/refund-management.png)
-
-![Audit log](assets/screenshots/audit-log.png)
 
 ## Features
 
