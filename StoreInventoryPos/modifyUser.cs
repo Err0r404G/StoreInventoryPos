@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
@@ -6,7 +6,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class modifyUser : Form
+    public partial class modifyUser : ThemedForm
     {
 
 
@@ -163,3 +163,4 @@ namespace StoreInventoryPos
         }
     }
 }
+

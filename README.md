@@ -4,11 +4,63 @@ StoreInventoryPos is a Windows Forms point-of-sale and inventory management appl
 
 ## Screenshots
 
-### Admin Dashboard
+### Login
+
+![Login page](assets/screenshots/login-page.png)
+
+### Dashboards
 
 ![Admin dashboard](assets/screenshots/admin-dashboard.png)
 
-### Audit Log
+![Manager dashboard](assets/screenshots/manager-dashboard.png)
+
+![Staff dashboard](assets/screenshots/staff-dashboard.png)
+
+### User Management
+
+![Create user](assets/screenshots/create-user.png)
+
+![View user](assets/screenshots/view-user.png)
+
+![Modify user](assets/screenshots/modify-user.png)
+
+![View staff](assets/screenshots/view-staff.png)
+
+![Profile](assets/screenshots/profile.png)
+
+### Inventory
+
+![Inventory management](assets/screenshots/inventory-management.png)
+
+![Add product](assets/screenshots/add-product.png)
+
+![Search product](assets/screenshots/search-product.png)
+
+![Modify product](assets/screenshots/modify-product.png)
+
+![Staff inventory](assets/screenshots/staff-inventory.png)
+
+### POS And Billing
+
+![Product selection cart](assets/screenshots/selection-cart.png)
+
+![Billing](assets/screenshots/billing.png)
+
+### Promotions
+
+![Promo code](assets/screenshots/promo-code.png)
+
+### Reports
+
+![Sales report](assets/screenshots/sales-report.png)
+
+![Staff sales](assets/screenshots/staff-sales.png)
+
+![Refund report](assets/screenshots/refund-report.png)
+
+### Refunds And Audit
+
+![Refund management](assets/screenshots/refund-management.png)
 
 ![Audit log](assets/screenshots/audit-log.png)
 
@@ -38,13 +90,13 @@ The application expects a SQL Server database named `ShoeStorePOS` by default.
 Default connection:
 
 ```text
-Data Source=.\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Integrated Security=True;Trust Server Certificate=True;
+Data Source=.\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Integrated Security=True;TrustServerCertificate=True;
 ```
 
 To use another server or login, set:
 
 ```powershell
-$env:STORE_POS_CONNECTION_STRING="Data Source=YOUR_SERVER;Initial Catalog=ShoeStorePOS;Integrated Security=True;Trust Server Certificate=True;"
+$env:STORE_POS_CONNECTION_STRING="Data Source=YOUR_SERVER;Initial Catalog=ShoeStorePOS;Integrated Security=True;TrustServerCertificate=True;"
 ```
 
 ## Default Development Users

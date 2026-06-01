@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class searchProduct : Form
+    public partial class searchProduct : ThemedForm
     {
         public searchProduct()
         {
@@ -83,3 +83,4 @@ namespace StoreInventoryPos
         }
     }
 }
+

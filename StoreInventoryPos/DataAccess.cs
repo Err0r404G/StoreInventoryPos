@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using StoreInventoryPos;
 
 namespace WFAManagementPro
@@ -36,7 +36,7 @@ namespace WFAManagementPro
         }
 
         private readonly string connectionString = Environment.GetEnvironmentVariable("STORE_POS_CONNECTION_STRING")
-            ?? @"Data Source=.\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Integrated Security=True;Trust Server Certificate=True;";
+            ?? @"Data Source=.\SQLEXPRESS;Initial Catalog=ShoeStorePOS;Integrated Security=True;TrustServerCertificate=True;";
 
         public DataAccess()
         {
@@ -807,7 +807,7 @@ ORDER BY CreatedAt DESC, AuditLogID DESC";
         FROM Sales s
         INNER JOIN SaleProduct sp ON s.SaleID = sp.SaleID
         INNER JOIN Product p ON sp.ProductID = p.ProductID
-        WHERE s.SaleID LIKE @SaleID
+        WHERE CAST(s.SaleID AS NVARCHAR(50)) LIKE @SaleID
         GROUP BY 
             s.SaleID, 
             s.CustomerName, 
@@ -898,7 +898,7 @@ ORDER BY CreatedAt DESC, AuditLogID DESC";
         INNER JOIN UserSale us ON sr.SaleID = us.SaleID
         INNER JOIN SaleProduct sp ON sr.SaleID = sp.SaleID
         INNER JOIN Product p ON sp.ProductID = p.ProductID
-        WHERE (@SaleID = '' OR sr.SaleID LIKE @SaleID + '%')
+        WHERE (@SaleID = '' OR CAST(sr.SaleID AS NVARCHAR(50)) LIKE @SaleID + '%')
     ";
 
             using (SqlCommand cmd = new SqlCommand(query, this.Sqlcon))

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ScrollBar;
 
 namespace StoreInventoryPos
 {
-    public partial class PromoCode : Form
+    public partial class PromoCode : ThemedForm
     {
         public PromoCode()
         {
@@ -232,4 +232,5 @@ namespace StoreInventoryPos
         }
     }
 }
+
 

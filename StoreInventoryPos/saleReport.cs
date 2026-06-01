@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +16,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class saleReport : Form
+    public partial class saleReport : ThemedForm
     {
         public saleReport()
         {
@@ -182,3 +182,4 @@ private void btnExport_Click(object sender, EventArgs e)
 
     }
 }
+

@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using Microsoft.Data.SqlClient;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class profile : Form
+    public partial class profile : ThemedForm
     {
 
         public profile()
@@ -82,4 +82,5 @@ namespace StoreInventoryPos
         }
     }
 }
+
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +12,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class LoginPage : Form
+    public partial class LoginPage : ThemedForm
     {
         public LoginPage()
         {
@@ -81,4 +81,5 @@ namespace StoreInventoryPos
         }
     }
 }
+
 

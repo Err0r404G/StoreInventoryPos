@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +14,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace StoreInventoryPos
 {
 
-    public partial class Billing : Form
+    public partial class Billing : ThemedForm
     {
         private List<CartItem> cartItems;
         private double appliedDiscount = 0;
@@ -165,4 +165,5 @@ namespace StoreInventoryPos
     }
 
 }
+
 

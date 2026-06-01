@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class refundReport : Form
+    public partial class refundReport : ThemedForm
     {
         public refundReport()
         {
@@ -75,3 +75,4 @@ namespace StoreInventoryPos
         }
     }
 }
+

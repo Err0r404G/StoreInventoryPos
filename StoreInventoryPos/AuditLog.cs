@@ -4,7 +4,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class AuditLog : Form
+    public partial class AuditLog : ThemedForm
     {
         private readonly DataAccess dataAccess = new DataAccess();
 
@@ -64,3 +64,4 @@ namespace StoreInventoryPos
         }
     }
 }
+

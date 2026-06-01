@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace StoreInventoryPos
 {
-    public partial class managerDashboard : Form
+    public partial class managerDashboard : ThemedForm
     {
         public managerDashboard()
         {
@@ -84,3 +84,4 @@ namespace StoreInventoryPos
 
 
 }
+

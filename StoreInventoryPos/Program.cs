@@ -11,13 +11,6 @@ namespace StoreInventoryPos
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Idle += (_, _) =>
-            {
-                foreach (Form form in Application.OpenForms)
-                {
-                    AppTheme.Apply(form);
-                }
-            };
             Application.Run(new LoginPage());
             //Application.Run(new CreateUser());
             // Application.Run(new modifyUser());

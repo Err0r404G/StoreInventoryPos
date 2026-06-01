@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class CreateUser : Form
+    public partial class CreateUser : ThemedForm
     {
         public CreateUser()
         {
@@ -88,3 +88,4 @@ namespace StoreInventoryPos
         }
     }
 }
+

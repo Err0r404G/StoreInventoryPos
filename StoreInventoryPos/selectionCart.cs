@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class selectionCart : Form
+    public partial class selectionCart : ThemedForm
     {
         public selectionCart()
         {
@@ -242,4 +242,5 @@ namespace StoreInventoryPos
         }
     }
 }
+
 

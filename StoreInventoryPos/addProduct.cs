@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class addProduct : Form
+    public partial class addProduct : ThemedForm
     {
         public addProduct()
         {
@@ -88,4 +88,5 @@ namespace StoreInventoryPos
         }
     }
 }
+
 

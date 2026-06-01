@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +11,7 @@ using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class viewUser : Form
+    public partial class viewUser : ThemedForm
     {
         public viewUser()
         {
@@ -68,3 +68,4 @@ namespace StoreInventoryPos
         }
     }
 }
+

@@ -1,9 +1,9 @@
-﻿using System.Data;
+using System.Data;
 using WFAManagementPro;
 
 namespace StoreInventoryPos
 {
-    public partial class refundManagement : Form
+    public partial class refundManagement : ThemedForm
     {
         public refundManagement()
         {
@@ -163,3 +163,4 @@ namespace StoreInventoryPos
 
     }
 }
+
